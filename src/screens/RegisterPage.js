@@ -1,7 +1,13 @@
+import Footer from '../components/Footer';
+import RegisterCard from '../components/RegisterCard';
+import styles from '../styles/log-reg.module.css';
+
+
 export default function RegisterPage(){
+
     return (
-        <>
-            <h3>This is the Register Page</h3>
-        </>
+        <main className={styles.regMain}>
+                <RegisterCard accClassName={styles.accountBox} className={styles.form}/>
+        </main>
     )
 }

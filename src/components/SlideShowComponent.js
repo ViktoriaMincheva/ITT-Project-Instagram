@@ -18,7 +18,7 @@ export default function Slideshow() {
                     src="login-slideshow.png"
                     alt="login"
                 />
-
+{/* 
                 <div className="slide-container">
                     <Fade arrows={false} duration={500}>
                         <div className="each-fade">
@@ -47,7 +47,7 @@ export default function Slideshow() {
                             </div>
                         </div>
                     </Fade>
-                </div>
+                </div> */}
             </section>
         </>
     )

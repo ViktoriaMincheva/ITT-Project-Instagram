@@ -1,14 +1,7 @@
 import { useState } from "react";
-import styled from "@emotion/styled";
 
 export default function PasswordInputField(props) {
 
-    // const StyledSpan = styled.span`
-    //     cursor: pointer;
-    //     left: 98%;
-    //     top:0.8em;
-    //     z-index: 4;
-    // `
     const [typeOfInput, setType] = useState("password");
 
     const showPass = () => {

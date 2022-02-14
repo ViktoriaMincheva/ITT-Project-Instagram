@@ -73,7 +73,7 @@ export default function RegisterCard(props) {
 
             </section>
 
-            <AccountCheckBox className={props.accClassName} pTitle="Have an account" linkTitle="Log In" href="/login" />
+            <AccountCheckBox className={props.accClassName} pTitle="Have an account?" linkTitle="Log In" href="/login" />
             <GetTheApp />
 
             <Footer className={styles.footer}/>

@@ -1,8 +1,5 @@
 import "./App.css";
 import {
-  BrowserRouter,
-  HashRouter,
-  Link,
   Route,
   Routes,
 } from "react-router-dom";

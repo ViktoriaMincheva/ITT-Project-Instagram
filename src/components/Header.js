@@ -5,6 +5,7 @@ import React from "react";
 import styles from "../styles/Header.module.css";
 import Modal from "./Modal.js";
 import { style } from "@mui/system";
+import NavBarProfileMenu from "./NavBarProfileMenu";
 
 export default function Header() {
 
@@ -46,9 +47,10 @@ export default function Header() {
             <img src={location.pathname === "/explore" ? "images/icons/explore-clicked.png" : "images/icons/explore.png"} alt="explore" className={styles.headerIcon} />
           </Link>
           <img src="images/icons/heart.png" alt="notifications" className={styles.headerIcon}/>
-          <Link to="/my-profile">
+          {/* <Link to="/my-profile">
             <img src="images/icons/profile.png" alt="profile pic" className={styles.headerIcon}/>
-          </Link>
+          </Link> */}
+          <NavBarProfileMenu/>
         </div>
       </div>
     </header>

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
@@ -53,7 +52,7 @@ export default function NavBarProfileMenu() {
                             display: 'block',
                             position: 'absolute',
                             top: 0,
-                            right: 10,
+                            right: 7,
                             width: 10,
                             height: 10,
                             bgcolor: 'background.paper',

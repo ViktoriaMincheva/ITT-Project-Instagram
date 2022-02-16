@@ -1,4 +1,5 @@
 import "../styles/dashboard-post.css"
+import AddComment from "./AddComment"
 
 export default function DashboardPost(props) {
 
@@ -30,6 +31,8 @@ export default function DashboardPost(props) {
             </section>
 
             <p className="post-timestamp">{props.timestamp}</p>
+
+            <AddComment />
         </div>
     )
 }

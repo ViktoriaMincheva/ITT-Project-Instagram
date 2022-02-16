@@ -1,0 +1,7 @@
+.main {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin-top: 30px;
+    justify-content: space-around;
+}

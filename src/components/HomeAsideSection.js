@@ -1,6 +1,8 @@
 import HomeAsideHeader from "./HomeAsideHeader";
 import ProfileSuggestion from "./ProfileSuggestion";
 import styled from "@emotion/styled";
+import Footer from "../components/Footer"
+import styles from "../styles/home-aside-section.module.css"
 
 export default function HomeAsideSection() {
 
@@ -19,7 +21,7 @@ export default function HomeAsideSection() {
     `
 
     return (
-        <section style={{ width: "300px"}}>
+        <section className={styles.wrapper}>
             <HomeAsideHeader icon={loggedUser.icon} username={loggedUser.username} name={loggedUser.name} />
             <div>
                 <Heading>Suggestions for you</Heading>
@@ -29,7 +31,7 @@ export default function HomeAsideSection() {
                 <ProfileSuggestion icon="https://pbs.twimg.com/profile_images/962170088941019136/lgpCD8X4_400x400.jpg" username="smoggy_the_doggy" info="Suggested" />
                 <ProfileSuggestion icon="https://i.pinimg.com/564x/f0/3a/34/f03a349219e07c262f961a9afefb9a66.jpg" username="lazyboy123" info="Suggested" />
             </div>
-
+            <Footer className={styles.footer}/>
         </section>
 
     )

@@ -4,7 +4,6 @@ import { useState } from "react";
 import React from "react";
 import styles from "../styles/Header.module.css";
 import Modal from "./Modal.js";
-import { style } from "@mui/system";
 import NavBarProfileMenu from "./NavBarProfileMenu";
 import NotificationMenu from "./NotificationMenu";
 

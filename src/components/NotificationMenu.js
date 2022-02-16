@@ -8,18 +8,21 @@ import { useState } from "react";
 
 export default function NotificationMenu() {
     const [anchorEl, setAnchorEl] = useState(null);
+    const [imageSrc, setImageSrc] = useState("images/icons/heart.png");
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
+        setImageSrc("images/icons/heart-notifications.png");
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
+        setImageSrc("images/icons/heart.png");
         setAnchorEl(null);
     };
 
     return (
         <>
             <div onClick={handleClick}>
-                <img src="images/icons/heart.png" alt="notifications" className={styles.headerIcon}/>
+                <img src={imageSrc} alt="notifications" className={styles.headerIcon}/>
             </div>
             <Menu
                 anchorEl={anchorEl}

@@ -5,22 +5,29 @@ import Divider from '@mui/material/Divider';
 import styles from "../styles/Header.module.css";
 import stylesMenu from "../styles/NavBarProfileMenu.module.css";
 import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function NavBarProfileMenu() {
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    let location = useLocation();
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [border, setBorder] = useState(false);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
+        setBorder(true);
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
+        setBorder(false);
         setAnchorEl(null);
     };
 
     return (
         <>
             <div onClick={handleClick}>
-                <img src="images/icons/profile.png" alt="profile pic" className={styles.headerIcon} />
+                <img src="images/icons/profile.png" alt="profile pic" className={location.pathname === "/my-profile" ? styles.headerIconClicked : styles.headerIcon} border={border}/>
             </div>
+            {/* border ? styles.headerIconClicked : styles.headerIcon */}
             <Menu
                 anchorEl={anchorEl}
                 id="account-menu"
@@ -67,7 +74,7 @@ export default function NavBarProfileMenu() {
             >
                 <Link to="/my-profile" style={{ textDecoration: 'none' }}>
                     <MenuItem className={stylesMenu.MenuItem}>
-                    <img src="images/icons/profile-2.png" alt="profile icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Profile</p>
+                        <img src="images/icons/profile-2.png" alt="profile icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Profile</p>
                     </MenuItem>
                 </Link>
                 {/* TODO: change links */}

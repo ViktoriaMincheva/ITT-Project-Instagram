@@ -1,0 +1,11 @@
+.stories-section {
+    border: 1px solid lightgray;
+    width: 612px;
+    box-sizing: border-box;
+    background-color: #ffff;
+    height: 118px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+   align-items: baseline;
+}

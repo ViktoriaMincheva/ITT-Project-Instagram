@@ -1,11 +1,12 @@
 import DashboardPost from "../components/DashboardPostCard";
+import StoriesSection from "../components/StoriesSection";
 
 export default function Home() {
 
     return (
-        <>
-            <h3>This is the Home Page</h3>
+        <main>
 
+        <StoriesSection />
             <DashboardPost
                 username="alexxxx"
                 icon="https://images.gr-assets.com/users/1638468334p6/44510807.jpg"
@@ -13,6 +14,6 @@ export default function Home() {
                 likes="32"
                 caption="wish i was here"
                 timestamp="2 days ago" />
-        </>
+        </main>
     )
 }

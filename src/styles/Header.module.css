@@ -1,11 +1,14 @@
 .Header {
   width: 100%;
-  /* padding: 0 20px; */
   height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid #dbdbdb;
+  position: fixed;
+  top: 0;
+  background-color: #fafafa;
+  z-index: 999;
 }
 .headerIcon {
   width: 24px;

@@ -58,7 +58,6 @@ export default function AddComment(props) {
                     onClick={() => setShowPicker(val => !val)} />
 
                 <MyInput
-                    autoFocus
                     className="input-style"
                     value={inputStr}
                     onChange={e => setInputStr(e.target.value)} 

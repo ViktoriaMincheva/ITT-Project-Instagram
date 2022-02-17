@@ -25,7 +25,7 @@ export default function NavBarProfileMenu() {
     return (
         <>
             <div onClick={handleClick}>
-                <img src="images/icons/profile.png" alt="profile pic" className={location.pathname === "/my-profile" ? styles.headerIconClicked : styles.headerIcon} border={border}/>
+                <img src="images/icons/profile.png" alt="profile pic" className={location.pathname === "/my-profile" ? styles.headerIconClicked : styles.headerIcon}/>
             </div>
             {/* border ? styles.headerIconClicked : styles.headerIcon */}
             <Menu

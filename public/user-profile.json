@@ -1,0 +1,416 @@
+{
+   "username":"AVInstaPr",
+   "postsCount":"6",
+   "followedBy":{
+      "numberOfFollowers":"16",
+      "followers":[
+         {
+            "id" : "1",
+            "username":"alexxxx",
+            "profilePic":"https://images.gr-assets.com/users/1638468334p8/44510807.jpg"
+         },
+         {
+            "id" : "2",
+            "username":"vikiM",
+            "profilePic":"https://i.ibb.co/DrQBF90/Pics-Art-02-26-01-36-47.jpg"
+         },
+         {
+            "id" : "3",
+            "username":"krasi123",
+            "profilePic":"https://i.ibb.co/NrQYQmv/krasi.png"
+         },
+         {
+            "id" : "4",
+            "username":"chavdarS",
+            "profilePic":"https://i.ibb.co/HDjZG8C/chavdar.png"
+         },
+         {
+            "id" : "5",
+            "username":"galyаG",
+            "profilePic":"https://i.ibb.co/K0JKxmZ/galya.png"
+         },
+         {
+            "id" : "6",
+            "username":"kristiyanK",
+            "profilePic":"https://i.ibb.co/Dt0MmXg/kristian.png"
+         },
+         {
+            "id" : "7",
+            "username":"marianT",
+            "profilePic":"https://i.ibb.co/Jn56fg3/marian.png"
+         },
+         {
+            "id" : "8",
+            "username":"mirelaM",
+            "profilePic":"https://i.ibb.co/28rX4dW/mirela.png"
+         },
+         {
+            "id" : "9",
+            "username":"marielaP",
+            "profilePic":"https://i.ibb.co/44vz09K/mp.png"
+         },
+         {
+            "id" : "10",
+            "username":"nickM",
+            "profilePic":"https://i.ibb.co/RDdRMM9/nick.png"
+         },
+         {
+            "id" : "11",
+            "username":"pamD",
+            "profilePic":"https://i.ibb.co/WkW92fK/pam.png"
+         },
+         {
+            "id" : "12",
+            "username":"plamiM",
+            "profilePic":"https://i.ibb.co/PFM08fp/plamena.png"
+         },
+         {
+            "id" : "13",
+            "username":"vasilP",
+            "profilePic":"https://i.ibb.co/mJvvJDP/vasil.png"
+         },
+         {
+
+            "id" : "14",
+            "username":"vasilL",
+            "profilePic":"https://i.ibb.co/HPDtKLV/vasilL.png"
+         },
+         {
+            "id" : "15",
+            "username":"vikiS",
+            "profilePic":"https://i.ibb.co/tC1vWVy/vikis.png"
+         },
+         {
+            "id" : "16",
+            "username":"mitkoD",
+            "profilePic":"https://i.ibb.co/ZWbzYF2/image.png"
+         }
+      ]
+   },
+   "following":{
+      "numberOfFollowing":"16",
+      "peopleUserFollows":[
+         {
+            "id" : "1",
+            "username":"alexxxx",
+            "profilePic":"https://images.gr-assets.com/users/1638468334p8/44510807.jpg"
+         },
+         {
+            "id" : "2",
+            "username":"vikiM",
+            "profilePic":"https://i.ibb.co/DrQBF90/Pics-Art-02-26-01-36-47.jpg"
+         },
+         {
+            "id" : "3",
+            "username":"krasi123",
+            "profilePic":"https://i.ibb.co/NrQYQmv/krasi.png"
+         },
+         {
+            "id" : "4",
+            "username":"chavdarS",
+            "profilePic":"https://i.ibb.co/HDjZG8C/chavdar.png"
+         },
+         {
+            "id" : "5",
+            "username":"galyаG",
+            "profilePic":"https://i.ibb.co/K0JKxmZ/galya.png"
+         },
+         {
+            "id" : "6",
+            "username":"kristiyanK",
+            "profilePic":"https://i.ibb.co/Dt0MmXg/kristian.png"
+         },
+         {
+            "id" : "7",
+            "username":"marianT",
+            "profilePic":"https://i.ibb.co/Jn56fg3/marian.png"
+         },
+         {
+            "id" : "8",
+            "username":"mirelaM",
+            "profilePic":"https://i.ibb.co/28rX4dW/mirela.png"
+         },
+         {
+            "id" : "9",
+            "username":"marielaP",
+            "profilePic":"https://i.ibb.co/44vz09K/mp.png"
+         },
+         {
+            "id" : "10",
+            "username":"nickM",
+            "profilePic":"https://i.ibb.co/RDdRMM9/nick.png"
+         },
+         {
+            "id" : "11",
+            "username":"pamD",
+            "profilePic":"https://i.ibb.co/WkW92fK/pam.png"
+         },
+         {
+            "id" : "12",
+            "username":"plamiM",
+            "profilePic":"https://i.ibb.co/PFM08fp/plamena.png"
+         },
+         {
+            "id" : "13",
+            "username":"vasilP",
+            "profilePic":"https://i.ibb.co/mJvvJDP/vasil.png"
+         },
+         {
+
+            "id" : "14",
+            "username":"vasilL",
+            "profilePic":"https://i.ibb.co/HPDtKLV/vasilL.png"
+         },
+         {
+            "id" : "15",
+            "username":"vikiS",
+            "profilePic":"https://i.ibb.co/tC1vWVy/vikis.png"
+         },
+         {
+            "id" : "16",
+            "username":"mitkoD",
+            "profilePic":"https://i.ibb.co/ZWbzYF2/image.png"
+         }
+      ]
+   },
+   "profileDesc":"We are making an Instagram Clone~ Check out our repository at https://github.com/ViktoriaMincheva/ITT-Project-Instagram",
+   "publicProfile":"true",
+   "fullName":"AV Project",
+   "profilePicture":"https://www.meme-arsenal.com/memes/d2d23ade47c65dcf4c00c14746e27928.jpg",
+   "businessAcc":{
+      "isBusinessAcc":"false",
+      "isVarified":"false",
+      "category":""
+   },
+   "curentStories":[
+      {
+         "timePassedSincePosted":"time",
+         "storyContent":"url???????"
+      }
+   ],
+   "savedStories":{
+      "hasSavedStories":"true/false",
+      "storiesByCategory":[
+         {
+            "storyCategoryName":"name",
+            "stories":[
+               {
+                  "timePassedSincePosted":"time",
+                  "storyContent":"url???????"
+               }
+            ]
+         }
+      ]
+   },
+   "hasFriendsThatAlsoFollows":"false",
+   "posts":[
+      {
+         "uniqueID":"1",
+         "desc":"A cute goat ♥",
+         "postedDate":"February 10, 2022",
+         "likes":{
+            "numberOfLikes":"16",
+            "peopleLiked":[
+               "krasi123",
+               "galyaG",
+               "plamiM",
+               "vasilL",
+               "chavdarS",
+               "kristiyanK",
+               "marianT",
+               "vikiS",
+               "mirelaM",
+               "marielaP",
+               "nickM",
+               "pamD",
+               "vasilP",
+               "mitkoD",
+               "alexxxx",
+               "vikiM"
+            ]
+         },
+         "comments":{
+            "numberOfComments":"3",
+            "allComments":[
+               {
+                  "userCommented":"krasi123",
+                  "userImg":"https://i.ibb.co/NrQYQmv/krasi.png",
+                  "commentContent":"Classic one! 😌😌",
+                  "commentLikes":"8",
+                  "timePassedSincePosted":"1 d"
+               },
+               {
+                  "userCommented":"krasi123",
+                  "userImg":"https://i.ibb.co/NrQYQmv/krasi.png",
+                  "commentContent":"Next time create a website about goats pls",
+                  "commentLikes":"3",
+                  "timePassedSincePosted":"1 d"
+               },
+               {
+                  "userCommented":"krasi123",
+                  "userImg":"https://i.ibb.co/NrQYQmv/krasi.png",
+                  "commentContent":"My favorite post of yours ♥",
+                  "commentLikes":"2",
+                  "timePassedSincePosted":"1 d"
+               }
+            ]
+         },
+         "content":[
+            "https://www.peta.org/wp-content/uploads/2016/02/Goats-maximili.jpg"
+         ]
+      },
+      {
+         "uniqueID":"2",
+         "desc":"😩😩😩",
+         "postedDate":"February 8, 2022",
+         "likes":{
+            "numberOfLikes":"7",
+            "peopleLiked":[
+               "vasilL",
+               "mirelaM",
+               "chavdarS",
+               "kristiyanK",
+               "marianT",
+               "vikiS",
+               "marielaP"
+            ]
+         },
+         "comments":{
+            "numberOfComments":"1",
+            "allComments":[
+               {
+                  "userCommented":"mirelaM",
+                  "userImg":"https://i.ibb.co/28rX4dW/mirela.png",
+                  "commentContent":"...",
+                  "commentLikes":"10",
+                  "timePassedSincePosted":"1 w"
+               }
+            ]
+         },
+         "content":[
+            "https://833250.smushcdn.com/1694534/wp-content/uploads/2021/06/12-1.png?lossy=1&strip=1&webp=1"
+         ]
+      },
+      {
+         "uniqueID":"3",
+         "desc":"Someone take us there please!!!",
+         "postedDate":"February 1, 2022",
+         "likes":{
+            "numberOfLikes":"10",
+            "peopleLiked":[
+               "krasi123",
+               "galyaG",
+               "plamiM",
+               "nickM",
+               "pamD",
+               "vasilP",
+               "mitkoD",
+               "alexxxx",
+               "vikiM",
+               "kristiyanK"
+            ]
+         },
+         "comments":{
+            "numberOfComments":"0",
+            "allComments":[
+               
+            ]
+         },
+         "content":[
+            "https://themysteriousworld.com/wp-content/uploads/2013/12/bora-bora.webp"
+         ]
+      },
+      {
+         "uniqueID":"4",
+         "desc":"haha",
+         "postedDate":"January 31, 2022",
+         "likes":{
+            "numberOfLikes":"2",
+            "peopleLiked":[
+               "alexxxx",
+               "vikiM"
+            ]
+         },
+         "comments":{
+            "numberOfComments":"0",
+            "allComments":[
+               
+            ]
+         },
+         "content":[
+            "https://pics.awwmemes.com/javascript-oll-jsx-html-what-the-hell-is-this-i%E2%80%99m-66672458.png"
+         ]
+      },
+      {
+         "uniqueID":"5",
+         "desc":"i hate when this happens",
+         "postedDate":"January 15, 2022",
+         "likes":{
+            "numberOfLikes":"4",
+            "peopleLiked":[
+               "nickM",
+               "pamD",
+               "vasilP",
+               "mitkoD"
+            ]
+         },
+         "comments":{
+            "numberOfComments":"1",
+            "allComments":[
+               {
+                  "userCommented":"vikiM",
+                  "userImg":"https://i.ibb.co/DrQBF90/Pics-Art-02-26-01-36-47.jpg",
+                  "commentContent":"all the F time",
+                  "commentLikes":"2",
+                  "timePassedSincePosted":"3 w"
+               }
+            ]
+         },
+         "content":[
+            "https://i.pinimg.com/736x/ac/b7/f9/acb7f99ba0ef473e03ee81e91a6281ee.jpg"
+         ]
+      },{
+         "uniqueID":"6",
+         "desc":"Are you ready? 😤😤😤",
+         "postedDate":"October 12, 2021",
+         "likes":{
+            "numberOfLikes":"16",
+            "peopleLiked":[
+               [
+                  "krasi123",
+                  "galyaG",
+                  "plamiM",
+                  "vasilL",
+                  "chavdarS",
+                  "kristiyanK",
+                  "marianT",
+                  "vikiS",
+                  "mirelaM",
+                  "marielaP",
+                  "nickM",
+                  "pamD",
+                  "vasilP",
+                  "mitkoD",
+                  "alexxxx",
+                  "vikiM"
+               ]
+            ]
+         },
+         "comments":{
+            "numberOfComments":"1",
+            "allComments":[
+               {
+                  "userCommented":"krasi123",
+                  "userImg":"https://i.ibb.co/NrQYQmv/krasi.png",
+                  "commentContent":"You have to be!",
+                  "commentLikes":"15",
+                  "timePassedSincePosted":"18 w"
+               }
+            ]
+         },
+         "content":[
+            "https://deadicatedfans.com/wp-content/uploads/2016/06/shit-just-goat-serious.jpg"
+         ]
+      }
+   ]
+}

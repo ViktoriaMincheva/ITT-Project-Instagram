@@ -1,22 +1,13 @@
 import { useState } from "react";
-import styles from "../styles/log-reg.module.css"
+import styles from "../styles/login-register.module.css"
 import styled from "@emotion/styled";
-import Button from "./Button";
 import PasswordInputField from "./PasswordInputField";
-import UserInputField from "./UserInputField";
 import AccountCheckBox from "./AccountCheckBox";
 import { GetTheApp } from "./GetTheApp";
 import Line from "./HorizontalLine";
 
 export default function LoginCard(props) {
 
-    const StyledLink = styled.a`
-    text-decoration: none;
-    cursor: pointer;
-    color: darkblue; 
-    margin-top: 14px;
-    font-size: 14px;
-`
 
     const [username, setUsername] = useState("");
     const [pass, setPass] = useState("");
@@ -31,20 +22,20 @@ export default function LoginCard(props) {
 
     return (
         <div>
-            <section className={props.className}>
+            <section className={styles.formContainer}>
                 <img className={styles.logo} src="logo.png" alt="Instagram" width="160px" />
 
                 <form>
-                    <UserInputField name="username" type="text" placeholder="Username" onInput={(e) => handleInput(e)} />
-                    <PasswordInputField name="pass" placeholder="Password" onInput={(e) => handleInput(e)} />
-                    <Button buttonClass={styles.button} title="Log In" disabled={(username && pass) ? false : true} />
+                    <input className={styles.input} name="username" type="text" placeholder="Username" onInput={(e) => handleInput(e)} />
+                    <PasswordInputField className={styles.input} name="pass" placeholder="Password" onInput={(e) => handleInput(e)} />
+                    <button className={styles.button} disabled={(username && pass) ? false : true}>Log In</button>
                 </form>
 
 
                 {/* this is the or-line in the login form */}
                 <Line/>
 
-                <StyledLink href="#">Forgot password?</StyledLink>
+                <a href="#" className={styles.forgotPass}>Forgot password?</a>
                 
             </section>
 

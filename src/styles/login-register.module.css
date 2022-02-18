@@ -9,7 +9,14 @@
     margin: 60px;
 }
 
-.form {
+.regMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.formContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,14 +28,14 @@
     padding-bottom: 10px;
 }
 
-.form form {
+.formContainer form {
     display: flex;
     flex-direction: column;
     width: 260px;
     align-items: center;
 }
 
-.form input {
+.input {
     width: 100%;
     padding: 8px 8px;
     background-color: #fafafa;
@@ -40,7 +47,7 @@
     box-sizing: border-box;
 }
 
-.form input:focus {
+.input:focus {
     outline: 0.6px solid #8e8e8e;
 }
 
@@ -65,26 +72,12 @@
     background-color: #B2DFFC;
 }
 
-.accountBox {
-    width: 350px;
-    border: 1px solid lightgray;
-    background-color: #ffff;
-    text-align: center;
-    margin-top: 14px;
-    padding: 10px;
-    box-sizing: border-box;
-    font-size: 14px;
-}
-
-.accountBox a {
+.forgotPass {
     text-decoration: none;
-    font-weight: 500;
-    color: #0095F6;
+    cursor: pointer;
+    color: #00376b;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 12px;
+    text-align: center;
 }
-
-.regMain {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-

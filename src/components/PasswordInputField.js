@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "../styles/password-input.module.css"
 
 export default function PasswordInputField(props) {
 
@@ -13,17 +14,16 @@ export default function PasswordInputField(props) {
     }
 
     return (
-        <>
+        <div className={styles.inputContainer}>
             <input
-                className={props.className}
+                placeholder="Password"
                 onInput={props.onInput}
                 type={typeOfInput}
                 value={props.value}
-                placeholder={props.placeholder}
                 required
             />
 
-            <span onClick={() => showPass()}> {typeOfInput === "password" ? "Show" : "Hide"} </span>
-        </>
+            <span className={styles.togglePass} onClick={() => showPass()}> {typeOfInput === "password" ? "Show" : "Hide"} </span>
+        </div>
     )
 }

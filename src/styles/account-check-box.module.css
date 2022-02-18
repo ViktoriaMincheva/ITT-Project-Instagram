@@ -1,0 +1,16 @@
+.accountBox {
+    width: 350px;
+    border: 1px solid lightgray;
+    background-color: #ffff;
+    text-align: center;
+    margin-top: 14px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.accountBox a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #0095F6;
+}

@@ -2,6 +2,6 @@
     display: flex;
     flex-direction: row;
     gap: 30px;
-    margin-top: 70px;
+    margin-top: 90px;
     justify-content: space-around;
 }

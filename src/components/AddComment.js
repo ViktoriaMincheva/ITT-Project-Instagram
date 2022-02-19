@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import EmojiPicker from "emoji-picker-react";
 import { useState } from "react";
 import styled from "@emotion/styled";

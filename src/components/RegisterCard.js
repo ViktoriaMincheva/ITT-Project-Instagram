@@ -2,52 +2,67 @@ import styled from "@emotion/styled";
 import { useState } from "react";
 import styles from "../styles/login-register.module.css"
 import Line from "./HorizontalLine";
-import PasswordInputField from "./PasswordInputField";
 import AccountCheckBox from "./AccountCheckBox";
 import { GetTheApp } from "./GetTheApp";
 import Footer from "./Footer";
+import { useAuth } from '../contexts/AuthContext'
+
 
 export default function RegisterCard(props) {
-
+    
     const StyledHeading = styled.h2`
-        color: #8e8e8e;
-        font-size: 17px;
-        font-weight: 600;
-        line-height: 20px;
-        margin: 0 40px 10px;
-        text-align: center;
+    color: #8e8e8e;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 20px;
+    margin: 0 40px 10px;
+    text-align: center;
     `
-
+    
     const StyledRegtext = styled.p`
-        color: #8e8e8e;
-        font-size: 12px;
-        line-height: 16px;
-        text-align: center;
+    color: #8e8e8e;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
     `
-
-    const [phone, setPhone] = useState("");
+    
     const [email, setEmail] = useState("");
-    const [name, setName] = useState("");
+    const [fullName, setName] = useState("");
     const [username, setUsername] = useState("");
     const [pass, setPass] = useState("");
+    const { signup, currentUser } = useAuth();
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+    
+    async function handleSubmit(event) {
+        event.preventDefault();
+
+        try {
+            setError("");
+            setLoading(true);
+            console.log(email, pass, fullName, username);
+            await signup(email, pass, fullName, username);
+        } catch (err) {
+            setError("Failed to create an account")
+        }
+
+        setLoading(false);
+    }
 
     const handleInput = e => {
-        name = e.target.name;
-        switch (name) {
-            case "phone-email":
-                if (typeof name === 'number') {
-                    setPhone(name.trim());
-                } else {
-                    setEmail(name.trim())
-                }
+        let id = e.target.id;
+        switch (id) {
+            case "email":
+                setEmail(e.target.value.trim())
                 break;
-            case "name":
-                setName(name.trim());
+            case "fullName":
+                setName(e.target.value.trim());
                 break;
             case "username":
-                setUsername(name.trim());
+                setUsername(e.target.value.trim());
+                break;
             case "pass":
-                setPass(name.trim())
+                setPass(e.target.value.trim());
         }
     }
 
@@ -57,18 +72,18 @@ export default function RegisterCard(props) {
                 <img className={styles.logo} src="logo.png" alt="Instagram" width="160px" />
 
                 <StyledHeading>Sign up to see photos and videos from your friends.</StyledHeading>
-
+                {/* TODO */}
+                {/* {error && <div>{error}</div>} */}
                 <Line />
-                <form>
-                    <input className={styles.input} name="phone-email" type="text" placeholder="Mobile Number or Email" onInput={(e) => handleInput(e)} />
-                    <input className={styles.input} name="name" type="text" placeholder="Full name" onInput={(e) => handleInput(e)} />
-                    <input className={styles.input} name="username" type="text" placeholder="Username" onInput={(e) => handleInput(e)} />
-                    <PasswordInputField name="pass" onInput={(e) => handleInput(e)} />
-                    <button className={styles.button} title="Next" disabled={((phone || email ) && name && username && pass) ? false : true}>Register</button>
+                <form onSubmit={handleSubmit}>
+                    <input className={styles.input} id="email" type="text" placeholder="Mobile Number or Email" onInput={(e) => handleInput(e)} />
+                    <input className={styles.input} id="fullName" type="text" placeholder="Full name" onInput={(e) => handleInput(e)} />
+                    <input className={styles.input} id="username" type="text" placeholder="Username" onInput={(e) => handleInput(e)} />
+                    <input className={styles.input} type="password" id="pass" placeholder="Password" onInput={(e) => handleInput(e)} />
+                    <button type="submit" className={styles.button} title="Next" disabled={((email && fullName && username && pass) ? false : true) || loading}>Register</button>
 
                     <StyledRegtext>By signing up, you agree to our <strong>Terms</strong>. Learn how we collect, use and share your data in our <strong>Data Policy</strong> and how we use cookies and similar technology in our <strong>Cookies Policy</strong> .</StyledRegtext>
                 </form>
-
             </section>
 
             <AccountCheckBox className={props.accClassName} pTitle="Have an account?" linkTitle="Log In" href="/login" />

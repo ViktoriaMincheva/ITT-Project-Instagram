@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { auth } from '../firebase';
 import { doc, getFirestore, setDoc } from "firebase/firestore"
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 const AuthContext = React.createContext();
 
@@ -22,6 +22,12 @@ export function AuthProvider({ children }) {
             fullName: fullName
            })
        })
+       .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+
+            console.log(errorMessage);
+       })
     }
     
     function login(email, password) {
@@ -29,7 +35,11 @@ export function AuthProvider({ children }) {
     }
 
     function logout() {
-        return signOut(auth);
+        signOut(auth);
+    }
+
+    function resetPassword(email) {
+        return sendPasswordResetEmail(auth, email);
     }
 
     useEffect(() => {
@@ -45,7 +55,8 @@ export function AuthProvider({ children }) {
         currentUser,
         login,
         logout,
-        signup
+        signup,
+        resetPassword
     }
 
     return (

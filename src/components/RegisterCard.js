@@ -42,7 +42,6 @@ export default function RegisterCard(props) {
         try {
             setError("");
             setLoading(true);
-            console.log(email, pass, fullName, username);
             await signup(email, pass, fullName, username);
             navigate("/", { replace: true });
         } catch (err) {
@@ -78,7 +77,7 @@ export default function RegisterCard(props) {
                 {/* TODO */}
                 <Line />
                 <form onSubmit={handleSubmit}>
-                    {/* {error && <div>{error}</div>} */}
+                    {error && <div>{error}</div>}
                     <input className={styles.input} id="email" type="text" placeholder="Mobile Number or Email" onInput={(e) => handleInput(e)} />
                     <input className={styles.input} id="fullName" type="text" placeholder="Full name" onInput={(e) => handleInput(e)} />
                     <input className={styles.input} id="username" type="text" placeholder="Username" onInput={(e) => handleInput(e)} />

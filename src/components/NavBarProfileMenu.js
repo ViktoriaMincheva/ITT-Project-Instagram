@@ -83,7 +83,7 @@ export default function NavBarProfileMenu() {
                         <img src="images/icons/non-saved.png" alt="saved icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Saved</p>
                     </MenuItem>
                 </Link>
-                <Link to="/my-profile" style={{ textDecoration: 'none' }}>
+                <Link to="/edit" style={{ textDecoration: 'none' }}>
                     <MenuItem className={stylesMenu.MenuItem}>
                         <img src="images/icons/settings.png" alt=" icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Settings</p>
                     </MenuItem>

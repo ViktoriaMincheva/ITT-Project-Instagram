@@ -5,6 +5,7 @@ import { GetTheApp } from "./GetTheApp";
 import Line from "./HorizontalLine";
 import { useAuth } from '../contexts/AuthContext'
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export default function LoginCard(props) {
 
@@ -17,7 +18,7 @@ export default function LoginCard(props) {
 
     const handleInput = e => {
         let inputID = e.target.id;
-        switch(inputID) {
+        switch (inputID) {
             case "email":
                 setEmail(e.target.value.trim());
                 break;
@@ -28,16 +29,16 @@ export default function LoginCard(props) {
 
     async function handleSubmit(e) {
         e.preventDefault()
-    
+
         try {
-          setError("");
-          setLoading(true);
-          await login(email, pass);
-            navigate("/", {replace: true});
+            setError("");
+            setLoading(true);
+            await login(email, pass);
+            navigate("/", { replace: true });
         } catch {
-          setError("Failed to log in");
+            setError("Failed to log in");
         }
-    
+
         setLoading(false);
     }
 
@@ -55,10 +56,10 @@ export default function LoginCard(props) {
 
 
                 {/* this is the or-line in the login form */}
-                <Line/>
+                <Line />
+                <Link to="/forgot-password" className={styles.forgotPass}>Forgot password?</Link>
+                {/* <a href="/" className={styles.forgotPass}></a> */}
 
-                <a href="#" className={styles.forgotPass}>Forgot password?</a>
-                
             </section>
 
             <AccountCheckBox className={props.accClassName} pTitle="Don't have an account?" linkTitle="Sign up" href="/register" />

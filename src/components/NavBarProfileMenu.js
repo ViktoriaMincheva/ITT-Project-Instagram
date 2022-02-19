@@ -4,15 +4,20 @@ import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
 import styles from "../styles/Header.module.css";
 import stylesMenu from "../styles/NavBarProfileMenu.module.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useAuth } from './../contexts/AuthContext';
 
 export default function NavBarProfileMenu() {
     let location = useLocation();
     const [anchorEl, setAnchorEl] = useState(null);
     const [border, setBorder] = useState(false);
     const open = Boolean(anchorEl);
+    const { currentUser, logout } = useAuth();
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+
     const handleClick = (event) => {
         setBorder(true);
         setAnchorEl(event.currentTarget);
@@ -21,6 +26,16 @@ export default function NavBarProfileMenu() {
         setBorder(false);
         setAnchorEl(null);
     };
+    async function handleLogout() {
+        setError("");
+
+        try {
+            await logout();
+            navigate("/login", { replace: true });
+        } catch (e) {
+            setError("Failed to log out")
+        }
+    }
 
     return (
         <>
@@ -83,7 +98,7 @@ export default function NavBarProfileMenu() {
                         <img src="images/icons/non-saved.png" alt="saved icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Saved</p>
                     </MenuItem>
                 </Link>
-                <Link to="/my-profile" style={{ textDecoration: 'none' }}>
+                <Link to="/edit" style={{ textDecoration: 'none' }}>
                     <MenuItem className={stylesMenu.MenuItem}>
                         <img src="images/icons/settings.png" alt=" icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Settings</p>
                     </MenuItem>
@@ -94,7 +109,7 @@ export default function NavBarProfileMenu() {
                     </MenuItem>
                 </Link>
                 <Divider sx={{ borderBottomWidth: 1.5}} />
-                <Link to="/my-profile" style={{ textDecoration: 'none' }}>
+                <Link to="/login" style={{ textDecoration: 'none' }} onClick={handleLogout}>
                     <MenuItem className={stylesMenu.MenuItem}>
                         <p className={stylesMenu.MenuTitle}>Log out</p>
                     </MenuItem>

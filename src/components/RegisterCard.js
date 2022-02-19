@@ -6,7 +6,7 @@ import AccountCheckBox from "./AccountCheckBox";
 import { GetTheApp } from "./GetTheApp";
 import Footer from "./Footer";
 import { useAuth } from '../contexts/AuthContext'
-
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterCard(props) {
     
@@ -33,6 +33,8 @@ export default function RegisterCard(props) {
     const { signup, currentUser } = useAuth();
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+
     
     async function handleSubmit(event) {
         event.preventDefault();
@@ -42,6 +44,7 @@ export default function RegisterCard(props) {
             setLoading(true);
             console.log(email, pass, fullName, username);
             await signup(email, pass, fullName, username);
+            navigate("/", { replace: true });
         } catch (err) {
             setError("Failed to create an account")
         }
@@ -73,9 +76,9 @@ export default function RegisterCard(props) {
 
                 <StyledHeading>Sign up to see photos and videos from your friends.</StyledHeading>
                 {/* TODO */}
-                {/* {error && <div>{error}</div>} */}
                 <Line />
                 <form onSubmit={handleSubmit}>
+                    {/* {error && <div>{error}</div>} */}
                     <input className={styles.input} id="email" type="text" placeholder="Mobile Number or Email" onInput={(e) => handleInput(e)} />
                     <input className={styles.input} id="fullName" type="text" placeholder="Full name" onInput={(e) => handleInput(e)} />
                     <input className={styles.input} id="username" type="text" placeholder="Username" onInput={(e) => handleInput(e)} />

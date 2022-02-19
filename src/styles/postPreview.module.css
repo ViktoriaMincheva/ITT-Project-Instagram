@@ -1,0 +1,43 @@
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+.previewPost {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    box-sizing: border-box;
+    flex-basis: 32%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    margin-bottom: 16px;    
+}
+
+
+.previewImage {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: fill;
+    box-sizing: border-box;
+}
+
+.overContainer a span {
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    color: white;
+}
+
+.overContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}

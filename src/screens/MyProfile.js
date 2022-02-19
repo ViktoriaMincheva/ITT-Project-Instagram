@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import InfoModal from "../components/InfoModal.js";
 import styles from "../styles/Profile.module.css";
 import React from "react";
+import PostPreview from "../components/PostPreview.js";
 
 export default function MyProfile() {
 
@@ -101,9 +102,7 @@ export default function MyProfile() {
                 <div className={styles.MediaContainer}>
                     {
                         data.posts.map((post) => (
-                            <div className={styles.PreviewPost} key={Math.random()}>
-                                <img src={post.content[0]} alt="post img" className={styles.PreviewImage} />
-                            </div>
+                            <PostPreview key={Math.random()} src={post.content[0]} alt="post photo" likeCount="30" commentCount="9"/>
                         ))
                     }
                 </div>

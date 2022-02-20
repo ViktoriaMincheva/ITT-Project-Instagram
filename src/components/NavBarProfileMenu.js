@@ -8,6 +8,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useAuth } from './../contexts/AuthContext';
+import { logoutAction } from '../redux/actions/userActions';
+import { useDispatch } from "react-redux"
 
 export default function NavBarProfileMenu() {
     let location = useLocation();
@@ -17,6 +19,8 @@ export default function NavBarProfileMenu() {
     const { currentUser, logout } = useAuth();
     const [error, setError] = useState("");
     const navigate = useNavigate();
+
+    const dispatch = useDispatch();
 
     const handleClick = (event) => {
         setBorder(true);
@@ -28,6 +32,7 @@ export default function NavBarProfileMenu() {
     };
     async function handleLogout() {
         setError("");
+        dispatch(logoutAction);
 
         try {
             await logout();

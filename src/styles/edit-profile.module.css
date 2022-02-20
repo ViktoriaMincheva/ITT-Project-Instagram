@@ -74,3 +74,14 @@
     width: 100%;
 }
 
+.submitBtn {
+    padding: 8px;
+    margin-left: 50%;
+    background-color: #0095F6;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    font-weight: 500;
+    margin-top: 8px;
+}

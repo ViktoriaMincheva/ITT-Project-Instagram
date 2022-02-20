@@ -45,7 +45,7 @@ export default function RegisterCard(props) {
             await signup(email, pass, fullName, username);
             navigate("/", { replace: true });
         } catch (err) {
-            setError("Failed to create an account")
+            setError(err.message.slice(9));
         }
 
         setLoading(false);
@@ -74,10 +74,9 @@ export default function RegisterCard(props) {
                 <img className={styles.logo} src="logo.png" alt="Instagram" width="160px" />
 
                 <StyledHeading>Sign up to see photos and videos from your friends.</StyledHeading>
-                {/* TODO */}
-                <Line />
+                                <Line />
                 <form onSubmit={handleSubmit}>
-                    {error && <div>{error}</div>}
+                    {error && <div className={styles.errMsg}>{error}</div>}
                     <input className={styles.input} id="email" type="text" placeholder="Mobile Number or Email" onInput={(e) => handleInput(e)} />
                     <input className={styles.input} id="fullName" type="text" placeholder="Full name" onInput={(e) => handleInput(e)} />
                     <input className={styles.input} id="username" type="text" placeholder="Username" onInput={(e) => handleInput(e)} />

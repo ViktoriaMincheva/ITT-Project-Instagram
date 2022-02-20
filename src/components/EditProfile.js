@@ -77,29 +77,13 @@ export default function EditProfile() {
                         <input type="email" className={styles.input} />
                     </div>
                 </div>
-
+                
                 <div className={styles.row}>
-                    <label className={styles.label}>
-                        Phone Number
-                    </label>
-
-                    <div className={styles.inputField}>
-                        <input type="number" className={styles.input} />
-                    </div>
-                </div>
-
-                <div className={styles.row}>
-                    <label className={styles.label}>
-                        Gender
-                    </label>
-
-                    <div className={styles.inputField}>
-                        <input className={styles.input} />
-                    </div>
+                    <button type="submit" className={styles.submitBtn}>Submit</button>
                 </div>
             </form>
             <Modal style={{ innerHeight: "50px" }} title="Change profile photo" onClose={() => setShow(false)} show={show}>
-                <div style={{height: "60px"}}>
+                <div style={{ height: "60px" }}>
 
                 </div>
 

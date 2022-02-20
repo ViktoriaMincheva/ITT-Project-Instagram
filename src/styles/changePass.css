@@ -4,6 +4,7 @@
     border-bottom: 1px solid #dbdbdb;
     box-sizing: border-box;
     width: 80%;
+    padding: 32px;
 }
 .userInfo {
     margin-top: 20px;
@@ -76,4 +77,26 @@
     box-sizing: border-box;
     border-radius: 3px;
     color: #262626;
+}
+.successMsg {
+    background-color: rgba(182, 243, 182, 0.7);
+    width: 50%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 2px;
+    text-align: center;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    margin-left: 25%;
+}
+.errorMsg {
+    background-color: rgb(238, 126, 106, 0.7);
+    width: 50%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 2px;
+    text-align: center;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    margin-left: 25%;
 }

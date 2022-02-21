@@ -51,11 +51,6 @@ export default function LoginCard(props) {
         const db = getFirestore();
         const docRef = doc(db, "users", `${uid}`);
         const docSnap = await getDoc(docRef);
-        // if (docSnap.exists()) {
-        //     console.log("data ->", docSnap.data());
-        // }
-        //     console.log("No such document!");
-        // }
        
         user = docSnap.data();
         dispatch(loginAction(user))

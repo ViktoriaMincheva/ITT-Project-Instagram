@@ -10,6 +10,7 @@ export default function ImageUpload() {
     const [imagePicked, setImagePicked] = useState(false);
     const [desc, setDesc] = useState("");
     const [photo, setPhoto] = useState("");
+    const [uploadSuccess, setUploadSuccess] = useState(false);
     const current = new Date();
     const user = useSelector(state =>  state.userData);
     const dispatch = useDispatch();
@@ -40,24 +41,35 @@ export default function ImageUpload() {
             desc : desc
         }
         dispatch(addPostAction(obj));
+        setUploadSuccess(true);
     }
 
     return (
         <div className="modal-body">
-            {imagePicked ? 
-                <input type="text" placeholder='Add description...' onChange={handleDescription} className="descContainer"/> 
-            : 
-            <>
-                <img src="create-add.png" alt="add"/>
-                <p>Upload photos and videos here</p>
-            </>
+            {
+                uploadSuccess ? <>
+                    <img src={photo} alt=" photo" style={{width: "70%", height: "auto"}}/>
+                    <p style={{textAlign: "center"}}>Succesfully added new photo. Check out your profile.</p>
+                </> 
+                : 
+                <>
+                    {imagePicked ? 
+                        <input type="text" placeholder='Add description...' onChange={handleDescription} className="descContainer"/> 
+                    : 
+                    <>
+                        <img src="create-add.png" alt="add"/>
+                        <p>Upload photos and videos here</p>
+                    </>
+                    }
+                    <input type="file" placeholder='Select From Computer' onChange={handleFileUploaded} className="chooseFileCont"/>
+                    {imagePicked ? 
+                    <button type="submit" className='submitUpload' onClick={handleSubmit}>Upload</button> 
+                    :
+                    <></>
+                    }
+                </>
             }
-            <input type="file" placeholder='Select From Computer' onChange={handleFileUploaded} className="chooseFileCont"/>
-            {imagePicked ? 
-            <button type="submit" className='submitUpload' onClick={handleSubmit}>Upload</button> 
-            :
-            <></>
-            }
+            
         </div>
     )
 }

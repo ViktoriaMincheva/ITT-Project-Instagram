@@ -25,7 +25,7 @@ export const loginAction = user => {
             profilePhoto: user.profilePhoto,
             fullName: user.fullName,
             username: user.username,
-            following: user.followedAccounts,
+            following: user.following,
             followedBy: user.followedBy,
             posts: user.posts,
             savedPosts: user.savedPosts,

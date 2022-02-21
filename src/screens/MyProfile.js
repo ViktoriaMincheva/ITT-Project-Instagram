@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux';
 
 export default function MyProfile() {
 
-    const [data, setData] = useState(null);
     const [show, setShow] = useState(false);
     const [showFollowing, setShowFollowing] = useState(false);
     const user = useSelector(state => state.userData);
@@ -21,17 +20,6 @@ export default function MyProfile() {
     const handleShowFollowing = (e) => {
         setShowFollowing(true);
     }
-    console.log(user);
-    // console.log(user);
-    // useEffect(function () {
-    //     fetch("user-profile.json")
-    //         .then(resp => resp.json())
-    //         .then(data => {
-    //             setTimeout(() => {
-    //                 setData(data);
-    //             }, 500)
-    //         })
-    // }, [])
 
     return (
 

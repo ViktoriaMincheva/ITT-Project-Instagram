@@ -24,7 +24,7 @@ export default function ImageUpload() {
             })
     }, [])
 
-    console.log(user);
+    // console.log(user);
 
     // const db = getFirestore();
     // const docRef = doc(db, "users", `${user.uid}`);
@@ -32,8 +32,6 @@ export default function ImageUpload() {
     // if (docSnap.exists()) {
     //     console.log("data ->", docSnap.data());
     // }
-
-
 
     const handleFileUploaded = (e) => {
         setImagePicked(true);

@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginAction } from "../redux/actions/userActions";
 import { doc, getFirestore, getDoc } from "firebase/firestore";
+import { loadPosts } from "../redux/actions/allPostsActions";
 
 
 export default function LoginCard(props) {
@@ -34,39 +35,31 @@ export default function LoginCard(props) {
 
     let userCredential;
     let user;
+    let uid;
     async function handleSubmit(e) {
         e.preventDefault()
         try {
             setError("");
             setLoading(true);
             userCredential = await login(email, pass);
-            user = userCredential.user;
+            uid = userCredential.user.uid;
             navigate("/", { replace: true });
         } catch {
             setError("Failed to log in");
         }
 
         const db = getFirestore();
-        const docRef = doc(db, "users", `${user.uid}`);
+        const docRef = doc(db, "users", `${uid}`);
         const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-            console.log("data ->", docSnap.data());
-        }
+        // if (docSnap.exists()) {
+        //     console.log("data ->", docSnap.data());
+        // }
         //     console.log("No such document!");
         // }
-        user.fullName = docSnap.data().fullName;
-        user.username = docSnap.data().username;
-        user.bio = docSnap.data().bio;
-        user.profilePhoto = docSnap.data().profilePhoto;
-        user.followedBy = docSnap.data().followers;
-        user.following = docSnap.data().following;
-        user.posts = docSnap.data().posts;
-
+       
+        user = docSnap.data();
         dispatch(loginAction(user))
-        // console.log(user.fullName);
-        // console.log(user.username);
-        // console.log(user.uid);
-        // console.log(user.following);
+        dispatch(loadPosts());
         setLoading(false);
     }
 

@@ -1,23 +1,15 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import DashboardPost from "../components/DashboardPostCard";
 import HomeAsideSection from "../components/HomeAsideSection";
 import StoriesSection from "../components/StoriesSection";
 import styles from "../styles/homepage.module.css"
 
+
 export default function Home() {
 
-    const [data, setData] = useState(null);
-
-
-    useEffect((function () {
-        fetch("postss.json")
-            .then(resp => resp.json())
-            .then(data => {
-                setTimeout(() => {
-                    setData(data);
-                }, 500);
-            })
-    }), [])
+    const posts = useSelector(state => state.allPostsData.posts);
+    console.log(posts);
 
     return (
         <main className={styles.main}>
@@ -25,20 +17,20 @@ export default function Home() {
             <section className={styles.leftSection}>
                 <StoriesSection />
 
-                {!data ? <div>Loading...</div> : <>
-                    {data.posts.map(post => (
+                {
+                    posts.map(post => (
                         <DashboardPost
-                            key={post.id}
-                            postUrl={post.content}
-                            username={post.username}
-                            icon={post.profilePhoto}
-                            likes={post.likes.length}
-                            caption={post.desc}
-                            timestamp={post.timestamp}
-                            comments={post.comments}/>
-                    ))}
-                </>
+                        key={post.id}
+                        postUrl={post.content}
+                        username={post.username}
+                        icon={post.profilePhoto}
+                        likes={post.likes.length}
+                        caption={post.desc}
+                        timestamp={post.timestamp}
+                        comments={post.comments}/>
+                    ))
                 }
+
             </section>
 
             <HomeAsideSection />

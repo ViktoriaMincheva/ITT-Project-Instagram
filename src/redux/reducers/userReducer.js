@@ -47,7 +47,7 @@ export const userReducer = (state = INITIAL_STATE, action) => {
                 name: null,
                 profilePhoto: null,
                 username: null,
-                followedAccounts: [],
+                following: [],
                 followedBy: [],
                 posts: [],
                 savedPosts: [],

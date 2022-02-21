@@ -7,6 +7,7 @@ export const CHANGE_EMAIL = "CHANGE_EMAIL";
 export const FOLLOW_USER = "FOLLOW_USER";
 export const UNFOLLOW_USER = "UNFOLLOW_USER";
 export const ADD_POST = "ADD_POST";
+export const ADD_STORY = "ADD_STORY";
 export const LIKE_POST = "LIKE_POST";
 export const SAVE_POST = "SAVE_POST";
 export const UNSAVE_POST = "UNSAVE_POST";
@@ -77,6 +78,13 @@ export const addPostAction = postID => {
     return{
         type: ADD_POST,
         payload: postID
+    }
+};
+
+export const addStoryAction = storyID => {
+    return{
+        type: ADD_STORY,
+        payload: storyID
     }
 };
 

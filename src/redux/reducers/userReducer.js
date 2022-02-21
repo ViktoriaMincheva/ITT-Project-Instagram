@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, CHANGE_NAME, CHANGE_PROFILE_PHOTO, FOLLOW_USER, UNFOLLOW_USER, SAVE_POST, UNSAVE_POST, ADD_POST, CHANGE_BIO, CHANGE_WEBSITE, CHANGE_USERNAME } from "../actions/userActions";
+import { LOGIN, LOGOUT, CHANGE_NAME, CHANGE_PROFILE_PHOTO, FOLLOW_USER, UNFOLLOW_USER, SAVE_POST, ADD_STORY, UNSAVE_POST, ADD_POST, CHANGE_BIO, CHANGE_WEBSITE, CHANGE_USERNAME } from "../actions/userActions";
 
 
 const INITIAL_STATE = {
@@ -12,6 +12,8 @@ const INITIAL_STATE = {
     savedPosts: [],
     likedPosts: [],
     followedBy: [],
+    posts:[],
+    stories:[],
     following: [],
     bio: null,
     website: null
@@ -32,6 +34,7 @@ export const userReducer = (state = INITIAL_STATE, action) => {
                 following: action.payload.followedAccounts,
                 followedBy: action.payload.followedBy,
                 posts: action.payload.posts,
+                stories: action.payload.stories,
                 savedPosts: action.payload.savedPosts,
                 notifications: action.payload.notifications,
                 gender: action.payload.gender
@@ -93,11 +96,16 @@ export const userReducer = (state = INITIAL_STATE, action) => {
                 return {
                     ...state,
                     username: action.payload
-                }
+                };
             case ADD_POST:
                 return{
                     ...state,
-                    posts: action.payload
+                    posts: [...state.posts, action.payload]
+                };
+            case ADD_STORY:
+                return{
+                    ...state, 
+                    stories: [...state.stories, action.payload]
                 }
             case SAVE_POST:
                     const saved = state.savedPosts.some(post => post.id === action.payload.id)
@@ -108,14 +116,14 @@ export const userReducer = (state = INITIAL_STATE, action) => {
                     return {
                         ...state,
                         savedPosts: saved
-                    }
+                    };
             case UNSAVE_POST:
                 return{
                     ...state, 
                     savedPosts: state.savedPosts.filter(post => {
                         return post.id !== action.payload
                     })
-                }
+                };
         default:
             return state;
     }

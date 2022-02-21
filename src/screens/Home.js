@@ -29,12 +29,13 @@ export default function Home() {
                     {data.posts.map(post => (
                         <DashboardPost
                             key={post.id}
-                            postUrl={post.url}
+                            postUrl={post.content}
                             username={post.username}
-                            icon={post.icon}
-                            likes={post.likes}
-                            caption={post.caption}
-                            timestamp={post.timestamp} />
+                            icon={post.profilePhoto}
+                            likes={post.likes.length}
+                            caption={post.desc}
+                            timestamp={post.timestamp}
+                            comments={post.comments}/>
                     ))}
                 </>
                 }

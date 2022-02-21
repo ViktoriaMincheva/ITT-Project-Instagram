@@ -1,0 +1,13 @@
+.ExploreContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 90px;
+}
+.MediaContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 95%;
+    gap: 8px;
+    flex-basis: 100%;
+    overflow: hidden;
+}

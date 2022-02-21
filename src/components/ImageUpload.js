@@ -37,7 +37,7 @@ export default function ImageUpload() {
             content : [localImageUrl]
         })
 
-        console.log(JSON.stringify(jsData));
+        console.log(jsData);
     }
     
     const handleDescription = (e) => {

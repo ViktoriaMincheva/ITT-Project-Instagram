@@ -30,6 +30,19 @@ export default function DashboardPost(props) {
                 <span className="capt-span">{props.caption}</span>
             </section>
 
+            <div className="commentsContainer">
+                {
+                    props.comments.map(comment => (
+                            <div className="commentContent" key={comment.commentID}>
+                                <img src={comment.userIcon} alt="icon"/>
+                                <p>{comment.userCommented}</p>
+                                <small>{comment.content}</small>
+                            </div>
+                        )
+                    )
+                }
+            </div>
+
             <p className="post-timestamp">{props.timestamp}</p>
 
             <AddComment />

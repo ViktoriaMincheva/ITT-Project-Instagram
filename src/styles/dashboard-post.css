@@ -72,3 +72,28 @@
     font-size: 12px;
     cursor: pointer;
 }
+.commentsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+    margin-left: 16px;
+}
+.commentContent {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.commentContent img {
+    width: 28px;
+    border-radius: 50%;
+}
+.commentContent p {
+    margin: 0;
+    font-weight: 500;
+    font-size: 16px;
+}
+.commentContent small {
+    margin-left: 8px;
+    font-size: 14px;
+}

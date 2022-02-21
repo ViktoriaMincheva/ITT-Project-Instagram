@@ -20,6 +20,7 @@ export function AuthProvider({ children }) {
        return createUserWithEmailAndPassword(auth, email, password)
        .then(cred => {
            return setDoc(doc(db, 'users', cred.user.uid), {
+            email : email,
             username: username,
             followedBy : [],
             following: [],

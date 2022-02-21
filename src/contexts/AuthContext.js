@@ -21,7 +21,23 @@ export function AuthProvider({ children }) {
        .then(cred => {
            return setDoc(doc(db, 'users', cred.user.uid), {
             username: username,
-            fullName: fullName
+            followedBy : [],
+            following: [],
+            bio: null,
+            publicProfile: true,
+            fullName: fullName,
+            profilePhoto: null,
+            businessAcc: {
+                isBusinessAcc: false,
+                isVarified:false,
+                category: null
+            },
+            stories:[
+            ],
+            posts : [
+
+            ]
+
            })
        })
     }

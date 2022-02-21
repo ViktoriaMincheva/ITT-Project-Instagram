@@ -6,6 +6,7 @@ import styles from "../styles/Header.module.css";
 import Modal from "./Modal.js";
 import NavBarProfileMenu from "./NavBarProfileMenu";
 import NotificationMenu from "./NotificationMenu";
+import ImageUpload from "./ImageUpload";
 
 export default function Header() {
 
@@ -38,9 +39,10 @@ export default function Header() {
 
           <img src={show ? "images/icons/create-clicked.png" : "images/icons/create.png"} alt="create" className={styles.headerIcon} onClick={(e) => handleCreate(e)}/>
           <Modal title="Create new post" onClose={() => setShow(false)} show={show}>
-            <img src="create-add.png" alt="add"/>
-            <p>Drag photos and videos here</p>
-            <button type="button">Select From Computer</button>  
+            {/* <img src="create-add.png" alt="add"/>
+            <p>Upload photos and videos here</p>
+            <button type="button">Select From Computer</button>   */}
+            <ImageUpload/>
           </Modal>
 
           <Link to="/explore">

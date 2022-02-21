@@ -31,13 +31,13 @@ export const userReducer = (state = INITIAL_STATE, action) => {
                 name: action.payload.fullName,
                 profilePhoto: action.payload.profilePhoto,
                 username: action.payload.username,
-                following: action.payload.followedAccounts,
+                following: action.payload.following,
                 followedBy: action.payload.followedBy,
                 posts: action.payload.posts,
                 stories: action.payload.stories,
                 savedPosts: action.payload.savedPosts,
                 notifications: action.payload.notifications,
-                gender: action.payload.gender
+                bio: action.payload.bio
             };
         case LOGOUT:
             return {

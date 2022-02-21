@@ -1,0 +1,203 @@
+.InboxContainer {
+    display: flex;
+    width: 95%;
+    max-width: 960px;
+    height: 87vh;
+    border: 1px solid #dbdbdb;
+    margin-top: 70px;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+.msgMenu {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    height: 100%;
+    border-right: 1px solid #dbdbdb;
+    box-sizing: border-box;
+}
+.menuHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 60px;
+    width: 100%;
+    border-bottom: 1px solid #dbdbdb;
+    box-sizing: border-box;
+}
+.menuHeader p {
+    margin: 0;
+    font-weight: 500;
+}
+.menuHeader img {
+    width: 22px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 12px;
+    margin-top: 14px;
+    cursor: pointer;
+}
+.allMsgContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+    overflow-y: scroll;
+    padding: 10px 0;
+    box-sizing: border-box;
+}
+
+.msgPreview {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    box-sizing: border-box;
+}
+.msgPreview > img{
+    width: 56px;
+    height: 56px;
+}
+.msgPreview > div {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.senderUsername {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    width: fit-content;
+}
+.lastMsgInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    box-sizing: border-box;
+}
+.lastMsg {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.chatInfo {
+    width: 65%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.defaultInbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.defaultInbox > img {
+    width: 96px;
+    height: 96px;
+    margin-bottom: 4px;
+}
+.defaultInbox > p {
+    margin: 4px;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 26px;
+    color: #262626;
+}
+.defaultInbox > small {
+    font-size: 14px;
+    line-height: 18px;
+    color: #8e8e8e;
+}
+.defaultInbox > button {
+    padding: 8px;
+    background-color: #0095F6;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    font-weight: 500;
+    font-family: inherit;
+    margin-top: 32px;
+    cursor: pointer;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 4px 10px 12px 10px;
+}
+.search p {
+    margin: 0;
+    font-size: 16px;
+}
+.search input {
+    outline: none;
+    border: none;
+    padding: 8px 4px 4px 4px;
+}
+
+.receiverHeader {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    height: 60px;
+    width: 100%;
+    padding-left: 50px;
+    border-bottom: 1px solid #dbdbdb;
+    box-sizing: border-box;
+}
+.receiverImage {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+.receiverUsername {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.message {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.communicationMsgs {
+    height: 88%;
+    width: 100%;
+}
+.emojiIcon {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 8px;
+}
+.sendMsgContainer {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    height: 40px;
+    width: 80%;
+    border: 1px solid #dbdbdb;
+    border-radius: 24px;
+    box-sizing: border-box;
+}
+.msgInput {
+    margin-left: 60px;
+    outline: none;
+    border: none;
+}

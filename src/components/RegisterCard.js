@@ -43,7 +43,7 @@ export default function RegisterCard(props) {
             setError("");
             setLoading(true);
             await signup(email, pass, fullName, username);
-            navigate("/", { replace: true });
+            navigate("/login", { replace: true });
         } catch (err) {
             setError(err.message.slice(9));
         }

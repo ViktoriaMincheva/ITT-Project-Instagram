@@ -25,6 +25,7 @@
 
 .modal-content {
     width: 33%;
+    min-width: 400px;
     height: 75%;
     border-radius: 12px;
     background-color: #fff;
@@ -40,6 +41,7 @@
 .modal-header {
     padding: 10px;
     height: 42px;
+    border-bottom: 1px solid #dbdbdb;
     box-sizing: border-box;
 }
 
@@ -52,7 +54,6 @@
 
 .modal-body {
     padding: 10px;
-    border-top: 1px solid #dbdbdb;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -80,6 +81,11 @@
     cursor: pointer;
     line-height: 18px;
 }
+/* .modal-body::before {
+    background-color: #0095f6;
+    border: none;
+    color: white;
+} */
 .closeX {
     position: absolute;
     width: 20px;

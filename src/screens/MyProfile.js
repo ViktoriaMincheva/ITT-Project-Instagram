@@ -20,6 +20,8 @@ export default function MyProfile() {
         setShowFollowing(true);
     }
 
+    // const user = useSelector(state => state.userData);
+    // console.log(user);
     useEffect(function () {
         fetch("user-profile.json")
             .then(resp => resp.json())
@@ -28,6 +30,7 @@ export default function MyProfile() {
                     setData(data);
                 }, 500)
             })
+        // setData(user);
     }, [])
 
     return (
@@ -102,7 +105,7 @@ export default function MyProfile() {
                 <div className={styles.MediaContainer}>
                     {
                         data.posts.map((post) => (
-                            <PostPreview key={Math.random()} src={post.content[0]} alt="post photo" likeCount="30" commentCount="9"/>
+                            <PostPreview key={Math.random()} src={post.content[0]} alt="post photo" likeCount={post.likes.length} commentCount={post.comments.length} />
                         ))
                     }
                 </div>

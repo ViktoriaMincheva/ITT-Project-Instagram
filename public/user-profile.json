@@ -202,15 +202,12 @@
          }
       ]
    },
-   "hasFriendsThatAlsoFollows":"false",
    "posts":[
       {
          "uniqueID":"1",
          "desc":"A cute goat ♥",
          "postedDate":"February 10, 2022",
-         "likes":{
-            "numberOfLikes":"16",
-            "peopleLiked":[
+         "likes": [
                "krasi123",
                "galyaG",
                "plamiM",
@@ -228,10 +225,8 @@
                "alexxxx",
                "vikiM"
             ]
-         },
-         "comments":{
-            "numberOfComments":"3",
-            "allComments":[
+         ,
+         "comments":[
                {
                   "userCommented":"krasi123",
                   "userImg":"https://i.ibb.co/NrQYQmv/krasi.png",
@@ -253,8 +248,7 @@
                   "commentLikes":"2",
                   "timePassedSincePosted":"1 d"
                }
-            ]
-         },
+         ],
          "content":[
             "https://www.peta.org/wp-content/uploads/2016/02/Goats-maximili.jpg"
          ]
@@ -263,9 +257,7 @@
          "uniqueID":"2",
          "desc":"😩😩😩",
          "postedDate":"February 8, 2022",
-         "likes":{
-            "numberOfLikes":"7",
-            "peopleLiked":[
+         "likes":[
                "vasilL",
                "mirelaM",
                "chavdarS",
@@ -273,11 +265,8 @@
                "marianT",
                "vikiS",
                "marielaP"
-            ]
-         },
-         "comments":{
-            "numberOfComments":"1",
-            "allComments":[
+         ],
+         "comments":[
                {
                   "userCommented":"mirelaM",
                   "userImg":"https://i.ibb.co/28rX4dW/mirela.png",
@@ -285,8 +274,7 @@
                   "commentLikes":"10",
                   "timePassedSincePosted":"1 w"
                }
-            ]
-         },
+         ],
          "content":[
             "https://833250.smushcdn.com/1694534/wp-content/uploads/2021/06/12-1.png?lossy=1&strip=1&webp=1"
          ]
@@ -295,9 +283,7 @@
          "uniqueID":"3",
          "desc":"Someone take us there please!!!",
          "postedDate":"February 1, 2022",
-         "likes":{
-            "numberOfLikes":"10",
-            "peopleLiked":[
+         "likes": [
                "krasi123",
                "galyaG",
                "plamiM",
@@ -308,14 +294,10 @@
                "alexxxx",
                "vikiM",
                "kristiyanK"
-            ]
-         },
-         "comments":{
-            "numberOfComments":"0",
-            "allComments":[
+         ],
+         "comments": [
                
-            ]
-         },
+         ],
          "content":[
             "https://themysteriousworld.com/wp-content/uploads/2013/12/bora-bora.webp"
          ]
@@ -324,19 +306,12 @@
          "uniqueID":"4",
          "desc":"haha",
          "postedDate":"January 31, 2022",
-         "likes":{
-            "numberOfLikes":"2",
-            "peopleLiked":[
+         "likes":[
                "alexxxx",
                "vikiM"
-            ]
-         },
-         "comments":{
-            "numberOfComments":"0",
-            "allComments":[
-               
-            ]
-         },
+         ],
+         "comments":[
+         ],
          "content":[
             "https://pics.awwmemes.com/javascript-oll-jsx-html-what-the-hell-is-this-i%E2%80%99m-66672458.png"
          ]
@@ -345,18 +320,13 @@
          "uniqueID":"5",
          "desc":"i hate when this happens",
          "postedDate":"January 15, 2022",
-         "likes":{
-            "numberOfLikes":"4",
-            "peopleLiked":[
+         "likes":[
                "nickM",
                "pamD",
                "vasilP",
                "mitkoD"
-            ]
-         },
-         "comments":{
-            "numberOfComments":"1",
-            "allComments":[
+         ],
+         "comments":[
                {
                   "userCommented":"vikiM",
                   "userImg":"https://i.ibb.co/DrQBF90/Pics-Art-02-26-01-36-47.jpg",
@@ -364,8 +334,7 @@
                   "commentLikes":"2",
                   "timePassedSincePosted":"3 w"
                }
-            ]
-         },
+         ],
          "content":[
             "https://i.pinimg.com/736x/ac/b7/f9/acb7f99ba0ef473e03ee81e91a6281ee.jpg"
          ]
@@ -373,10 +342,7 @@
          "uniqueID":"6",
          "desc":"Are you ready? 😤😤😤",
          "postedDate":"October 12, 2021",
-         "likes":{
-            "numberOfLikes":"16",
-            "peopleLiked":[
-               [
+         "likes": [
                   "krasi123",
                   "galyaG",
                   "plamiM",
@@ -393,12 +359,8 @@
                   "mitkoD",
                   "alexxxx",
                   "vikiM"
-               ]
-            ]
-         },
-         "comments":{
-            "numberOfComments":"1",
-            "allComments":[
+         ],
+         "comments":[
                {
                   "userCommented":"krasi123",
                   "userImg":"https://i.ibb.co/NrQYQmv/krasi.png",
@@ -406,8 +368,7 @@
                   "commentLikes":"15",
                   "timePassedSincePosted":"18 w"
                }
-            ]
-         },
+         ],
          "content":[
             "https://deadicatedfans.com/wp-content/uploads/2016/06/shit-just-goat-serious.jpg"
          ]

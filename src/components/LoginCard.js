@@ -19,8 +19,6 @@ export default function LoginCard(props) {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-
-
     const dispatch = useDispatch();
 
     const handleInput = e => {
@@ -51,18 +49,24 @@ export default function LoginCard(props) {
         const db = getFirestore();
         const docRef = doc(db, "users", `${user.uid}`);
         const docSnap = await getDoc(docRef);
-        // if (docSnap.exists()) {
-        //     console.log(docSnap.data());
-        // } else {
+        if (docSnap.exists()) {
+            console.log("data ->", docSnap.data());
+        }
         //     console.log("No such document!");
         // }
         user.fullName = docSnap.data().fullName;
         user.username = docSnap.data().username;
+        user.bio = docSnap.data().bio;
+        user.profilePhoto = docSnap.data().profilePhoto;
+        user.followedBy = docSnap.data().followers;
+        user.following = docSnap.data().following;
+        user.posts = docSnap.data().posts;
 
         dispatch(loginAction(user))
         console.log(user.fullName);
         console.log(user.username);
-        console.log(user.uid)
+        console.log(user.uid);
+        console.log(user.following);
         setLoading(false);
     }
 

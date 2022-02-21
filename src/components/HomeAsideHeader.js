@@ -13,8 +13,8 @@ export default function HomeAsideHeader(props) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const logout = useAuth();
-    const userEmail = useSelector(state => state.userData.id);
-
+    const user = useSelector(state => state.userData);
+    
     async function handleLogout() {
         setError("");
         dispatch(logoutAction);
@@ -30,9 +30,9 @@ export default function HomeAsideHeader(props) {
     return (
         <div className={styles.container}>
             <div className={styles.left}>
-                <a href="#"><img className={styles.icon} src={props.icon} alt="avatar"/></a>
+                <a href="#"><img className={styles.icon} src={user.profilePhoto ? user.profilePhoto : "images/icons/user.png"} alt="avatar" /></a>
                 <div className={styles.userInfo}>
-                    <a href="#" className={styles.username}>{userEmail}<br/><span className={styles.name}>{props.name}</span></a>
+                    <a href="#" className={styles.username}>{user.username}<br /><span className={styles.name}>{user.name}</span></a>
                 </div>
             </div>
             <Link to="/login"><button className={styles.btn} onClick={handleLogout}>Log out</button></Link>

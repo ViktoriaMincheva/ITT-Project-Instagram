@@ -1,13 +1,14 @@
-import { LOGIN, LOGOUT, CHANGE_NAME, CHANGE_PROFILE_PHOTO, FOLLOW_USER, UNFOLLOW_USER, CHANGE_BIO, CHANGE_WEBSITE } from "../actions/userActions";
+import { LOGIN, LOGOUT, CHANGE_NAME, CHANGE_PROFILE_PHOTO, FOLLOW_USER, UNFOLLOW_USER, SAVE_POST, UNSAVE_POST, ADD_POST, CHANGE_BIO, CHANGE_WEBSITE, CHANGE_USERNAME } from "../actions/userActions";
 
 
 const INITIAL_STATE = {
 
     id: null,
+    email: null,
     logged: false,
     profilePhoto: null,
-    name: null,
-    userName: null,
+    fullName: null,
+    username: null,
     savedPosts: [],
     likedPosts: [],
     followedBy: [],
@@ -24,13 +25,16 @@ export const userReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 logged: true,
                 id: action.payload.id,
-                name: action.payload.name,
+                email: action.payload.email,
+                name: action.payload.fullName,
                 profilePhoto: action.payload.profilePhoto,
-                userName: action.payload.userName,
-                following: action.payload.following,
+                username: action.payload.username,
+                following: action.payload.followedAccounts,
                 followedBy: action.payload.followedBy,
+                posts: action.payload.posts,
                 savedPosts: action.payload.savedPosts,
-                notifications: action.payload.notifications
+                notifications: action.payload.notifications,
+                gender: action.payload.gender
             };
         case LOGOUT:
             return {
@@ -39,9 +43,10 @@ export const userReducer = (state = INITIAL_STATE, action) => {
                 id: null,
                 name: null,
                 profilePhoto: null,
-                userName: null,
-                following: [],
+                username: null,
+                followedAccounts: [],
                 followedBy: [],
+                posts: [],
                 savedPosts: [],
                 notifications: []
             };
@@ -84,6 +89,33 @@ export const userReducer = (state = INITIAL_STATE, action) => {
                     return u.id !== action.payload
                 })
             };
+            case CHANGE_USERNAME:
+                return {
+                    ...state,
+                    username: action.payload
+                }
+            case ADD_POST:
+                return{
+                    ...state,
+                    posts: action.payload
+                }
+            case SAVE_POST:
+                    const saved = state.savedPosts.some(post => post.id === action.payload.id)
+                    ?
+                    state.savedPosts
+                    :
+                    [...state.savedPosts, action.payload]
+                    return {
+                        ...state,
+                        savedPosts: saved
+                    }
+            case UNSAVE_POST:
+                return{
+                    ...state, 
+                    savedPosts: state.savedPosts.filter(post => {
+                        return post.id !== action.payload
+                    })
+                }
         default:
             return state;
     }

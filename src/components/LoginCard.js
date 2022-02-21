@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginAction } from "../redux/actions/userActions";
+import { doc, getFirestore, getDoc } from "firebase/firestore";
+
 
 export default function LoginCard(props) {
 
@@ -17,6 +19,7 @@ export default function LoginCard(props) {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+
 
     const dispatch = useDispatch();
 
@@ -31,20 +34,35 @@ export default function LoginCard(props) {
         }
     }
 
+    let userCredential;
+    let user;
     async function handleSubmit(e) {
         e.preventDefault()
-
         try {
             setError("");
             setLoading(true);
-            const userCredentials= await login(email, pass);
-            console.log(userCredentials);
-            dispatch(loginAction(userCredentials.user))
+            userCredential = await login(email, pass);
+            user = userCredential.user;
             navigate("/", { replace: true });
         } catch {
             setError("Failed to log in");
         }
 
+        const db = getFirestore();
+        const docRef = doc(db, "users", `${user.uid}`);
+        const docSnap = await getDoc(docRef);
+        // if (docSnap.exists()) {
+        //     console.log(docSnap.data());
+        // } else {
+        //     console.log("No such document!");
+        // }
+        user.fullName = docSnap.data().fullName;
+        user.username = docSnap.data().username;
+
+        dispatch(loginAction(user))
+        console.log(user.fullName);
+        console.log(user.username);
+        console.log(user.uid)
         setLoading(false);
     }
 
@@ -60,12 +78,10 @@ export default function LoginCard(props) {
                     <button type="submit" className={styles.button} disabled={((email && pass) ? false : true) || loading}>Log In</button>
                 </form>
 
-
                 {/* this is the or-line in the login form */}
                 <Line />
-                <Link to="/forgot-password" className={styles.forgotPass}>Forgot password?</Link>
-                {/* <a href="/" className={styles.forgotPass}></a> */}
 
+                <Link to="/forgot-password" className={styles.forgotPass}>Forgot password?</Link>
             </section>
 
             <AccountCheckBox className={props.accClassName} pTitle="Don't have an account?" linkTitle="Sign up" href="/register" />

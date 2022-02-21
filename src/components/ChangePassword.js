@@ -27,6 +27,7 @@ export default function ChangePassword() {
                 setRepeatPass(e.target.value.trim());
         }
     }
+    
 
     async function handleSubmit(e) {
         e.preventDefault();

@@ -6,25 +6,30 @@ export const CHANGE_USERNAME = "CHANGE_USERNAME";
 export const CHANGE_EMAIL = "CHANGE_EMAIL";
 export const FOLLOW_USER = "FOLLOW_USER";
 export const UNFOLLOW_USER = "UNFOLLOW_USER";
+export const ADD_POST = "ADD_POST";
 export const LIKE_POST = "LIKE_POST";
 export const SAVE_POST = "SAVE_POST";
+export const UNSAVE_POST = "UNSAVE_POST";
 export const CHANGE_BIO = "CHANGE_BIO";
 export const CHANGE_WEBSITE = "CHANGE_WEBSITE";
-
+// export const CHANGE_GENDER = "CHANGE_GENDER"; ??????????????????????????????
 
 
 export const loginAction = user => {
     return{
         type: LOGIN,
         payload: {
+            email: user.email,
             id: user.uid,
             profilePhoto: user.profilePhoto,
-            name: user.displayName,
-            userName: user.userName,
+            fullName: user.fullName,
+            username: user.username,
             following: user.followedAccounts,
             followedBy: user.followedBy,
-            savedPOsts: user.savedPosts,
-            notifications: user.notifications
+            posts: user.posts,
+            savedPosts: user.savedPosts,
+            notifications: user.notifications,
+            gender: user.gender
         }
     }
 };
@@ -44,7 +49,6 @@ export const changeUserNameAction = userName => {
     return{
         type: CHANGE_USERNAME,
         payload: userName
-
     }
 };
 
@@ -69,9 +73,23 @@ export const unfollowUserAction = userID => {
     }
 };
 
+export const addPostAction = postID => {
+    return{
+        type: ADD_POST,
+        payload: postID
+    }
+};
+
 export const savePostAction = postID => {
     return{
         type: SAVE_POST,
+        payload: postID
+    }
+};
+
+export const unSavePostAction = postID => {
+    return{
+        type: UNSAVE_POST,
         payload: postID
     }
 }
@@ -92,7 +110,7 @@ export const changeBioAction = bio => {
 
 export const changeWebsiteAction = url => {
     return{
-        type: CHANGE_BIO,
+        type: CHANGE_WEBSITE,
         website: url
     }
 };

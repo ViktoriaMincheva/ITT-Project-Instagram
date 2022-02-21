@@ -21,7 +21,7 @@ export const loginAction = user => {
         type: LOGIN,
         payload: {
             email: user.email,
-            id: user.uid,
+            id: user.id,
             profilePhoto: user.profilePhoto,
             fullName: user.fullName,
             username: user.username,
@@ -30,7 +30,7 @@ export const loginAction = user => {
             posts: user.posts,
             savedPosts: user.savedPosts,
             notifications: user.notifications,
-            gender: user.gender
+            bio: user.bio
         }
     }
 };

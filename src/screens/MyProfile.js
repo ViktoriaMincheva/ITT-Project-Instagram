@@ -5,7 +5,8 @@ import InfoModal from "../components/InfoModal.js";
 import styles from "../styles/Profile.module.css";
 import React from "react";
 import PostPreview from "../components/PostPreview.js";
-
+import  { useSelector } from "react-redux";
+ 
 export default function MyProfile() {
 
     const [data, setData] = useState(null);
@@ -20,8 +21,9 @@ export default function MyProfile() {
         setShowFollowing(true);
     }
 
-    // const user = useSelector(state => state.userData);
-    // console.log(user);
+    const user = useSelector(state => state.userData);
+    console.log(user);
+
     useEffect(function () {
         fetch("user-profile.json")
             .then(resp => resp.json())

@@ -13,6 +13,7 @@ export default function EditProfile() {
     const [website, setWebsite] = useState("");
     const [bio, setBio] = useState("");
     const [success, setSuccess] = useState("")
+    const [photoError, setPhotoError] = useState("");
     const [photo, setPhoto] = useState(null);
 
     const dispatch = useDispatch();
@@ -45,16 +46,20 @@ export default function EditProfile() {
     const handleFileChange = (e) => {
         const { files } = e.target;
         const localImageUrl = URL.createObjectURL(files[0]);
-        console.log(localImageUrl);
-        console.log(typeof localImageUrl);
         setPhoto(localImageUrl);
     }
 
     const handleProfilePhotoChange = e => {
         e.preventDefault();
-        dispatch(changeProfilePhotoAction(photo));
-        setShow(false);
-        setSuccess("Your profile picture has been updated successfully.")
+        if(photo !== null) {
+            dispatch(changeProfilePhotoAction(photo));
+            setShow(false);
+            setSuccess("Your profile picture has been updated successfully.")
+        } else {
+            setPhotoError("You did not make any changes");
+        }
+        
+        
     }
 
     const handleEditProfile = () => {
@@ -150,8 +155,9 @@ export default function EditProfile() {
 
             <Modal title="Change profile photo" onClose={() => setShow(false)} show={show}>
                 <div>
+                    {photoError && <div>{photoError}</div>}
                     <form className={styles.changePhotoForm} onSubmit={e => handleProfilePhotoChange(e)}> 
-                        <input type="file" onChange={e => handleFileChange(e)} />
+                        <input type="file" accept=".png, .jpg, .jpeg" onChange={e => handleFileChange(e)} />
                         <button type="submit">submit</button>
                     </form>
                 </div>

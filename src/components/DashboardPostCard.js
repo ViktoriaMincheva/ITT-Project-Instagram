@@ -2,9 +2,9 @@ import "../styles/dashboard-post.css"
 import AddComment from "./AddComment"
 
 export default function DashboardPost(props) {
-
+    
     return (
-        <div className="dash-post">
+        <div className="dash-post" id={props.postID}>
             <div className="user-info">
                 <img className="user-icon" src={props.icon} alt="icon"/>
                 <h4>{props.username}</h4>

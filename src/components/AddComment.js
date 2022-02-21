@@ -42,11 +42,14 @@ export default function AddComment(props) {
     const [inputStr, setInputStr] = useState('');
     const [showPicker, setShowPicker] = useState(false);
 
-
     const onEmojiClick = (event, emojiObject) => {
         setInputStr(prevInput => prevInput + emojiObject.emoji);
         setShowPicker(false);
     };
+
+    const handlePostComment = () => {
+
+    }
 
     return (
         <StyledContainer>
@@ -58,12 +61,17 @@ export default function AddComment(props) {
                     onClick={() => setShowPicker(val => !val)} />
 
                 <MyInput
+                    autoFocus={inputStr ? true : false}
+                    // key={Math.random()}
                     className="input-style"
                     value={inputStr}
-                    onChange={e => setInputStr(e.target.value)} 
+                    spellCheck="false"
+                    onChange={e => {
+                        setInputStr(e.target.value);
+                    }}
                     placeholder="Add comment..."/>
 
-                <MyButton>Post</MyButton>
+                <MyButton type="button" onClick={handlePostComment}>Post</MyButton>
             </StyledInputContainer>
 
             {showPicker && <EmojiPicker

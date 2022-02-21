@@ -34,7 +34,6 @@ export default function ChangePassword() {
         let newPassword = "";
 
         if (newPass !== repeatPass) {
-            console.log(newPass, repeatPass);
             return setError("New passwords do not match")
         }
         if (newPass.length < 6) {

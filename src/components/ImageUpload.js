@@ -1,6 +1,9 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import "../styles/InfoModal.css";
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+import { useSelector } from 'react-redux';
 
 export default function ImageUpload() {
     const [imagePicked, setImagePicked] = useState(false);
@@ -8,6 +11,8 @@ export default function ImageUpload() {
     const [photo, setPhoto] = useState("");
     let [jsonData, setJsonData] = useState(null);
     const current = new Date();
+    const user = useSelector(state =>  state.userData);
+    // const storage = getStorage();
 
     useEffect(function () {
         fetch("user-profile.json")
@@ -19,6 +24,17 @@ export default function ImageUpload() {
             })
     }, [])
 
+    console.log(user);
+
+    // const db = getFirestore();
+    // const docRef = doc(db, "users", `${user.uid}`);
+    // const docSnap = await getDoc(docRef);
+    // if (docSnap.exists()) {
+    //     console.log("data ->", docSnap.data());
+    // }
+
+
+
     const handleFileUploaded = (e) => {
         setImagePicked(true);
         const { files } = e.target;
@@ -28,16 +44,16 @@ export default function ImageUpload() {
         let poststCount = jsData.posts.length;
         // console.log(typeof jsData);
 
-        jsData.posts.push({
-            uniqueID:  poststCount + 1,
-            desc:`${desc}`,
-            postedDate:`${current.getMonth()+1} ${current.getDate()}, /${current.getFullYear()}`,
-            likes: [],
-            comments:[],
-            content : [localImageUrl]
-        })
+        // jsData.posts.push({
+        //     uniqueID:  poststCount + 1,
+        //     desc:`${desc}`,
+        //     postedDate:`${current.getMonth()+1} ${current.getDate()}, /${current.getFullYear()}`,
+        //     likes: [],
+        //     comments:[],
+        //     content : [localImageUrl]
+        // })
 
-        console.log(jsData);
+        // console.log(jsData);
     }
     
     const handleDescription = (e) => {

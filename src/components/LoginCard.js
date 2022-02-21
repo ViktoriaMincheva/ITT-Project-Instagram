@@ -63,10 +63,10 @@ export default function LoginCard(props) {
         user.posts = docSnap.data().posts;
 
         dispatch(loginAction(user))
-        console.log(user.fullName);
-        console.log(user.username);
-        console.log(user.uid);
-        console.log(user.following);
+        // console.log(user.fullName);
+        // console.log(user.username);
+        // console.log(user.uid);
+        // console.log(user.following);
         setLoading(false);
     }
 

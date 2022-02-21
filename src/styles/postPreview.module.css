@@ -5,8 +5,8 @@
 
 .previewPost {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 290px;
+    height: 290px;
     box-sizing: border-box;
     flex-basis: 32%;
     aspect-ratio: 1 / 1;
@@ -14,7 +14,7 @@
     align-items: center;
     justify-content: center;
     background-color: white;
-    margin-bottom: 16px;    
+    margin-bottom: 8px;    
 }
 
 

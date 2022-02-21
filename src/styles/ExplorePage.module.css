@@ -1,13 +1,13 @@
 .ExploreContainer {
     display: flex;
     justify-content: center;
+    max-width: 960px;
     margin-top: 90px;
 }
 .MediaContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     width: 95%;
-    gap: 8px;
     flex-basis: 100%;
-    overflow: hidden;
+    gap: 18px;
 }

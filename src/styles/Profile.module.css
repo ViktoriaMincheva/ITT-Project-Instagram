@@ -26,7 +26,7 @@
     max-width: 100%;
     max-height: 100%;
     border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.2);;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 .MainInfoContainer {
     display: flex;
@@ -107,11 +107,10 @@
 }
 
 .MediaContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     width: 95%;
-    gap: 2%;
     flex-basis: 100%;
-    overflow: hidden;
+    gap: 18px;
 }
 

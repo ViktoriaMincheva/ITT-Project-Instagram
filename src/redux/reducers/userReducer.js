@@ -100,7 +100,7 @@ export const userReducer = (state = INITIAL_STATE, action) => {
             case ADD_POST:
                 return{
                     ...state,
-                    posts: [...state.posts, action.payload]
+                    posts: [action.payload, ...state.posts]
                 };
             case ADD_STORY:
                 return{

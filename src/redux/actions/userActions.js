@@ -74,10 +74,10 @@ export const unfollowUserAction = userID => {
     }
 };
 
-export const addPostAction = postID => {
+export const addPostAction = post => {
     return{
         type: ADD_POST,
-        payload: postID
+        payload: post
     }
 };
 

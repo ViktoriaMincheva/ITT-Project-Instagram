@@ -53,7 +53,7 @@ export default function Inbox() {
                     <InboxMsg username={"Username1"} lastMsg={"last message looooong message is this one"} time={"3w"}></InboxMsg>
                 </div>
             </div>
-            {!data ? <LoadingComponent/> : <>
+            {!data ? <div className={styles.LoadingComponent}><LoadingComponent /></div> : <>
                 <div className={styles.chatInfo}>
                     {
                         clickedUser ?

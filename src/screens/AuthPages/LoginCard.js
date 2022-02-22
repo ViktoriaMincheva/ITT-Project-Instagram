@@ -10,6 +10,8 @@ import { useDispatch} from 'react-redux';
 import { loginAction } from "../../redux/actions/userActions";
 import { doc, getFirestore, getDoc } from "firebase/firestore";
 import { loadPosts } from "../../redux/actions/allPostsActions";
+import { loadComments } from "../../redux/actions/commentsActions";
+import { loadUsers } from "../../redux/actions/allUsersActions";
 
 
 export default function LoginCard(props) {
@@ -45,6 +47,8 @@ export default function LoginCard(props) {
         user = docSnap.data();
         dispatch(loginAction(user))
         dispatch(loadPosts());
+        dispatch(loadComments());
+        dispatch(loadUsers());
         setLoading(false);
     }
 

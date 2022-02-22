@@ -71,7 +71,7 @@ export default function EditProfile() {
         <section className={styles.editProfileContainer}>
             {success && <div className={styles.success}>{success}</div>}
             <div className={styles.user}>
-                <img src={user.profilePhoto ? user.profilePhoto : "images/icons/user.png"} alt="avatar" className={styles.userIcon} onClick={(e) => handleChangePhoto(e)} />
+                <img src={user.profilePhoto ? user.profilePhoto : "images/icons/user.png"} alt="avatar" className={styles.userIcon} onClick={(e) => setShow(true)} />
                 <h5>{user.username} <br /> <span className={styles.changePhoto} onClick={(e) => setShow(true)}>Change Profile Photo</span></h5>
             </div>
 

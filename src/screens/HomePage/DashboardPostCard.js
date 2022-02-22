@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom"
 import "./DashboardPostCard.css"
 import AddComment from "../../components/AddComment"
+import { useSelector } from "react-redux";
 
 export default function DashboardPost(props) {
     const navigate = useNavigate();
+    const users = useSelector(state => state.users.users);
 
     const handleShowUserProfile = () => {
         navigate(`/users/${props.username}`, { replace: true });
@@ -37,14 +39,15 @@ export default function DashboardPost(props) {
 
             <div className="commentsContainer">
                 {
-                    props.comments.map(comment => (
-                            <div className="commentContent" key={comment.commentID}>
-                                <img src={comment.userIcon} alt="icon"/>
-                                <p>{comment.userCommented}</p>
-                                <small>{comment.content}</small>
-                            </div>
-                        )
-                    )
+                    // props.postComments.map(comment => console.log(comment))
+                        // (
+                        //     <div className="commentContent" key={comment.commentID}>
+                        //         <img src={comment.userIcon} alt="icon"/>
+                        //         <p>{comment.userCommented}</p>
+                        //         <small>{comment.content}</small>
+                        //     </div>
+                        // )
+                    // )
                 }
             </div>
 

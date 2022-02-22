@@ -8,13 +8,18 @@ import StoriesSection from "./StoriesSection";
 export default function Home() {
 
     const posts = useSelector(state => state.allPostsData.posts);
+    const comments = useSelector(state => state.comments.comments);
+    console.log(comments);
+    // const users = useSelector(state => state.users.users);
+
+
 
     return (
         <main className={styles.main}>
 
             <section className={styles.leftSection}>
                 <StoriesSection />
-
+                
                 {
                     posts.map(post => (
                         <DashboardPost
@@ -25,7 +30,8 @@ export default function Home() {
                         likes={post.likes.length}
                         caption={post.desc}
                         timestamp={post.timestamp}
-                        comments={post.comments}/>
+                        postComments={[]}
+                        />
                     ))
                 }
 

@@ -3,11 +3,15 @@ import { allPostsReducer } from "./reducers/allPostsReducer";
 import { userReducer } from "./reducers/userReducer";
 import thunk from 'redux-thunk';
 import { storiesReducer } from "./reducers/storiesReducer";
+import { commentsProvider } from "./reducers/commentsReducer";
+import { allUsersReducer } from "./reducers/allUsersReducer";
 
 const rootReducer = combineReducers({
     userData : userReducer,
     allPostsData : allPostsReducer,
-    stories: storiesReducer
+    stories: storiesReducer,
+    comments: commentsProvider,
+    users: allUsersReducer
 });
 
 

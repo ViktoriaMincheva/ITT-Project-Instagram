@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 import styles from "./LoggedUserProfile.module.css";
 import InfoModal from "../../components/InfoModal";
 import PostPreview from "../../components/PostPreview.js";
@@ -10,6 +11,7 @@ export default function MyProfile() {
     const [show, setShow] = useState(false);
     const [showFollowing, setShowFollowing] = useState(false);
     const user = useSelector(state => state.userData);
+    const navigate = useNavigate();
 
     const handleShowFollowers = (e) => {
         setShow(true);
@@ -17,6 +19,10 @@ export default function MyProfile() {
 
     const handleShowFollowing = (e) => {
         setShowFollowing(true);
+    }
+
+    const handleOpenSettings = (e) => {
+        navigate("/edit", { replace: true });
     }
 
     return (
@@ -30,8 +36,7 @@ export default function MyProfile() {
                     <div className={styles.MainInfoContainer}>
                         <div className={styles.ProfileNecessities}>
                             <p>{user.username}</p>
-                            <button type="button" className={styles.EditButton}>Edit Profile</button>
-                            <img src="images/icons/settings.png" alt="settings icon" />
+                            <button type="button" className={styles.EditButton} onClick={handleOpenSettings}>Edit Profile</button>
                         </div>
                         <div className={styles.ProfileActivity}>
                             <p><span>{user.posts.length}</span> posts</p>
@@ -43,7 +48,7 @@ export default function MyProfile() {
                                 user.followedBy.map((follower) => 
                                     (
                                         <div key={follower.id}>
-                                            <img src={follower.profilePic} alt="picture" style={{ cursor: 'pointer'}}/>
+                                            <img src={follower.profilePic} alt="picture" className={styles.followIcon}/>
                                             <p>{follower.username}</p>
                                         </div>
                                     )
@@ -55,7 +60,7 @@ export default function MyProfile() {
                                 user.following.map((follow) => 
                                     (
                                         <div key={follow.id}>
-                                            <img src={follow.profilePic} alt="picture" style={{ cursor: 'pointer'}}/>
+                                            <img src={follow.profilePic} alt="picture" className={styles.followIcon}/>
                                             <p>{follow.username}</p>
                                         </div>
                                     )

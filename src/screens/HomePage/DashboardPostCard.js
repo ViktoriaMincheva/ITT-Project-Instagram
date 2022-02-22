@@ -14,7 +14,6 @@ export default function DashboardPost(props) {
             <div className="user-info">
                 <img className="user-icon" src={props.icon} alt="icon" onClick={handleShowUserProfile}/>
                 <h4 onClick={handleShowUserProfile}>{props.username}</h4>
-                
             </div>
 
             <img className="post-image" src={props.postUrl} alt="post"/>

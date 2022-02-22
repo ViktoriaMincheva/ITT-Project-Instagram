@@ -81,11 +81,6 @@
     cursor: pointer;
     line-height: 18px;
 }
-/* .modal-body::before {
-    background-color: #0095f6;
-    border: none;
-    color: white;
-} */
 .closeX {
     position: absolute;
     width: 20px;
@@ -93,5 +88,8 @@
     right: 0;
     top: 0;
     padding: 10px;
+    cursor: pointer;
 }
-  
+.closeIcon {
+    width: 20px;
+}

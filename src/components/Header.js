@@ -21,7 +21,7 @@ export default function Header() {
     <header className={styles.Header}>
       <div className={styles.HeaderContainer}>
         <Link to="/">
-          <img src="../images/ig-logo.png" alt="Instagram" style={{"paddingTop":"12px" }}/>
+          <img src="../images/ig-logo.png" alt="Instagram" className={styles.igLogo}/>
         </Link>
 
         <div className={styles.InputContainer}>

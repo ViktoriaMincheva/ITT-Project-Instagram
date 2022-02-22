@@ -88,3 +88,14 @@
 .submitUpload {
     margin-top: 20px;
 }
+
+.uploadSuccessMsgImg {
+    width: 70%;
+    height: auto;
+}
+.uploadSuccessMsg {
+    text-align: center;
+}
+.closeIcon {
+    width: 20px;
+}

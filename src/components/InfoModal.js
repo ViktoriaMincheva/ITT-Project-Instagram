@@ -26,7 +26,7 @@ export default function Modal (props) {
     >
       <div className="modal" onClick={props.onClose}>
         <div className={`closeX button`} onClick={props.onClose}>
-          <img src="images/icons/close-modal.png" alt="Close" style={{width: 20, cursor: 'pointer'}}/>
+          <img src="images/icons/close-modal.png" alt="Close" className="closeIcon"/>
         </div>
         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
           <div className="modal-header">

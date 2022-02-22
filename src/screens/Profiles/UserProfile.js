@@ -75,7 +75,7 @@ export default function UserProfile() {
                                     userData.followedBy.map((follower) => 
                                         (
                                             <div key={Math.random()}>
-                                                {/* <img src={follower.profilePic} alt="picture" style={{ cursor: 'pointer'}}/> */}
+                                                {/* <img src={follower.profilePic} alt="picture" className={styles.followIcon}/> */}
                                                 <p>{follower}</p>
                                             </div>
                                         )
@@ -87,7 +87,7 @@ export default function UserProfile() {
                                     user.following.map((follow) => 
                                         (
                                             <div key={Math.random()}>
-                                                {/* <img src={follow.profilePic} alt="picture" style={{ cursor: 'pointer'}}/> */}
+                                                {/* <img src={follow.profilePic} alt="picture" className={styles.followIcon}/> */}
                                                 <p>{follow}</p>
                                             </div>
                                         )

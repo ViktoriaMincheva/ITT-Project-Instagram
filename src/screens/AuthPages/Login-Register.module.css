@@ -23,7 +23,7 @@
     border: 1px solid lightgray;
     width: 350px;
     background-color: #ffff;
-    margin-top: 50px;
+    margin-top: 20px;
     box-sizing: border-box;
     padding-bottom: 10px;
 }
@@ -53,6 +53,7 @@
 
 .logo {
     margin: 20px 80px;
+    width: 160px;
 }
 
 .button {

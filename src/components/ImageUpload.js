@@ -50,8 +50,8 @@ export default function ImageUpload() {
         <div className="modal-body">
             {
                 uploadSuccess ? <>
-                    <img src={photo} alt=" photo" style={{width: "70%", height: "auto"}}/>
-                    <p style={{textAlign: "center"}}>Succesfully added new photo. Check out your profile.</p>
+                    <img src={photo} alt=" photo" className="uploadSuccessMsgImg" />
+                    <p className="uploadSuccessMsg" >Succesfully added new photo. Check out your profile.</p>
                 </> 
                 : 
                 <>

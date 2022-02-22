@@ -1,43 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import EmojiPicker from "emoji-picker-react";
-import styled from "@emotion/styled";
+import styles from "./styles/AddComment.module.css";
 
 export default function AddComment(props) {
-
-    const StyledContainer = styled.div`
-        width: 100%;
-        border-top: 1px solid lightgrey;
-        height: 54px;
-        box-sizing: border-box;
-    `
-
-    const StyledInputContainer = styled.div`
-        display:flex;
-        justify-content: space-between;
-        align-items: center;
-    `
-
-    const MyInput = styled.input`
-        outline: none;
-        border: none;
-        width: -webkit-fill-available;
-        height: 26px;
-        font-size: 14px;
-        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    
-    `
-
-    const MyButton = styled.button`
-        border: none;
-        color: #0095f6;
-        background-color: #fff;
-        margin-right: 16px;
-        margin-bottom: 12px;
-        font-weight: 600;
-        cursor: pointer;
-    `
-
 
     const [inputStr, setInputStr] = useState('');
     const [showPicker, setShowPicker] = useState(false);
@@ -47,23 +13,22 @@ export default function AddComment(props) {
         setShowPicker(false);
     };
 
+    //TODO
     const handlePostComment = () => {
 
     }
 
     return (
-        <StyledContainer>
-            <StyledInputContainer>
+        <div className={styles.container}>
+            <div className={styles.inputContainer}>
                     <img
-                    style={{margin: "20px", width: "22px", height: "22px"}}
                     className="emoji-icon"
                     src="https://icons.getbootstrap.com/assets/icons/emoji-smile.svg"
                     onClick={() => setShowPicker(val => !val)} />
 
-                <MyInput
+                <input 
+                    className={styles.inputField}
                     autoFocus={inputStr ? true : false}
-                    // key={Math.random()}
-                    className="input-style"
                     value={inputStr}
                     spellCheck="false"
                     onChange={e => {
@@ -71,13 +36,13 @@ export default function AddComment(props) {
                     }}
                     placeholder="Add comment..."/>
 
-                <MyButton type="button" onClick={handlePostComment}>Post</MyButton>
-            </StyledInputContainer>
+                <button type="button" onClick={handlePostComment} className={styles.postBtn}>Post</button>
+            </div>
 
             {showPicker && <EmojiPicker
-                pickerStyle={{ width: "300px",zIndex:"1"}}
+                pickerStyle={{ width: "300px", zIndex:"1", marginTop: "-370px"}}
                 onEmojiClick={onEmojiClick} />}
-        </StyledContainer>
+        </div>
     );
 
 }

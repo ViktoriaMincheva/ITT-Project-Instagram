@@ -26,8 +26,7 @@
     cursor: pointer;
 }
 
-.user-icon > h4 {
-    cursor: pointer;
+.user-icon h4 {
 }
 
 .icons {

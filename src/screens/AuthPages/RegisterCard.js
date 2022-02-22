@@ -70,8 +70,8 @@ export default function RegisterCard(props) {
 
     return (
         <>
-            <section style={{marginTop:12}} className={styles.formContainer}>
-                <img className={styles.logo} src="../images/logo.png" alt="Instagram" width="160px" />
+            <section className={styles.formContainer}>
+                <img className={styles.logo} src="../images/logo.png" alt="Instagram" />
 
                 <StyledHeading>Sign up to see photos and videos from your friends.</StyledHeading>
                                 <Line />

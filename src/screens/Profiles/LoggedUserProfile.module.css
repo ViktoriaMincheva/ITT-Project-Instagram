@@ -28,6 +28,9 @@
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
+.SettingsIcon {
+    cursor: pointer;
+}
 .MainInfoContainer {
     display: flex;
     flex-direction: column;
@@ -61,6 +64,7 @@
     font-weight: 600;
     text-align: center;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    cursor: pointer;
 }
 .ProfileActivity {
     display: flex;
@@ -114,3 +118,6 @@
     gap: 18px;
 }
 
+.followIcon {
+    cursor: pointer;
+}

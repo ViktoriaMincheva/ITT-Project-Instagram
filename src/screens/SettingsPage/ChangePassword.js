@@ -13,20 +13,19 @@ export default function ChangePassword() {
     const { updatePass, reauthenticateUser } = useAuth();
     const [message, setMessage] = useState("");
 
-    const handleInput = e => {
-        let id = e.target.id;
-        switch (id) {
-            case "oldPass":
-                setOldPass(e.target.value.trim())
-                break;
-            case "newPass":
-                setNewPass(e.target.value.trim());
-                break;
-            case "repeatPass":
-                setRepeatPass(e.target.value.trim());
-        }
-    }
-    
+
+    const handleOldPassInput = e => {
+        setOldPass(e.target.value.trim())
+    };
+
+    const handleNewPassInput = e => {
+        setNewPass(e.target.value.trim())
+    };
+
+    const handleRepeatPassInput = e => {
+        setRepeatPass(e.target.value.trim())
+    };
+
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -76,32 +75,27 @@ export default function ChangePassword() {
                     <label className="label">
                         Old Password
                     </label>
-
                     <div className="inputField">
-                        <input type="password" id="oldPass" className="input" onInput={handleInput} />
+                        <input type="password" id="oldPass" className="input" onInput={e => { handleOldPassInput(e) }} />
                     </div>
                 </div>
-
                 <div className="row">
                     <label className="label">
                         New Password
                     </label>
-
                     <div className="inputField">
-                        <input type="password" id="newPass" className="input" onInput={handleInput} />
+                        <input type="password" id="newPass" className="input" onInput={e => { handleNewPassInput(e) }} />
                     </div>
                 </div>
-
                 <div className="row">
                     <label className="label">
                         Confirm New Password
                     </label>
 
                     <div className="inputField">
-                        <input type="password" id="repeatPass" className="input" onInput={handleInput} />
+                        <input type="password" id="repeatPass" className="input" onInput={e => { handleRepeatPassInput(e) }} />
                     </div>
                 </div>
-
                 <button className="changeBtn" type="submit" disabled={(oldPass && newPass && repeatPass ? false : true)}>Change Password</button>
 
             </form>

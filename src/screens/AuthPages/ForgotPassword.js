@@ -13,10 +13,6 @@ export default function ForgotPassword() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  const handleInput = e => {
-    setEmail(e.target.value.trim());
-  }
-
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -43,7 +39,7 @@ export default function ForgotPassword() {
           {error && <div className={styles.errorMsg}>{error}</div>}
           {message && <div className={styles.successMsg}>{message}</div>}
           <form className={styles.form} onSubmit={handleSubmit}>
-            <input type="text" placeholder="Email address" onInput={(e) => handleInput(e)}/>
+            <input type="text" placeholder="Email address" onInput={(e) => setEmail(e.target.value.trim())}/>
             <button type="submit" disabled={(email ? false : true) || loading}>Send Login Link</button>
           </form>
           <Line/>

@@ -19,27 +19,11 @@ export default function EditProfile() {
 
     const dispatch = useDispatch();
 
-    const handleChangePhoto = e => {
-        setShow(true);
-    }
-
-    const handleNameInput = e => {
-        setName(e.target.value)
-    };
-
-    const handleUsernameInput = e => {
-        setUsername(e.target.value)
-    };
-
     const handleWebsiteInput = e => {
         let res = e.target.value.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
         if (res) {
             setWebsite(res);
         }
-    };
-
-    const handleBioInput = e => {
-        setBio(e.target.value);
     };
 
     const handleFileChange = (e) => {
@@ -88,7 +72,7 @@ export default function EditProfile() {
             {success && <div className={styles.success}>{success}</div>}
             <div className={styles.user}>
                 <img src={user.profilePhoto ? user.profilePhoto : "images/icons/user.png"} alt="avatar" className={styles.userIcon} onClick={(e) => handleChangePhoto(e)} />
-                <h5>{user.username} <br /> <span className={styles.changePhoto} onClick={(e) => handleChangePhoto(e)}>Change Profile Photo</span></h5>
+                <h5>{user.username} <br /> <span className={styles.changePhoto} onClick={(e) => setShow(true)}>Change Profile Photo</span></h5>
             </div>
 
             <div className={styles.row}>
@@ -96,7 +80,7 @@ export default function EditProfile() {
                     Name
                 </label>
                 <div className={styles.inputField}>
-                    <input id="name" className={styles.input} placeholder={user.name} onInput={e => handleNameInput(e)} />
+                    <input id="name" className={styles.input} placeholder={user.name} onInput={e => setName(e.target.value.trim())} />
                     <p className={styles.text}>Help people discover your account by using the name you're known by: either your full name, nickname, or business name.</p>
                 </div>
             </div>
@@ -107,7 +91,7 @@ export default function EditProfile() {
                 </label>
 
                 <div className={styles.inputField}>
-                    <input onInput={e => handleUsernameInput(e)} id="username" className={styles.input} placeholder={user.username} />
+                    <input onInput={e => setUsername(e.target.value.trim())} id="username" className={styles.input} placeholder={user.username} />
                 </div>
             </div>
 
@@ -127,7 +111,7 @@ export default function EditProfile() {
                 </label>
 
                 <div className={styles.inputField}>
-                    <textarea id="bio" onInput={e => handleBioInput(e)} className={styles.textarea} />
+                    <textarea id="bio" onInput={e => setBio(e.target.value.trim())} className={styles.textarea} />
                 </div>
             </div>
 

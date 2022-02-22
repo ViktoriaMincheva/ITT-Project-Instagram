@@ -51,24 +51,6 @@ export default function RegisterCard(props) {
         setLoading(false);
     };
 
-
-    const handleEmailInput = e => {
-        setEmail(e.target.value.trim())
-    };
-
-    const handleNameInput = e => {
-        setName(e.target.value.trim())
-    };
-
-    const handleUsernameInput = e => {
-        setUsername(e.target.value.trim())
-    };
-
-    const handlePasswordInput = e => {
-        setPass(e.target.value.trim())
-    };
-
-
     return (
         <>
             <section className={styles.formContainer}>
@@ -78,10 +60,10 @@ export default function RegisterCard(props) {
                                 <Line />
                 <form onSubmit={handleSubmit}>
                     {error && <div className={styles.errMsg}>{error}</div>}
-                    <input className={styles.input} id="email" type="text" placeholder="Mobile Number or Email" onInput={(e) => handleEmailInput(e)} />
-                    <input className={styles.input} id="fullName" type="text" placeholder="Full name" onInput={(e) => handleNameInput(e)} />
-                    <input className={styles.input} id="username" type="text" placeholder="Username" onInput={(e) => handleUsernameInput(e)} />
-                    <input className={styles.input} type="password" id="pass" placeholder="Password" onInput={(e) => handlePasswordInput(e)} />
+                    <input className={styles.input} id="email" type="text" placeholder="Mobile Number or Email" onInput={(e) => setEmail(e.target.value.trim())} />
+                    <input className={styles.input} id="fullName" type="text" placeholder="Full name" onInput={(e) => setName(e.target.value.trim())} />
+                    <input className={styles.input} id="username" type="text" placeholder="Username" onInput={(e) => setUsername(e.target.value.trim())} />
+                    <input className={styles.input} type="password" id="pass" placeholder="Password" onInput={(e) => setPass(e.target.value.trim())} />
                     <button type="submit" className={styles.button} title="Next" disabled={((email && fullName && username && pass) ? false : true) || loading}>Register</button>
 
                     <StyledRegtext>By signing up, you agree to our <strong>Terms</strong>. Learn how we collect, use and share your data in our <strong>Data Policy</strong> and how we use cookies and similar technology in our <strong>Cookies Policy</strong> .</StyledRegtext>

@@ -1,8 +1,8 @@
 import React from 'react';
-import Slideshow from '../components/SlideShowComponent';
-import LoginCard from '../components/LoginCard';
-import Footer from '../components/Footer';
-import styles from '../styles/login-register.module.css';
+import Slideshow from './SlideShowComponent';
+import LoginCard from './LoginCard';
+import Footer from '../../components/Footer';
+import styles from './Login-Register.module.css';
 
 export default function LoginPage() {
     return (

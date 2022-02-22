@@ -1,8 +1,8 @@
+import styled from "@emotion/styled";
 import HomeAsideHeader from "./HomeAsideHeader";
 import ProfileSuggestion from "./ProfileSuggestion";
-import styled from "@emotion/styled";
-import Footer from "../components/Footer"
-import styles from "../styles/home-aside-section.module.css"
+import Footer from "../../components/Footer"
+import styles from "./HomeAsideSection.module.css"
 
 export default function HomeAsideSection() {
 

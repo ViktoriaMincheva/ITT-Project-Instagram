@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "../styles/Inbox.module.css";
+import styles from "./Inbox.module.css";
 
 export default function InboxMsg(props) {
   return (

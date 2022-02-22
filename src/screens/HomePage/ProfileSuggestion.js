@@ -1,4 +1,4 @@
-import styles from "../styles/suggestion.module.css"
+import styles from "./ProfileSuggestion.module.css"
 
 export default function ProfileSuggestion(props) {
 

@@ -1,12 +1,12 @@
-import styled from "@emotion/styled";
 import { useState } from "react";
-import styles from "../styles/login-register.module.css"
+import { GetTheApp } from "./GetTheApp";
+import { useAuth } from '../../database/AuthContext'
+import { useNavigate } from "react-router-dom";
+import styled from "@emotion/styled";
+import styles from "./Login-Register.module.css"
 import Line from "./HorizontalLine";
 import AccountCheckBox from "./AccountCheckBox";
-import { GetTheApp } from "./GetTheApp";
-import Footer from "./Footer";
-import { useAuth } from '../contexts/AuthContext'
-import { useNavigate } from "react-router-dom";
+import Footer from "../../components/Footer";
 
 export default function RegisterCard(props) {
     
@@ -71,7 +71,7 @@ export default function RegisterCard(props) {
     return (
         <>
             <section style={{marginTop:12}} className={styles.formContainer}>
-                <img className={styles.logo} src="logo.png" alt="Instagram" width="160px" />
+                <img className={styles.logo} src="../images/logo.png" alt="Instagram" width="160px" />
 
                 <StyledHeading>Sign up to see photos and videos from your friends.</StyledHeading>
                                 <Line />

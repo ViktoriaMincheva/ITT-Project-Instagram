@@ -1,15 +1,15 @@
 import { useState } from "react";
-import styles from "../styles/login-register.module.css";
+import styles from "./Login-Register.module.css";
 import AccountCheckBox from "./AccountCheckBox";
 import { GetTheApp } from "./GetTheApp";
 import Line from "./HorizontalLine";
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../../database/AuthContext';
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { loginAction } from "../redux/actions/userActions";
+import { useDispatch} from 'react-redux';
+import { loginAction } from "../../redux/actions/userActions";
 import { doc, getFirestore, getDoc } from "firebase/firestore";
-import { loadPosts } from "../redux/actions/allPostsActions";
+import { loadPosts } from "../../redux/actions/allPostsActions";
 
 
 export default function LoginCard(props) {
@@ -61,7 +61,7 @@ export default function LoginCard(props) {
     return (
         <div>
             <section className={styles.formContainer}>
-                <img className={styles.logo} src="logo.png" alt="Instagram" width="160px" />
+                <img className={styles.logo} src="../images/logo.png" alt="Instagram" width="160px" />
 
                 <form onSubmit={handleSubmit}>
                     {error && <div>{error}</div>}

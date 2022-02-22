@@ -15,10 +15,6 @@ export function GetTheApp() {
         flex-direction: row;
 
     `
-    const StyledParagraph = styled.p`
-        color: #262626;
-        font-size: 14px;
-    `
     return (
         <StyledContainer>
             <p>Get the app</p>

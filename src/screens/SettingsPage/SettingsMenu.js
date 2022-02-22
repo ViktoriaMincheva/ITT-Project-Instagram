@@ -1,7 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import styles from "../styles/settings-menu.module.css"
-
-
+import styles from "./SettingsMenu.module.css"
 
 export default function SettingsMenu() {
 
@@ -19,7 +17,7 @@ let location = useLocation();
             </ul>
 
             <div className={styles.logoContainer}>
-                <img className={styles.metaLogo} src="Meta-logo.png" alt="meta"/>
+                <img className={styles.metaLogo} src="../images/Meta-logo.png" alt="meta"/>
             </div>
         </div>
     )

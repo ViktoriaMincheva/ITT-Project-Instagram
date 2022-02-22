@@ -1,4 +1,4 @@
-import styles from "../styles/postPreview.module.css"
+import styles from "./styles/postPreview.module.css"
 import { useRef, useState } from "react"
 
 export default function PostPreview(props) {

@@ -1,10 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import "../styles/InfoModal.css";
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { addPostAction } from './../redux/actions/userActions';
 import { newPostAddedAction } from '../redux/actions/allPostsActions';
+import "./styles/InfoModal.css";
 
 
 export default function ImageUpload() {
@@ -57,17 +57,17 @@ export default function ImageUpload() {
                 <>
                     {imagePicked ? 
                         <input type="text" placeholder='Add description...' onChange={handleDescription} className="descContainer"/> 
-                    : 
-                    <>
-                        <img src="../create-add.png" alt="add"/>
-                        <p>Upload photos and videos here</p>
-                    </>
+                        : 
+                        <>
+                            <img src="../images/create-add.png" alt="add"/>
+                            <p>Upload photos and videos here</p>
+                        </>
                     }
                     <input type="file" placeholder='Select From Computer' onChange={handleFileUploaded} className="chooseFileCont"/>
                     {imagePicked ? 
-                    <button type="submit" className='submitUpload' onClick={handleSubmit}>Upload</button> 
-                    :
-                    <></>
+                        <button type="submit" className='submitUpload' onClick={handleSubmit}>Upload</button> 
+                        :
+                        <></>
                     }
                 </>
             }

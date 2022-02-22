@@ -3,21 +3,21 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import ErrorPage from "./screens/ErrorPage";
-import RegisterPage from "./screens/RegisterPage";
-import MyProfile from "./screens/MyProfile";
-import Home from "./screens/Home";
+import ErrorPage from "./screens/ErrorPage/ErrorPage";
+import LoginPage from "./screens/AuthPages/LoginPage";
+import RegisterPage from "./screens/AuthPages/RegisterPage";
+import Home from "./screens/HomePage/Home";
 import Header from "./components/Header";
-import Inbox from "./screens/Inbox";
-import ExplorePage from "./screens/ExplorePage";
-import LoginPage from "./screens/LoginPage";
-import SettingsMenu from "./components/SettingsMenu";
-import EditProfile from "./components/EditProfile";
-import ChangePassword from "./components/ChangePassword";
-import { AuthProvider } from "./contexts/AuthContext";
+import MyProfile from "./screens/Profiles/LoggedUserProfile";
+import Inbox from "./screens/InboxPage/Inbox";
+import ExplorePage from "./screens/ExplorePage/ExplorePage";
+import SettingsMenu from "./screens/SettingsPage/SettingsMenu";
+import EditProfile from "./screens/SettingsPage/EditProfile";
+import ChangePassword from "./screens/SettingsPage/ChangePassword";
+import { AuthProvider } from "./database/AuthContext";
 import PrivateRoute from './components/PrivateRoute';
-import ForgotPassword from './components/ForgotPassword';
-import UserProfile from "./screens/UserProfile";
+import ForgotPassword from './screens/AuthPages/ForgotPassword';
+import UserProfile from "./screens/Profiles/UserProfile";
 
 function App() {
   return (

@@ -1,6 +1,5 @@
-import RegisterCard from '../components/RegisterCard';
-import styles from '../styles/login-register.module.css';
-
+import styles from './Login-Register.module.css';
+import RegisterCard from './RegisterCard';
 
 export default function RegisterPage(){
 

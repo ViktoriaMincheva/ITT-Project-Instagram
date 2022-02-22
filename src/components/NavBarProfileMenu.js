@@ -1,15 +1,15 @@
 import * as React from 'react';
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { useAuth } from '../database/AuthContext';
+import { logoutAction } from '../redux/actions/userActions';
+import { useDispatch } from "react-redux"
+import { Link, useNavigate } from 'react-router-dom';
+import styles from "./styles/Header.module.css";
+import stylesMenu from "./styles/NavBarProfileMenu.module.css";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
-import styles from "../styles/Header.module.css";
-import stylesMenu from "../styles/NavBarProfileMenu.module.css";
-import { Link, useNavigate } from 'react-router-dom';
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
-import { useAuth } from './../contexts/AuthContext';
-import { logoutAction } from '../redux/actions/userActions';
-import { useDispatch } from "react-redux"
 
 export default function NavBarProfileMenu() {
     let location = useLocation();

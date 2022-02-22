@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import EmojiPicker from "emoji-picker-react";
+import React from "react";
 import { useState } from "react";
+import EmojiPicker from "emoji-picker-react";
 import styled from "@emotion/styled";
 
 export default function AddComment(props) {

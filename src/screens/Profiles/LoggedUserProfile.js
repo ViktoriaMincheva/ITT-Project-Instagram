@@ -1,11 +1,9 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import InfoModal from "../components/InfoModal.js";
-import styles from "../styles/Profile.module.css";
 import React from "react";
-import PostPreview from "../components/PostPreview.js";
+import { useState } from "react";
 import { useSelector } from 'react-redux';
+import styles from "./LoggedUserProfile.module.css";
+import InfoModal from "../../components/InfoModal";
+import PostPreview from "../../components/PostPreview.js";
 
 export default function MyProfile() {
 
@@ -73,19 +71,19 @@ export default function MyProfile() {
 
                 <div className={styles.PostsNavigation}>
                     <div className={styles.NavigationTab}>
-                        <img src="images/icons/posts-grid.png" alt="grid icon" />
+                        <img src="../images/icons/posts-grid.png" alt="grid icon" />
                         <p>POSTS</p>
                     </div>
                     <div className={`${styles.NavigationTab} ${styles.noBorder}`}>
-                        <img src="images/icons/videos.png" alt="grid icon" />
+                        <img src="../images/icons/videos.png" alt="grid icon" />
                         <p>VIDEOS</p>
                     </div>
                     <div className={`${styles.NavigationTab} ${styles.noBorder}`}>
-                        <img src="images/icons/saved-grid.png" alt="grid icon" />
+                        <img src="../images/icons/saved-grid.png" alt="grid icon" />
                         <p>SAVED</p>
                     </div>
                     <div className={`${styles.NavigationTab} ${styles.noBorder}`}>
-                        <img src="images/icons/tagged.png" alt="grid icon" />
+                        <img src="../images/icons/tagged.png" alt="grid icon" />
                         <p>TAGGED</p>
                     </div>
                 </div>
@@ -93,7 +91,7 @@ export default function MyProfile() {
                 <div className={styles.MediaContainer}>
                     {
                         user.posts.map((post) => (
-                            <PostPreview key={post.id} src={post.content} alt="post photo" likeCount={post.likes.length} commentCount={post.comments.length} />
+                            <PostPreview key={post.postID} src={post.content} alt="post photo" likeCount={post.likes.length} commentCount={post.comments.length} />
                         ))
                     }
                 </div>

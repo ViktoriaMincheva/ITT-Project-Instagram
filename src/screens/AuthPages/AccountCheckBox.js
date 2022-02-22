@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styles from "../styles/account-check-box.module.css"
+import styles from "./AccountCheckBox.module.css"
 
 export default function AccountCheckBox(props) {
 

@@ -1,11 +1,11 @@
+import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import InfoModal from "../components/InfoModal.js";
-import styles from "../styles/Profile.module.css";
-import React from "react";
-import PostPreview from "../components/PostPreview.js";
+import { useParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import styles from "./LoggedUserProfile.module.css";
+import InfoModal from "../../components/InfoModal.js";
+import PostPreview from "../../components/PostPreview.js";
 
 export default function UserProfile() {
 

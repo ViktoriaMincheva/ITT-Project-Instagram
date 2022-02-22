@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import React from "react";
-import styles from "../styles/Header.module.css";
-import Modal from "./Modal.js";
+import styles from "./styles/Header.module.css";
 import NavBarProfileMenu from "./NavBarProfileMenu";
 import NotificationMenu from "./NotificationMenu";
 import ImageUpload from "./ImageUpload";
+import Modal from "./Modal.js";
 
 export default function Header() {
 
@@ -21,7 +21,7 @@ export default function Header() {
     <header className={styles.Header}>
       <div className={styles.HeaderContainer}>
         <Link to="/">
-          <img src="../ig-logo.png" alt="Instagram" style={{"paddingTop":"12px" }}/>
+          <img src="../images/ig-logo.png" alt="Instagram" style={{"paddingTop":"12px" }}/>
         </Link>
 
         <div className={styles.InputContainer}>

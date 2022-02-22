@@ -1,10 +1,11 @@
-import styles from "../styles/edit-profile.module.css"
 import { useState } from "react";
-import Modal from "./Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { changeBioAction, changeNameAction, changeProfilePhotoAction, changeUserNameAction, changeWebsiteAction } from "../redux/actions/userActions";
-export default function EditProfile() {
+import { changeBioAction, changeNameAction, changeProfilePhotoAction, changeUserNameAction, changeWebsiteAction } from "../../redux/actions/userActions";
+import styles from "./EditProfile.module.css"
+import Modal from "../../components/Modal";
 
+
+export default function EditProfile() {
 
     const [show, setShow] = useState(false);
     const user = useSelector(state => state.userData);

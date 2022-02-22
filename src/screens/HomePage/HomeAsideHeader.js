@@ -1,10 +1,9 @@
-import styles from "../styles/home-aside-header.module.css"
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { logoutAction } from '../redux/actions/userActions';
-import { useAuth } from './../contexts/AuthContext';
+import { logoutAction } from '../../redux/actions/userActions';
+import { useAuth } from '../../database/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
-
+import styles from "./HomeAsideHeader.module.css"
 
 
 export default function HomeAsideHeader(props) {

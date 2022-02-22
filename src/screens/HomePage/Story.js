@@ -1,4 +1,4 @@
-import styles from "../styles/story.module.css"
+import styles from "./Story.module.css"
 
 export default function Story(props) {
 

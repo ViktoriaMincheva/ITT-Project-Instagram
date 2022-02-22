@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+
 export default function NotificationItem(props) {
 
     const StyledContainer = styled.div`

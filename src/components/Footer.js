@@ -2,7 +2,6 @@ import styled from "@emotion/styled"
 
 export default function Footer(props) {
 
-
     const StyledLink = styled.a`
         text-decoration: none;
         color: #8e8e8e;

@@ -1,8 +1,8 @@
-import InboxMsg from "../components/InboxMsg";
-import styles from "../styles/Inbox.module.css";
 import { useState, useEffect } from 'react';
-import InfoModal from "../components/InfoModal";
 import EmojiPicker from "emoji-picker-react";
+import styles from "./Inbox.module.css";
+import InboxMsg from "./InboxMsg";
+import InfoModal from "../../components/InfoModal";
 
 export default function Inbox() {
     const [clickedUser, setClickedUser] = useState(false);

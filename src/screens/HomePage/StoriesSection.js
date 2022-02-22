@@ -1,22 +1,10 @@
-
 import { Carousel } from "@trendyol-js/react-carousel"
-import { useEffect } from "react"
-import "../styles/stories-section.css"
+import "./StoriesSection.css"
 import Story from "./Story"
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 
 export default function StoriesSection () {
-
-    // const getStories = () => {
-    //     fetch("https://api.thecatapi.com/v1/images/search?limit=5&page=10&order=Desc")
-    //     .then(resp => resp.json())
-    //     .then(data=> console.log(data))
-    // }
-
-    // useEffect(() => {
-    //     getStories();
-    // }, []);
 
     return (
         <Carousel infinite={false} leftArrow={<ArrowCircleLeftIcon color="action" />} rightArrow={<ArrowCircleRightIcon color="action" />} show={7} slide={3} swipeOn={false} className="stories-section">

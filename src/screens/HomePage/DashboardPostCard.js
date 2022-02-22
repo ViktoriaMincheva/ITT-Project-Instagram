@@ -1,6 +1,6 @@
-import "../styles/dashboard-post.css"
-import AddComment from "./AddComment"
 import { useNavigate } from "react-router-dom"
+import "./DashboardPostCard.css"
+import AddComment from "../../components/AddComment"
 
 export default function DashboardPost(props) {
     const navigate = useNavigate();

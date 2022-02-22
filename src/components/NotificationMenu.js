@@ -1,10 +1,9 @@
 import * as React from 'react';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import styles from "../styles/Header.module.css";
-import stylesNotifications from "../styles/NotificationMenu.module.css";
-import NotificationItem from './NotificationItem';
 import { useState } from "react";
+import styles from "./styles/Header.module.css";
+import stylesNotifications from "./styles/NotificationMenu.module.css";
+import Menu from '@mui/material/Menu';
+import NotificationItem from './NotificationItem';
 
 export default function NotificationMenu() {
     const [anchorEl, setAnchorEl] = useState(null);

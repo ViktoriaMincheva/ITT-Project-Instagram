@@ -1,6 +1,5 @@
 import { Fade } from 'react-slideshow-image';
 
-
 export default function Slideshow() {
 
     const images = [
@@ -15,10 +14,10 @@ export default function Slideshow() {
         <>
             <section className="slideshow-container">
                 <img id="login-slideshow"
-                    src="login-slideshow.png"
+                    src="../images/login-slideshow.png"
                     alt="login"
                 />
-{/* 
+            {/* 
                 <div className="slide-container">
                     <Fade arrows={false} duration={500}>
                         <div className="each-fade">

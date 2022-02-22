@@ -1,8 +1,7 @@
-import "../styles/changePass.css";
-import { Link } from "react-router-dom";
-import { EmailAuthProvider, getAuth } from 'firebase/auth';
-import { useAuth } from './../contexts/AuthContext';
+import { useAuth } from '../../database/AuthContext';
 import { useState } from "react";
+import { EmailAuthProvider, getAuth } from 'firebase/auth';
+import "./ChangePassword.css";
 
 export default function ChangePassword() {
     const auth = getAuth();

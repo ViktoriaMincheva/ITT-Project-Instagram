@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import DashboardPost from "../components/DashboardPostCard";
-import HomeAsideSection from "../components/HomeAsideSection";
-import StoriesSection from "../components/StoriesSection";
-import styles from "../styles/homepage.module.css"
+import { useSelector } from "react-redux";
+import styles from "./Home.module.css"
+import DashboardPost from "./DashboardPostCard";
+import HomeAsideSection from "./HomeAsideSection";
+import StoriesSection from "./StoriesSection";
 
 
 export default function Home() {

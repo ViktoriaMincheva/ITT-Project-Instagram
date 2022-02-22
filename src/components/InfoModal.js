@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
+import React, { useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
-import "../styles/InfoModal.css";
+import "./styles/InfoModal.css";
 
 export default function Modal (props) {
   const closeOnEscapeKeyDown = (e) => {

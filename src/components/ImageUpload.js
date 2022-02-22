@@ -4,6 +4,7 @@ import "../styles/InfoModal.css";
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { addPostAction } from './../redux/actions/userActions';
+import { newPostAddedAction } from '../redux/actions/allPostsActions';
 
 
 export default function ImageUpload() {
@@ -41,6 +42,7 @@ export default function ImageUpload() {
             desc : desc
         }
         dispatch(addPostAction(obj));
+        dispatch(newPostAddedAction(obj));
         setUploadSuccess(true);
     }
 

@@ -1,4 +1,5 @@
 export const LOAD_POSTS = "LOAD_POSTS";
+export const NEW_POST_ADDED = "NEW_POST_ADDED";
 
 export const loadPosts = () => {
 
@@ -12,3 +13,9 @@ export const loadPosts = () => {
     }
 };
 
+export const newPostAddedAction = post => {
+    return{
+        type: NEW_POST_ADDED,
+        payload: post
+    }
+}

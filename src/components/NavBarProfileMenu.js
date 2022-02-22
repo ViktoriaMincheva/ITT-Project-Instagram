@@ -45,7 +45,7 @@ export default function NavBarProfileMenu() {
     return (
         <>
             <div onClick={handleClick}>
-                <img src="images/icons/profile.png" alt="profile pic" className={location.pathname === "/my-profile" ? styles.headerIconClicked : styles.headerIcon}/>
+                <img src="../images/icons/profile.png" alt="profile pic" className={location.pathname === "/my-profile" ? styles.headerIconClicked : styles.headerIcon}/>
             </div>
             {/* border ? styles.headerIconClicked : styles.headerIcon */}
             <Menu
@@ -94,23 +94,23 @@ export default function NavBarProfileMenu() {
             >
                 <Link to="/my-profile" style={{ textDecoration: 'none' }}>
                     <MenuItem className={stylesMenu.MenuItem}>
-                        <img src="images/icons/profile-2.png" alt="profile icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Profile</p>
+                        <img src="../images/icons/profile-2.png" alt="profile icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Profile</p>
                     </MenuItem>
                 </Link>
                 {/* TODO: change links */}
                 <Link to="/my-profile" style={{ textDecoration: 'none' }}>
                     <MenuItem className={stylesMenu.MenuItem}>
-                        <img src="images/icons/non-saved.png" alt="saved icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Saved</p>
+                        <img src="../images/icons/non-saved.png" alt="saved icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Saved</p>
                     </MenuItem>
                 </Link>
                 <Link to="/edit" style={{ textDecoration: 'none' }}>
                     <MenuItem className={stylesMenu.MenuItem}>
-                        <img src="images/icons/settings.png" alt=" icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Settings</p>
+                        <img src="../images/icons/settings.png" alt=" icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Settings</p>
                     </MenuItem>
                 </Link>
                 <Link to="/my-profile" style={{ textDecoration: 'none' }}>
                     <MenuItem className={stylesMenu.MenuItem}>
-                        <img src="images/icons/switch.png" alt=" icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Switch accounts</p>
+                        <img src="../images/icons/switch.png" alt=" icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Switch accounts</p>
                     </MenuItem>
                 </Link>
                 <Divider sx={{ borderBottomWidth: 1.5}} />

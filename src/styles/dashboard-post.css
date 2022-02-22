@@ -16,7 +16,6 @@
 .user-info {
     display: flex;
     align-items: center;
-
 }
 
 .user-icon {
@@ -24,6 +23,11 @@
     height: 38px;
     margin: 10px;
     border-radius: 50%;
+    cursor: pointer;
+}
+
+.user-icon > h4 {
+    cursor: pointer;
 }
 
 .icons {

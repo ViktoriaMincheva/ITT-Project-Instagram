@@ -6,7 +6,6 @@ export const loadPosts = () => {
         fetch("postss.json")
         .then(resp => resp.json())
         .then(data => {
-            console.log(data);
             dispatch({type: LOAD_POSTS, payload: data.posts})
         })
     }

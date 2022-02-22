@@ -17,6 +17,7 @@ import ChangePassword from "./components/ChangePassword";
 import { AuthProvider } from "./contexts/AuthContext";
 import PrivateRoute from './components/PrivateRoute';
 import ForgotPassword from './components/ForgotPassword';
+import UserProfile from "./screens/UserProfile";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="/inbox" element={<><Header /> <Inbox /></>} />
             <Route path="/explore" element={<><Header /> <ExplorePage /></>} />
             <Route path="/my-profile" element={<><Header /> <MyProfile /></>} />
+            <Route path="/users/:pid" element={<><Header /> <UserProfile /></>} />
             <Route path="/edit" element={<><Header /> <div className="settings"> <SettingsMenu /> <EditProfile /> </div></>} />
             <Route path="/changepass" element={<><Header /> <div className="settings"> <SettingsMenu /> <ChangePassword /> </div></>} />
             <Route path="*" element={<><Header /> <ErrorPage /></>} />

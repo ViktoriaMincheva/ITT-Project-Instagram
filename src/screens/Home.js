@@ -9,7 +9,6 @@ import styles from "../styles/homepage.module.css"
 export default function Home() {
 
     const posts = useSelector(state => state.allPostsData.posts);
-    console.log(posts);
 
     return (
         <main className={styles.main}>
@@ -20,7 +19,7 @@ export default function Home() {
                 {
                     posts.map(post => (
                         <DashboardPost
-                        key={post.id}
+                        key={post.postID}
                         postUrl={post.content}
                         username={post.username}
                         icon={post.profilePhoto}

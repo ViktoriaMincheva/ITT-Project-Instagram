@@ -1,185 +1,189 @@
-﻿{
-  "users": [
-    {
-      "email" :  "kiehls@kh.bg",
-      "username": "kiehls.bg",
-      "followedBy": [
-        "emmett_sparling",
-        "maemae.ragdoll",
-        "space",
-        "ny_photos",
-        "travel",
-        "mmari"
-      ],
-      "following": [
-        "kiehls.bg",
-        "emmett_sparling",
-        "maemae.ragdoll",
-        "space",
-        "ny_photos",
-        "travel",
-        "mmari"
-      ],
-      "bio": "🗽Легендарна нюйоркска аптека и производител на висококачествени продукти в грижата за кожата и косата.\\n 📍Посетете ни в\\: @paradisecenter\\n www.kiehls.bg",
-      "publicProfile": "true",
-      "fullName": "Kiehl’s Bulgaria",
-      "profilePhoto": "https://i.pinimg.com/originals/14/22/57/142257a8656843940d63c8f5edc5fa57.png",
-      "businessAcc": {
-        "isBusinessAcc": "true",
-        "isVarified": "true",
-        "category": "Health/Beauty"
+{
+   "users":[
+      {
+         "email":"kiehls@kh.bg",
+         "username":"kiehls.bg",
+         "followedBy":[
+            "emmett_sparling",
+            "maemae.ragdoll",
+            "space",
+            "ny_photos",
+            "travel",
+            "mmari"
+         ],
+         "following":[
+            "kiehls.bg",
+            "emmett_sparling",
+            "maemae.ragdoll",
+            "space",
+            "ny_photos",
+            "travel",
+            "mmari"
+         ],
+         "bio":"🗽Легендарна нюйоркска аптека и производител на висококачествени продукти в грижата за кожата и косата.\n 📍Посетете ни в: @paradisecenter\n www.kiehls.bg",
+         "publicProfile":"true",
+         "fullName":"Kiehl’s Bulgaria",
+         "profilePhoto":"https://i.pinimg.com/originals/14/22/57/142257a8656843940d63c8f5edc5fa57.png",
+         "businessAcc":{
+            "isBusinessAcc":"true",
+            "isVarified":"true",
+            "category":"Health/Beauty"
+         },
+         "stories":[
+            
+         ]
       },
-      "stories": [
-      ]
-    },
-    {
-      "email" : "emmett@travel.com"
-      "username": "emmett_sparling",
-      "followedBy": [
-        "space",
-        "ny_photos",
-        "travel",
-        "mmari"
-      ],
-      "following": [
-        "space",
-        "ny_photos",
-        "travel",
-        "mmari"
-      ],
-      "bio": "Video, Photo, Storytelling\nWorkshop: @creatorcircuit \nPortraits: @emmett_portraits \nmanagement@emmettsparling.com\nPortfolio, Presets, Client Work👇🏼",
-      "publicProfile": "true",
-      "fullName": "EMMETT SPARLING 🌎 TRAVEL",
-      "profilePhoto": "https://artist-collector.com/img/m/2924.jpg",
-      "businessAcc": {
-        "isBusinessAcc": "true",
-        "isVarified": "true",
-        "category": "Photography and videography"
+      {
+         "email":"emmett@travel.com",
+         "username":"emmett_sparling",
+         "followedBy":[
+            "space",
+            "ny_photos",
+            "travel",
+            "mmari"
+         ],
+         "following":[
+            "space",
+            "ny_photos",
+            "travel",
+            "mmari"
+         ],
+         "bio":"Video, Photo, Storytelling\nWorkshop: @creatorcircuit \nPortraits: @emmett_portraits \nmanagement@emmettsparling.com\nPortfolio, Presets, Client Work👇🏼",
+         "publicProfile":"true",
+         "fullName":"EMMETT SPARLING 🌎 TRAVEL",
+         "profilePhoto":"https://artist-collector.com/img/m/2924.jpg",
+         "businessAcc":{
+            "isBusinessAcc":"true",
+            "isVarified":"true",
+            "category":"Photography and videography"
+         },
+         "stories":[
+            
+         ]
       },
-      "stories": [
-      ]
-    },
-    {
-      "email":  "ragodoll@ragdoll.com"
-      "username": "maemae.ragdoll",
-      "followedBy": [
-        "kiehls.bg",
-        "emmett_sparling",
-        "space"
-      ],
-      "following": [
-        "emmett_sparling",
-        "space"
-      ],
-      "bio": "maemae ฅ 2015.11.20 \nragdoll blue bicolour girl ฅ\n📍beautiful 🇨🇦",
-      "publicProfile": "true",
-      "fullName": "mm",
-      "profilePhoto": "https://excitedcats.com/wp-content/uploads/2020/09/Ragdoll-Cat.jpg",
-      "businessAcc": {
-        "isBusinessAcc": "false",
-        "isVarified": "false",
-        "category": ""
+      {
+         "email":"ragodoll@ragdoll.com",
+         "username":"maemae.ragdoll",
+         "followedBy":[
+            "kiehls.bg",
+            "emmett_sparling",
+            "space"
+         ],
+         "following":[
+            "emmett_sparling",
+            "space"
+         ],
+         "bio":"maemae ฅ 2015.11.20 \nragdoll blue bicolour girl ฅ\n📍beautiful 🇨🇦",
+         "publicProfile":"true",
+         "fullName":"mm",
+         "profilePhoto":"https://excitedcats.com/wp-content/uploads/2020/09/Ragdoll-Cat.jpg",
+         "businessAcc":{
+            "isBusinessAcc":"false",
+            "isVarified":"false",
+            "category":""
+         },
+         "stories":[
+            
+         ]
       },
-      "stories": [
-      ]
-    },
-    {
-      "email":  "spacespace@sp.com"
-      "username": "space",
-      "followedBy": [
-        "ny_photos",
-        "travel",
-        "mmari"
-      ],
-      "following": [
-        "emmett_sparling"
-      ],
-      "bio": "🚀 🌎 Exploring the universe and our home planet.\nwww.nasa.gov",
-      "publicProfile": "true",
-      "fullName": "Space",
-      "profilePhoto": "https://static01.nyt.com/images/2022/02/21/opinion/sunday/18shesol/18shesol-superJumbo.jpg",
-      "businessAcc": {
-        "isBusinessAcc": "true",
-        "isVarified": "true",
-        "category": "Space"
+      {
+         "email":"spacespace@sp.com",
+         "username":"space",
+         "followedBy":[
+            "ny_photos",
+            "travel",
+            "mmari"
+         ],
+         "following":[
+            "emmett_sparling"
+         ],
+         "bio":"🚀 🌎 Exploring the universe and our home planet.\nwww.nasa.gov",
+         "publicProfile":"true",
+         "fullName":"Space",
+         "profilePhoto":"https://static01.nyt.com/images/2022/02/21/opinion/sunday/18shesol/18shesol-superJumbo.jpg",
+         "businessAcc":{
+            "isBusinessAcc":"true",
+            "isVarified":"true",
+            "category":"Space"
+         },
+         "stories":[
+            
+         ]
       },
-      "stories": [
-
-      ]
-    },
-    {
-      "email": "newyork@times.com",
-      "username": "ny_photos",
-      "followedBy": [
-      ],
-      "following": [
-        "kiehls.bg",
-        "emmett_sparling",
-        "maemae.ragdoll",
-        "space",
-        "travel",
-        "mmari"
-      ],
-      "bio": "I don't like cities. But I like New York. Other places make me feel like a dork.” — Madonna",
-      "publicProfile": "true",
-      "fullName": "New York Photos",
-      "profilePhoto": "https://i.pinimg.com/280x280_RS/4d/99/0e/4d990ec0ce2312f614dd4bdc59dcc387.jpg",
-      "businessAcc": {
-        "isBusinessAcc": "false",
-        "isVarified": "false",
-        "category": ""
+      {
+         "email":"newyork@times.com",
+         "username":"ny_photos",
+         "followedBy":[
+            
+         ],
+         "following":[
+            "kiehls.bg",
+            "emmett_sparling",
+            "maemae.ragdoll",
+            "space",
+            "travel",
+            "mmari"
+         ],
+         "bio":"I don't like cities. But I like New York. Other places make me feel like a dork.” — Madonna",
+         "publicProfile":"true",
+         "fullName":"New York Photos",
+         "profilePhoto":"https://i.pinimg.com/280x280_RS/4d/99/0e/4d990ec0ce2312f614dd4bdc59dcc387.jpg",
+         "businessAcc":{
+            "isBusinessAcc":"false",
+            "isVarified":"false",
+            "category":""
+         },
+         "stories":[
+            
+         ]
       },
-      "stories": [
-
-      ]
-    },
-    {
-      "email": "travel@trtr.com",
-      "username": "travel",
-      "followedBy": [
-        "emmett_sparling"
-      ],
-      "following": [
-        "emmett_sparling"
-      ],
-      "bio": "Travel is the only thing you buy that makes you richer",
-      "publicProfile": "true",
-      "fullName": "Travel",
-      "profilePhoto": "https://i.pinimg.com/280x280_RS/ad/51/bf/ad51bf38a2efa5c31fa3da3647d32b13.jpg",
-      "businessAcc": {
-        "isBusinessAcc": "false",
-        "isVarified": "false",
-        "category": ""
+      {
+         "email":"travel@trtr.com",
+         "username":"travel",
+         "followedBy":[
+            "emmett_sparling"
+         ],
+         "following":[
+            "emmett_sparling"
+         ],
+         "bio":"Travel is the only thing you buy that makes you richer",
+         "publicProfile":"true",
+         "fullName":"Travel",
+         "profilePhoto":"https://i.pinimg.com/280x280_RS/ad/51/bf/ad51bf38a2efa5c31fa3da3647d32b13.jpg",
+         "businessAcc":{
+            "isBusinessAcc":"false",
+            "isVarified":"false",
+            "category":""
+         },
+         "stories":[
+            
+         ]
       },
-      "stories": [
-
-      ]
-    },
-    {
-      "email": "mmmm@mm.com",
-      "username": "mmari",
-      "followedBy": [
-        "emmett_sparling"
-      ],
-      "following": [
-        "emmett_sparling",
-        "maemae.ragdoll",
-        "space",
-        "ny_photos",
-        "travel"
-      ],
-      "bio": "Code is like humor. When you have to explain it, it’s bad",
-      "publicProfile": "true",
-      "fullName": "mmari",
-      "profilePhoto": "https://i.pinimg.com/280x280_RS/29/e0/88/29e08837c138f2ec9589cd85cebe36be.jpg",
-      "businessAcc": {
-        "isBusinessAcc": "false",
-        "isVarified": "false",
-        "category": ""
-      },
-      "stories": [
-
-      ]
-    }
-  ]
+      {
+         "email":"mmmm@mm.com",
+         "username":"mmari",
+         "followedBy":[
+            "emmett_sparling"
+         ],
+         "following":[
+            "emmett_sparling",
+            "maemae.ragdoll",
+            "space",
+            "ny_photos",
+            "travel"
+         ],
+         "bio":"Code is like humor. When you have to explain it, it’s bad",
+         "publicProfile":"true",
+         "fullName":"mmari",
+         "profilePhoto":"https://i.pinimg.com/280x280_RS/29/e0/88/29e08837c138f2ec9589cd85cebe36be.jpg",
+         "businessAcc":{
+            "isBusinessAcc":"false",
+            "isVarified":"false",
+            "category":""
+         },
+         "stories":[
+            
+         ]
+      }
+   ]
 }

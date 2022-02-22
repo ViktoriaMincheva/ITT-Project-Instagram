@@ -57,7 +57,7 @@ export default function ImageUpload() {
                         <input type="text" placeholder='Add description...' onChange={handleDescription} className="descContainer"/> 
                     : 
                     <>
-                        <img src="create-add.png" alt="add"/>
+                        <img src="../create-add.png" alt="add"/>
                         <p>Upload photos and videos here</p>
                     </>
                     }

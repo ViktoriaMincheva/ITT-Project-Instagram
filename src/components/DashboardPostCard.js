@@ -1,13 +1,19 @@
 import "../styles/dashboard-post.css"
 import AddComment from "./AddComment"
+import { useNavigate } from "react-router-dom"
 
 export default function DashboardPost(props) {
-    
+    const navigate = useNavigate();
+
+    const handleShowUserProfile = () => {
+        navigate(`/users/${props.username}`, { replace: true });
+    }
+
     return (
         <div className="dash-post" id={props.postID}>
             <div className="user-info">
-                <img className="user-icon" src={props.icon} alt="icon"/>
-                <h4>{props.username}</h4>
+                <img className="user-icon" src={props.icon} alt="icon" onClick={handleShowUserProfile}/>
+                <h4 onClick={handleShowUserProfile}>{props.username}</h4>
                 
             </div>
 

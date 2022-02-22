@@ -8,15 +8,15 @@ import { useState } from "react";
 
 export default function NotificationMenu() {
     const [anchorEl, setAnchorEl] = useState(null);
-    const [imageSrc, setImageSrc] = useState("images/icons/heart.png");
+    const [imageSrc, setImageSrc] = useState("../images/icons/heart.png");
     const open = Boolean(anchorEl);
     
     const handleClick = (event) => {
-        setImageSrc("images/icons/heart-notifications.png");
+        setImageSrc("../images/icons/heart-notifications.png");
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
-        setImageSrc("images/icons/heart.png");
+        setImageSrc("../images/icons/heart.png");
         setAnchorEl(null);
     };
 

@@ -11,21 +11,25 @@ export default function ImageUpload() {
     const [imagePicked, setImagePicked] = useState(false);
     const [desc, setDesc] = useState("");
     const [photo, setPhoto] = useState("");
-    const [uploadSuccess, setUploadSuccess] = useState(false);
+    const [uploadSuccess, setUploadSuccess] = useState(false); 
     const current = new Date();
     const user = useSelector(state =>  state.userData);
     const dispatch = useDispatch();
 
     const handleFileUploaded = (e) => {
-        setImagePicked(true);
         const { files } = e.target;
-        const localImageUrl = URL.createObjectURL(files[0]);
-        setPhoto(localImageUrl);
-    }
+        if (files[0].type !== "image/png" || files[0].type !== "image/jpeg" || files[0].type !== "image/jpg") {
+            const localImageUrl = URL.createObjectURL(files[0]);
+            setImagePicked(true);
+            setPhoto(localImageUrl);
+        } else {
+            setUploadSuccess(false);
+        }    
+    };
     
     const handleDescription = (e) => {
         setDesc(e.target.value.trim())
-    }
+    };
     
     const handleSubmit = e => {
         e.preventDefault();
@@ -44,7 +48,7 @@ export default function ImageUpload() {
         dispatch(addPostAction(obj));
         dispatch(newPostAddedAction(obj));
         setUploadSuccess(true);
-    }
+    };
 
     return (
         <div className="modal-body">

@@ -17,14 +17,14 @@ export default function RegisterCard(props) {
     line-height: 20px;
     margin: 0 40px 10px;
     text-align: center;
-    `
+    `;
     
     const StyledRegtext = styled.p`
     color: #8e8e8e;
     font-size: 12px;
     line-height: 16px;
     text-align: center;
-    `
+    `;
     
     const [email, setEmail] = useState("");
     const [fullName, setName] = useState("");
@@ -49,24 +49,25 @@ export default function RegisterCard(props) {
         }
 
         setLoading(false);
-    }
+    };
 
-    const handleInput = e => {
-        let id = e.target.id;
-        switch (id) {
-            case "email":
-                setEmail(e.target.value.trim())
-                break;
-            case "fullName":
-                setName(e.target.value.trim());
-                break;
-            case "username":
-                setUsername(e.target.value.trim());
-                break;
-            case "pass":
-                setPass(e.target.value.trim());
-        }
-    }
+
+    const handleEmailInput = e => {
+        setEmail(e.target.value.trim())
+    };
+
+    const handleNameInput = e => {
+        setName(e.target.value.trim())
+    };
+
+    const handleUsernameInput = e => {
+        setUsername(e.target.value.trim())
+    };
+
+    const handlePasswordInput = e => {
+        setPass(e.target.value.trim())
+    };
+
 
     return (
         <>
@@ -77,10 +78,10 @@ export default function RegisterCard(props) {
                                 <Line />
                 <form onSubmit={handleSubmit}>
                     {error && <div className={styles.errMsg}>{error}</div>}
-                    <input className={styles.input} id="email" type="text" placeholder="Mobile Number or Email" onInput={(e) => handleInput(e)} />
-                    <input className={styles.input} id="fullName" type="text" placeholder="Full name" onInput={(e) => handleInput(e)} />
-                    <input className={styles.input} id="username" type="text" placeholder="Username" onInput={(e) => handleInput(e)} />
-                    <input className={styles.input} type="password" id="pass" placeholder="Password" onInput={(e) => handleInput(e)} />
+                    <input className={styles.input} id="email" type="text" placeholder="Mobile Number or Email" onInput={(e) => handleEmailInput(e)} />
+                    <input className={styles.input} id="fullName" type="text" placeholder="Full name" onInput={(e) => handleNameInput(e)} />
+                    <input className={styles.input} id="username" type="text" placeholder="Username" onInput={(e) => handleUsernameInput(e)} />
+                    <input className={styles.input} type="password" id="pass" placeholder="Password" onInput={(e) => handlePasswordInput(e)} />
                     <button type="submit" className={styles.button} title="Next" disabled={((email && fullName && username && pass) ? false : true) || loading}>Register</button>
 
                     <StyledRegtext>By signing up, you agree to our <strong>Terms</strong>. Learn how we collect, use and share your data in our <strong>Data Policy</strong> and how we use cookies and similar technology in our <strong>Cookies Policy</strong> .</StyledRegtext>
@@ -93,4 +94,5 @@ export default function RegisterCard(props) {
             <Footer className={styles.footer}/>
         </>
     )
+
 }

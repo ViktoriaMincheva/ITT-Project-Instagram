@@ -22,16 +22,12 @@ export default function LoginCard(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const handleInput = e => {
-        let inputID = e.target.id;
-        switch (inputID) {
-            case "email":
-                setEmail(e.target.value.trim());
-                break;
-            case "pass":
-                setPass(e.target.value.trim());
-        }
-    }
+    const handleEmailInput = e => {
+        setEmail(e.target.value.trim())
+    };
+    const handlePasswordInput = e => {
+        setPass(e.target.value.trim())
+    };
 
     let userCredential;
     let user;
@@ -65,8 +61,8 @@ export default function LoginCard(props) {
 
                 <form onSubmit={handleSubmit}>
                     {error && <div>{error}</div>}
-                    <input className={styles.input} id="email" type="text" placeholder="Email" onInput={(e) => handleInput(e)} />
-                    <input type="password" className={styles.input} id="pass" placeholder="Password" onInput={(e) => handleInput(e)} />
+                    <input className={styles.input} type="text" placeholder="Email" onInput={(e) => handleEmailInput(e)} />
+                    <input type="password" className={styles.input} placeholder="Password" onInput={(e) => handlePasswordInput(e)} />
                     <button type="submit" className={styles.button} disabled={((email && pass) ? false : true) || loading}>Log In</button>
                 </form>
 

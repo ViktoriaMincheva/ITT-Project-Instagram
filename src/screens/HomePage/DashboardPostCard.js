@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
-import "./DashboardPostCard.css"
 import AddComment from "../../components/AddComment"
 import { useSelector } from "react-redux";
+import "./DashboardPostCard.css"
 
 export default function DashboardPost(props) {
     const navigate = useNavigate();
@@ -13,7 +13,7 @@ export default function DashboardPost(props) {
 
     let postComment = [];
     props.postComments.map(comment => {
-        users.map(user => {
+        return users.map(user => {
             if (user.id === comment.ownerID) {
                 postComment.push(
                     <div className="commentContent" key={comment.commentID}>

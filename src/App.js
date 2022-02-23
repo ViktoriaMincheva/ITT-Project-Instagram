@@ -28,12 +28,12 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/" element={<PrivateRoute/>} >
+          <Route exact path="/" element={<PrivateRoute/>} >
             <Route path="/" element={<><Header /> <Home /></> } />
             <Route path="/inbox" element={<><Header /> <Inbox /></>} />
             <Route path="/explore" element={<><Header /> <ExplorePage /></>} />
             <Route path="/my-profile" element={<><Header /> <MyProfile /></>} />
-            <Route path="/users/:pid" element={<><Header /> <UserProfile /></>} />
+            <Route exact path="/users/:pid" element={<><Header /> <UserProfile /></>} />
             <Route path="/edit" element={<><Header /> <div className="settings"> <SettingsMenu /> <EditProfile /> </div></>} />
             <Route path="/changepass" element={<><Header /> <div className="settings"> <SettingsMenu /> <ChangePassword /> </div></>} />
             <Route path="*" element={<><Header /> <ErrorPage /></>} />

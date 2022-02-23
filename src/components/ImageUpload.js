@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { addPostAction } from './../redux/actions/userActions';
@@ -36,7 +36,7 @@ export default function ImageUpload() {
 
         const obj = {
             postID : uuidv4(),
-            username : user.name,
+            username : user.username,
             profilePhoto : user.profilePhoto,
             isVideo : false,
             likes : [],

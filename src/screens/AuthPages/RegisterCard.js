@@ -37,11 +37,11 @@ export default function RegisterCard(props) {
 
     async function handleSubmit(event) {
         event.preventDefault();
-
+        let user;
         try {
             setError("");
             setLoading(true);
-            await signup(email, pass, fullName, username);
+            user = await signup(email, pass, fullName, username);
             navigate("/login", { replace: true });
         } catch (err) {
             setError(err.message.slice(9));

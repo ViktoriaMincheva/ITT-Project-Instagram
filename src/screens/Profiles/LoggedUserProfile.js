@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import styles from "./LoggedUserProfile.module.css";
@@ -8,6 +8,8 @@ import PostPreview from "../../components/PostPreview.js";
 
 export default function MyProfile() {
 
+    const allPosts = useSelector(state => state.allPostsData.posts);
+    const [userPosts, setUserPosts] = useState("");
     const [show, setShow] = useState(false);
     const [showFollowing, setShowFollowing] = useState(false);
     const user = useSelector(state => state.userData);
@@ -24,6 +26,15 @@ export default function MyProfile() {
     const handleOpenSettings = (e) => {
         navigate("/edit", { replace: true });
     }
+
+    useEffect( () => {
+        const posts = allPosts.filter((el) => {
+            return el.username === user.username
+        })
+        setTimeout(() => {
+            setUserPosts(posts);
+        }, 500)
+    }, [])
 
     return (
 
@@ -95,8 +106,9 @@ export default function MyProfile() {
 
                 <div className={styles.MediaContainer}>
                     {
-                        user.posts.map((post) => (
-                            <PostPreview key={post.postID} src={post.content} alt="post photo" likeCount={post.likes.length} commentCount={post.comments.length} />
+                        userPosts && 
+                        userPosts.map((post) => (
+                            <PostPreview key={post.postID} src={post.content} alt="post photo" likeCount={post.likes.length} commentCount={0} />
                         ))
                     }
                 </div>

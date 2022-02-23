@@ -10,9 +10,12 @@ import LoadingComponent from './../../components/LoadingComponent';
 
 export default function UserProfile() {
 
+    const allUsers = useSelector(state => state.users.users);
+    const allPosts = useSelector(state => state.allPostsData.posts);
+
     const [show, setShow] = useState(false);
     const [showFollowing, setShowFollowing] = useState(false);
-    const [userPosts, setPosts] = useState("");
+    const [userPosts, setUserPosts] = useState("");
     const [userData, setUserData] = useState("");
     const user = useSelector(state => state.userData);
     const params = useParams();
@@ -26,30 +29,15 @@ export default function UserProfile() {
     }
 
     useEffect( () => {
-        fetch("../postss.json")
-        .then(resp => resp.json())
-        .then(data => {
-            setTimeout(() => {
-                data = data.posts.filter((el) => {
-                    return el.username === params.pid;
-                })
-                setPosts(data);
-            }, 500);
+        const posts = allPosts.filter((el) => {
+            return el.username === params.pid
         })
-        .catch(err => {console.log(err.message)});
-
-        fetch("../users-data.json")
-        .then(resp => resp.json())
-        .then(data => {
-            setTimeout(() => {
-                data = data.users.filter((el) => {
-                    return el.username === params.pid;
-                })
-                setUserData(data[0])
-            }, 500)
+        setUserPosts(posts);
+        
+        const currentUser = allUsers.filter((user) => {
+            return user.username === params.pid
         })
-        .catch(err => {console.log(err.message)});
-
+        setUserData(currentUser[0]);
     }, [])
 
     return (

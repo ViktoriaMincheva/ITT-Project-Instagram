@@ -54,9 +54,7 @@ export default function DashboardPost(props) {
             </section>
 
             <div className="commentsContainer">
-                {postComment.map(e => (
-                    e
-                ))}
+                {postComment.map(e => (e))}
             </div>
 
             

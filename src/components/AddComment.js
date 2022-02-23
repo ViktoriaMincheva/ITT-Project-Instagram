@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
-import EmojiPicker from "emoji-picker-react";
-import styles from "./styles/AddComment.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { newCommentAddedAction } from "../redux/actions/commentsActions";
+import styles from "./styles/AddComment.module.css";
+import EmojiPicker from "emoji-picker-react";
 
 export default function AddComment(props) {
 
@@ -19,7 +19,6 @@ export default function AddComment(props) {
         setShowPicker(false);
     };
 
-    //TODO
     const handlePostComment = () => {
         let obj = {
             commentID: uuidv4(),
@@ -29,16 +28,17 @@ export default function AddComment(props) {
             likes: 0,
             timestamp: new Date().getHours() + "h"
         }
+        setInputStr('');
         dispatch(newCommentAddedAction(obj))
     }
 
     return (
         <div className={styles.container}>
             <div className={styles.inputContainer}>
-                    <img
-                    className="emoji-icon"
-                    src="https://icons.getbootstrap.com/assets/icons/emoji-smile.svg"
-                    onClick={() => setShowPicker(val => !val)} />
+                <img
+                className="emoji-icon"
+                src="https://icons.getbootstrap.com/assets/icons/emoji-smile.svg"
+                onClick={() => setShowPicker(val => !val)} />
 
                 <input 
                     className={styles.inputField}

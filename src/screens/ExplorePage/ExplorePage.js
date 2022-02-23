@@ -4,19 +4,24 @@ import PostPreview from '../../components/PostPreview';
 
 export default function ExplorePage(){
     const posts = useSelector(state => state.allPostsData.posts);
+    const comments = useSelector(state => state.comments.comments);
     
     return (
-        <>
-            <div className={styles.ExploreContainer}>
-                <div className={styles.MediaContainer}>
-                        {
-                            posts.map((post) => (
-                                <PostPreview key={Math.random()} src={post.content} alt="post photo" likeCount={post.likes.length} commentCount={post.comments.length} />
-                            ))
-                        }
-                </div>
-            
+        <div className={styles.ExploreContainer}>
+            <div className={styles.MediaContainer}>
+                    {
+                        posts.map((post) => {
+                            let postComments = [];
+                            {
+                            comments.map((comment) => {
+                                if (post.postID === comment.postID){
+                                    postComments.unshift(comment);
+                                }
+                            })}                               
+                            return (<PostPreview key={post.postID} src={post.content} alt="post photo" likeCount={post.likes.length} commentCount={postComments.length} />)
+                        })
+                    }
             </div>
-        </>
+        </div>
     )
 }

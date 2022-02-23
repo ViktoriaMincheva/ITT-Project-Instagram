@@ -2,6 +2,7 @@
     width: 100%;
     border-top: 1px solid lightgrey;
     height: 54px;
+    margin-top: 16px;
     box-sizing: border-box;
 }
 
@@ -9,12 +10,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 16px;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .inputContainer img {
-    margin: 20px;
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
 }
 
 .inputField {
@@ -30,8 +34,6 @@
     border: none;
     color: #0095f6;
     background-color: #fff;
-    margin-right: 16px;
-    margin-bottom: 12px;
     font-weight: 600;
     cursor: pointer;
 }

@@ -1,14 +1,21 @@
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom"
-import AddComment from "../../components/AddComment"
 import { useSelector } from "react-redux";
 import "./DashboardPostCard.css"
+import AddComment from "../../components/AddComment"
+import UserPostModal from "../../components/UserPostModal"
 
 export default function DashboardPost(props) {
     const navigate = useNavigate();
+    const [show, setShow] = useState(false);
     const users = useSelector(state => state.users.users);
 
     const handleShowUserProfile = () => {
         navigate(`/users/${props.username}`, { replace: true });
+    }
+
+    const handleOpenPostModal = () => {
+        setShow(true);
     }
 
     let postComment = [];
@@ -34,7 +41,7 @@ export default function DashboardPost(props) {
                 <h4 onClick={handleShowUserProfile}>{props.username}</h4>
             </div>
 
-            <img className="post-image" src={props.postUrl} alt="post" />
+            <img className="post-image" src={props.postUrl} alt="post" onClick={handleOpenPostModal}/>
 
             <section className="action-icons">
                 <div>
@@ -54,12 +61,17 @@ export default function DashboardPost(props) {
             </section>
 
             <div className="commentsContainer">
-                {postComment.map(e => (e))}
+                {postComment.map(e => e)}
             </div>
-
-            
-
             <AddComment postID={props.postID} />
+
+            <UserPostModal 
+                postImage={props.postUrl} 
+                postID={props.postID} 
+                postOwner={props.username} 
+                ownerImg={props.icon} 
+                postDesc={props.caption}
+                onClose={() => setShow(false)} show={show}/>
         </div>
     )
 }

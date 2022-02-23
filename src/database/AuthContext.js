@@ -31,7 +31,7 @@ export function AuthProvider({ children }) {
             profilePhoto: null,
             businessAcc: {
                 isBusinessAcc: false,
-                isVarified:false,
+                isVerified:false,
                 category: null
             }
            })

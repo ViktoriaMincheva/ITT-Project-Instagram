@@ -12,6 +12,7 @@ export default function UserProfile() {
 
     const allUsers = useSelector(state => state.users.users);
     const allPosts = useSelector(state => state.allPostsData.posts);
+    const comments = useSelector(state => state.comments.comments);
 
     const [show, setShow] = useState(false);
     const [showFollowing, setShowFollowing] = useState(false);
@@ -134,9 +135,26 @@ export default function UserProfile() {
 
                     <div className={styles.MediaContainer}>
                         {
-                            userPosts.map((post) => (
-                                <PostPreview key={post.postID} src={post.content} alt="post photo" likeCount={1} commentCount={1} />
-                            ))
+                           userPosts && 
+                           userPosts.map((post) => {
+                               let postComments = [];
+                               {
+                               comments.map((comment) => {
+                                   if (post.postID === comment.postID){
+                                       postComments.unshift(comment);
+                                   }
+                               })}
+                               return (<PostPreview 
+                                   key={post.postID}
+                                   postID={post.postID}
+                                   src={post.content}
+                                   username={post.username} 
+                                   icon={userData.profilePhoto}
+                                   caption={post.desc} 
+                                   alt="post photo" 
+                                   likeCount={post.likes.length} 
+                                   commentCount={postComments.length} />)
+                           })
                         }
                     </div>
                     

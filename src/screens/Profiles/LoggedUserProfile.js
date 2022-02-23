@@ -130,10 +130,6 @@ export default function MyProfile() {
                         <img src="../images/icons/saved-grid.png" alt="grid icon" />
                         <p>SAVED</p>
                     </div>
-                    <div className={`${styles.NavigationTab} ${styles.noBorder}`}>
-                        <img src="../images/icons/tagged.png" alt="grid icon" />
-                        <p>TAGGED</p>
-                    </div>
                 </div>
 
                 <div className={styles.MediaContainer}>
@@ -147,7 +143,16 @@ export default function MyProfile() {
                                     postComments.unshift(comment);
                                 }
                             })}
-                            return (<PostPreview key={post.postID} src={post.content} alt="post photo" likeCount={post.likes.length} commentCount={postComments.length} />)
+                            return (<PostPreview 
+                                key={post.postID}
+                                postID={post.postID}
+                                src={post.content}
+                                username={post.username} 
+                                icon={user.profilePhoto}
+                                caption={post.desc} 
+                                alt="post photo" 
+                                likeCount={post.likes.length} 
+                                commentCount={postComments.length} />)
                         })
                     }
                 </div>

@@ -45,7 +45,7 @@ export default function Modal (props) {
       })
     }
   });
-  console.log(postComment);
+  
 
   return ReactDOM.createPortal(
 
@@ -114,12 +114,12 @@ export default function Modal (props) {
                     <div className="post-actions">
                   
                       <div>
-                          <img className="icons" src="images/icons/heart.png" alt="heart" />
-                          <img className="icons" src="images/icons/comment.png" alt="comment" />
-                          <img className="icons" src="images/icons/inbox.png" alt="send"/>
+                          <img className="icons" src="../images/icons/heart.png" alt="heart" />
+                          <img className="icons" src="../images/icons/comment.png" alt="comment" />
+                          <img className="icons" src="../images/icons/inbox.png" alt="send"/>
                       </div>
 
-                      <img className="icons" src="images/icons/non-saved.png" alt="save" />
+                      <img className="icons" src="../images/icons/non-saved.png" alt="save" />
                     </div>
 
                     <div className="post-stats">

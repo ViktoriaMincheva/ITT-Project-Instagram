@@ -18,7 +18,16 @@ export default function ExplorePage(){
                                     postComments.unshift(comment);
                                 }
                             })}                               
-                            return (<PostPreview key={post.postID} src={post.content} alt="post photo" likeCount={post.likes.length} commentCount={postComments.length} />)
+                            return (<PostPreview 
+                                key={post.postID}
+                                postID={post.postID}
+                                src={post.content}
+                                username={post.username} 
+                                icon={post.profilePhoto}
+                                caption={post.desc} 
+                                alt="post photo" 
+                                likeCount={post.likes.length} 
+                                commentCount={postComments.length} />)
                         })
                     }
             </div>

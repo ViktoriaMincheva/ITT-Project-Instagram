@@ -7,6 +7,9 @@ import styles from "./Login-Register.module.css"
 import Line from "./HorizontalLine";
 import AccountCheckBox from "./AccountCheckBox";
 import Footer from "../../components/Footer";
+import { getFirestore } from 'firebase/firestore';
+import { getDoc } from 'firebase/firestore';
+import { doc } from 'firebase/firestore';
 
 export default function RegisterCard(props) {
     
@@ -38,15 +41,20 @@ export default function RegisterCard(props) {
     
     async function handleSubmit(event) {
         event.preventDefault();
-
+        let user;
         try {
             setError("");
             setLoading(true);
-            await signup(email, pass, fullName, username);
+            user = await signup(email, pass, fullName, username);
+            console.log(user);
             navigate("/login", { replace: true });
         } catch (err) {
             setError(err.message.slice(9));
         }
+
+        const db = getFirestore();
+        const docRef = doc(db, "users");
+        const docSnap = await getDoc(docRef);
 
         setLoading(false);
     };

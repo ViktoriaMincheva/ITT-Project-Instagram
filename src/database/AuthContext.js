@@ -32,12 +32,7 @@ export function AuthProvider({ children }) {
                 isBusinessAcc: false,
                 isVarified:false,
                 category: null
-            },
-            stories:[
-            ],
-            posts : [
-
-            ]
+            }
 
            })
        })

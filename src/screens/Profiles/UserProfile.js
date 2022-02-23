@@ -15,9 +15,12 @@ export default function UserProfile() {
 
     const [show, setShow] = useState(false);
     const [showFollowing, setShowFollowing] = useState(false);
+
     const [userPosts, setUserPosts] = useState("");
     const [userData, setUserData] = useState("");
-    const user = useSelector(state => state.userData);
+    const [following, setFollowing] = useState([]);
+    const [followedBy, setFollowedBy] = useState([]);
+    // const user = useSelector(state => state.userData);
     const params = useParams();
 
     const handleShowFollowers = (e) => {
@@ -38,6 +41,32 @@ export default function UserProfile() {
             return user.username === params.pid
         })
         setUserData(currentUser[0]);
+
+        let followers = [];
+        currentUser[0].followedBy.map((follower) => {
+            return allUsers.filter((user) => {
+                if(user.id === follower){
+                    followers.push(user);
+                }
+            })
+        })
+
+        setTimeout(() => {
+            setFollowedBy(followers);
+        }, 500)
+
+        let followingUsers = [];
+        currentUser[0].following.map((follower) => {
+            return allUsers.filter((user) => {
+                if(user.id === follower){
+                    followingUsers.push(user);
+                }
+            })
+        })
+
+        setTimeout(() => {
+            setFollowing(followingUsers);
+        }, 500)
     }, [])
 
     return (
@@ -58,28 +87,28 @@ export default function UserProfile() {
                             </div>
                             <div className={styles.ProfileActivity}>
                                 <p><span>{userPosts.length}</span> posts</p>
-                                <p onClick={(e) => handleShowFollowers(e)}><span>{userData.followedBy.length}</span> followers</p>
-                                <p onClick={(e) => handleShowFollowers(e)}><span>{userData.following.length}</span> following</p>
+                                <p onClick={(e) => handleShowFollowers(e)}><span>{followedBy.length}</span> followers</p>
+                                <p onClick={(e) => handleShowFollowing(e)}><span>{following.length}</span> following</p>
                             </div>
                             <InfoModal title="Followers" onClose={() => setShow(false)} show={show}>
                                 {
-                                    userData.followedBy.map((follower) => 
+                                    followedBy.map((follower) => 
                                         (
                                             <div key={Math.random()}>
-                                                {/* <img src={follower.profilePic} alt="picture" className={styles.followIcon}/> */}
-                                                <p>{follower}</p>
+                                                <img src={follower.profilePhoto} alt="picture" className={styles.followIcon}/>
+                                                <p>{follower.username}</p>
                                             </div>
                                         )
                                     )
                                 }
                             </InfoModal>
-                            <InfoModal title="Following" onClose={() => setShowFollowing(false)} showFollowing={showFollowing}>
+                            <InfoModal title="Following" onClose={() => setShowFollowing(false)} show={showFollowing}>
                                 {
-                                    user.following.map((follow) => 
+                                    following.map((follow) => 
                                         (
                                             <div key={Math.random()}>
-                                                {/* <img src={follow.profilePic} alt="picture" className={styles.followIcon}/> */}
-                                                <p>{follow}</p>
+                                                <img src={follow.profilePhoto} alt="picture" className={styles.followIcon}/>
+                                                <p>{follow.username}</p>
                                             </div>
                                         )
                                     )

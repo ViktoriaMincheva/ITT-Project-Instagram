@@ -9,9 +9,14 @@ import PostPreview from "../../components/PostPreview.js";
 export default function MyProfile() {
 
     const allPosts = useSelector(state => state.allPostsData.posts);
+    const comments = useSelector(state => state.comments.comments);
+    const users = useSelector(state => state.users.users);
+
     const [userPosts, setUserPosts] = useState("");
     const [show, setShow] = useState(false);
     const [showFollowing, setShowFollowing] = useState(false);
+    const [following, setFollowing] = useState([]);
+    const [followedBy, setFollowedBy] = useState([]);
     const user = useSelector(state => state.userData);
     const navigate = useNavigate();
 
@@ -34,6 +39,33 @@ export default function MyProfile() {
         setTimeout(() => {
             setUserPosts(posts);
         }, 500)
+
+        let followers = [];
+        user.followedBy.map((follower) => {
+            return users.filter((user) => {
+                if(user.id === follower){
+                    followers.push(user);
+                }
+            })
+        })
+
+        setTimeout(() => {
+            setFollowedBy(followers);
+        }, 500)
+
+        let followingUsers = [];
+        user.following.map((follower) => {
+            return users.filter((user) => {
+                if(user.id === follower){
+                    followingUsers.push(user);
+                }
+            })
+        })
+
+        setTimeout(() => {
+            setFollowing(followingUsers);
+        }, 500)
+
     }, [])
 
     return (
@@ -51,27 +83,27 @@ export default function MyProfile() {
                         </div>
                         <div className={styles.ProfileActivity}>
                             <p><span>{user.posts.length}</span> posts</p>
-                            <p onClick={(e) => handleShowFollowers(e)}><span>{user.followedBy.length}</span> followers</p>
-                            <p onClick={(e) => handleShowFollowers(e)}><span>{user.following.length}</span> following</p>
+                            <p onClick={(e) => handleShowFollowers(e)}><span>{followedBy.length}</span> followers</p>
+                            <p onClick={(e) => handleShowFollowing(e)}><span>{following.length}</span> following</p>
                         </div>
                         <InfoModal title="Followers" onClose={() => setShow(false)} show={show}>
                             {
-                                user.followedBy.map((follower) => 
+                                followedBy.map((follower) => 
                                     (
                                         <div key={follower.id}>
-                                            <img src={follower.profilePic} alt="picture" className={styles.followIcon}/>
+                                            <img src={follower.profilePhoto} alt="picture" className={styles.followIcon}/>
                                             <p>{follower.username}</p>
                                         </div>
                                     )
                                 )
                             }
                         </InfoModal>
-                        <InfoModal title="Following" onClose={() => setShowFollowing(false)} showFollowing={showFollowing}>
+                        <InfoModal title="Following" onClose={() => setShowFollowing(false)} show={showFollowing}>
                             {
-                                user.following.map((follow) => 
+                                following.map((follow) => 
                                     (
                                         <div key={follow.id}>
-                                            <img src={follow.profilePic} alt="picture" className={styles.followIcon}/>
+                                            <img src={follow.profilePhoto} alt="picture" className={styles.followIcon}/>
                                             <p>{follow.username}</p>
                                         </div>
                                     )
@@ -107,9 +139,16 @@ export default function MyProfile() {
                 <div className={styles.MediaContainer}>
                     {
                         userPosts && 
-                        userPosts.map((post) => (
-                            <PostPreview key={post.postID} src={post.content} alt="post photo" likeCount={post.likes.length} commentCount={0} />
-                        ))
+                        userPosts.map((post) => {
+                            let postComments = [];
+                            {
+                            comments.map((comment) => {
+                                if (post.postID === comment.postID){
+                                    postComments.unshift(comment);
+                                }
+                            })}
+                            return (<PostPreview key={post.postID} src={post.content} alt="post photo" likeCount={post.likes.length} commentCount={postComments.length} />)
+                        })
                     }
                 </div>
             

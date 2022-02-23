@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import "./styles/InfoModal.css";
 
-export default function Modal (props) {
+export default function InfoModal (props) {
   const closeOnEscapeKeyDown = (e) => {
     if ((e.charCode || e.keyCode) === 27) {
       props.onClose();
@@ -26,7 +26,7 @@ export default function Modal (props) {
     >
       <div className="modal" onClick={props.onClose}>
         <div className={`closeX button`} onClick={props.onClose}>
-          <img src="images/icons/close-modal.png" alt="Close" className="closeIcon"/>
+          <img src="../images/icons/close-modal.png" alt="Close" className="closeIcon"/>
         </div>
         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
           <div className="modal-header">

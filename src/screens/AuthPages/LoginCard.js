@@ -6,7 +6,7 @@ import Line from "./HorizontalLine";
 import { useAuth } from '../../database/AuthContext';
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { loginAction } from "../../redux/actions/userActions";
 import { doc, getFirestore, getDoc } from "firebase/firestore";
 import { loadPosts } from "../../redux/actions/allPostsActions";
@@ -43,7 +43,7 @@ export default function LoginCard(props) {
         const db = getFirestore();
         const docRef = doc(db, "users", `${uid}`);
         const docSnap = await getDoc(docRef);
-       
+
         user = docSnap.data();
         dispatch(loginAction(user))
         dispatch(loadPosts());

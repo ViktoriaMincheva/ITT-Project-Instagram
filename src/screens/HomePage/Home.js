@@ -1,18 +1,16 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./Home.module.css"
 import DashboardPost from "./DashboardPostCard";
 import HomeAsideSection from "./HomeAsideSection";
 import StoriesSection from "./StoriesSection";
+import { useEffect } from "react";
+import { loadPosts } from "../../redux/actions/allPostsActions";
 
 
 export default function Home() {
 
     const posts = useSelector(state => state.allPostsData.posts);
     const comments = useSelector(state => state.comments.comments);
-    console.log(comments);
-    // const users = useSelector(state => state.users.users);
-
-
 
     return (
         <main className={styles.main}>

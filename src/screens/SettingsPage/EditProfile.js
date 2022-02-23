@@ -19,27 +19,15 @@ export default function EditProfile() {
 
     const dispatch = useDispatch();
 
-    const handleChangePhoto = e => {
-        setShow(true);
-    }
-
-    const handleNameInput = e => {
-        
-    };
-
-    const handleUsernameInput = e => {
-        
-    };
+    // const handleChangePhoto = e => {
+    //     setShow(true);
+    // }
 
     const handleWebsiteInput = e => {
         let res = e.target.value.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
         if (res) {
             setWebsite(res);
         }
-    };
-
-    const handleBioInput = e => {
-        setBio(e.target.value);
     };
 
     const handleFileChange = (e) => {

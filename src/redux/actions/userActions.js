@@ -9,11 +9,11 @@ export const UNFOLLOW_USER = "UNFOLLOW_USER";
 export const ADD_POST = "ADD_POST";
 export const ADD_STORY = "ADD_STORY";
 export const LIKE_POST = "LIKE_POST";
+export const UNLIKE_POST = "UNLIKE_POST";
 export const SAVE_POST = "SAVE_POST";
 export const UNSAVE_POST = "UNSAVE_POST";
 export const CHANGE_BIO = "CHANGE_BIO";
 export const CHANGE_WEBSITE = "CHANGE_WEBSITE";
-// export const CHANGE_GENDER = "CHANGE_GENDER"; ??????????????????????????????
 
 
 export const loginAction = user => {
@@ -29,6 +29,7 @@ export const loginAction = user => {
             followedBy: user.followedBy,
             posts: user.posts,
             savedPosts: user.savedPosts,
+            likedPosts: user.likedPosts,
             notifications: user.notifications,
             bio: user.bio
         }
@@ -108,6 +109,14 @@ export const likePostAction = postID => {
         payload: postID
     }
 };
+
+export const unlikePostAction = postID => {
+    return {
+        type: UNLIKE_POST,
+        payload: postID
+    }
+};
+
 
 export const changeBioAction = bio => {
     return{

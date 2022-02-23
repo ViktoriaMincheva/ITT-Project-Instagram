@@ -1,7 +1,7 @@
 export const LOAD_STORIES = "LOAD_STORIES";
 export const NEW_STORY_ADDED = "NEW_STORY_ADDED";
 
-export const loadStorieasAction = () => {
+export const loadStoriesAction = () => {
     return function(dispatch) {
         fetch("../stories.json")
         .then(resp=> resp.json())

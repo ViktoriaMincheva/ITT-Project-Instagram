@@ -74,7 +74,7 @@ export default function MyProfile() {
             
                 <div className={styles.ProfileInfo}>
                     <div className={styles.ProfileImageContainer}>
-                        <img src={user.profilePhoto} alt="profile picture" className={styles.ProfileImage} />
+                        <img src={user.profilePhoto != null ? user.profilePhoto : "../images/icons/user.png"} alt="profile picture" className={styles.ProfileImage} />
                     </div>
                     <div className={styles.MainInfoContainer}>
                         <div className={styles.ProfileNecessities}>

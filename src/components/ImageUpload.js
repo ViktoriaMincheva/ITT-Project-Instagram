@@ -37,6 +37,7 @@ export default function ImageUpload() {
         const obj = {
             postID : uuidv4(),
             username : user.username,
+            usernameID: user.id,
             profilePhoto : user.profilePhoto,
             isVideo : false,
             likes : [],

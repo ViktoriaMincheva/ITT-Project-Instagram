@@ -1,4 +1,5 @@
-import { LOGIN, LOGOUT, CHANGE_NAME, CHANGE_PROFILE_PHOTO, FOLLOW_USER, UNFOLLOW_USER, SAVE_POST, ADD_STORY, UNSAVE_POST, ADD_POST, CHANGE_BIO, CHANGE_WEBSITE, CHANGE_USERNAME } from "../actions/userActions";
+import { act } from "react-dom/test-utils";
+import { LOGIN, LOGOUT, CHANGE_NAME, CHANGE_PROFILE_PHOTO, FOLLOW_USER, UNFOLLOW_USER, SAVE_POST, ADD_STORY, UNSAVE_POST, ADD_POST, UNLIKE_POST, CHANGE_BIO, CHANGE_WEBSITE, CHANGE_USERNAME, LIKE_POST } from "../actions/userActions";
 
 
 const INITIAL_STATE = {
@@ -12,8 +13,8 @@ const INITIAL_STATE = {
     savedPosts: [],
     likedPosts: [],
     followedBy: [],
-    posts:[],
-    stories:[],
+    posts: [],
+    stories: [],
     following: [],
     bio: null,
     website: null
@@ -34,6 +35,7 @@ export const userReducer = (state = INITIAL_STATE, action) => {
                 following: action.payload.following,
                 followedBy: action.payload.followedBy,
                 posts: action.payload.posts,
+                likedPosts: action.payload.likedPosts,
                 stories: action.payload.stories,
                 savedPosts: action.payload.savedPosts,
                 notifications: action.payload.notifications,
@@ -76,7 +78,7 @@ export const userReducer = (state = INITIAL_STATE, action) => {
                 website: action.payload
             };
         case FOLLOW_USER:
-            const usersFollowing = state.following.some(u => u.id === action.payload.id)
+            const usersFollowing = state.following.some(uid => uid === action.payload)
                 ?
                 state.following
                 :
@@ -88,42 +90,59 @@ export const userReducer = (state = INITIAL_STATE, action) => {
         case UNFOLLOW_USER:
             return {
                 ...state,
-                following: state.following.filter(u => {
-                    return u.id !== action.payload
+                following: state.following.filter(uid => {
+                    return uid !== action.payload
                 })
             };
-            case CHANGE_USERNAME:
-                return {
-                    ...state,
-                    username: action.payload
-                };
-            case ADD_POST:
-                return{
-                    ...state,
-                    posts: [action.payload, ...state.posts]
-                };
-            case ADD_STORY:
-                return{
-                    ...state, 
-                    stories: [...state.stories, action.payload]
-                }
-            case SAVE_POST:
-                    const saved = state.savedPosts.some(post => post.id === action.payload.id)
-                    ?
-                    state.savedPosts
-                    :
-                    [...state.savedPosts, action.payload]
-                    return {
-                        ...state,
-                        savedPosts: saved
-                    };
-            case UNSAVE_POST:
-                return{
-                    ...state, 
-                    savedPosts: state.savedPosts.filter(post => {
-                        return post.id !== action.payload
-                    })
-                };
+        case CHANGE_USERNAME:
+            return {
+                ...state,
+                username: action.payload
+            };
+        case ADD_POST:
+            return {
+                ...state,
+                posts: [action.payload, ...state.posts]
+            };
+        case ADD_STORY:
+            return {
+                ...state,
+                stories: [...state.stories, action.payload]
+            }
+        case SAVE_POST:
+            const saved = state.savedPosts.some(id => id === action.payload)
+                ?
+                state.savedPosts
+                :
+                [...state.savedPosts, action.payload]
+            return {
+                ...state,
+                savedPosts: saved
+            };
+        case UNSAVE_POST:
+            return {
+                ...state,
+                savedPosts: state.savedPosts.filter(id => {
+                    return id !== action.payload
+                })
+            };
+        case LIKE_POST:
+            const liked = state.likedPosts.some(id => id === action.payload)
+                ?
+                state.likedPosts
+                :
+                [...state.likedPosts, action.payload]
+            return {
+                ...state,
+                likedPosts: liked
+            };
+        case UNLIKE_POST:
+            return {
+                ...state,
+                likedPosts: state.likedPosts.filter(id => {
+                    return id !== action.payload
+                })
+            };
         default:
             return state;
     }

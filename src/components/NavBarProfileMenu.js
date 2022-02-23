@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useAuth } from '../database/AuthContext';
 import { logoutAction } from '../redux/actions/userActions';
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from 'react-router-dom';
 import styles from "./styles/Header.module.css";
 import stylesMenu from "./styles/NavBarProfileMenu.module.css";
@@ -19,8 +19,9 @@ export default function NavBarProfileMenu() {
     const { currentUser, logout } = useAuth();
     const [error, setError] = useState("");
     const navigate = useNavigate();
-
     const dispatch = useDispatch();
+
+    const loggedUser = useSelector(state => state.userData);
 
     const handleClick = (event) => {
         setBorder(true);
@@ -45,7 +46,7 @@ export default function NavBarProfileMenu() {
     return (
         <>
             <div onClick={handleClick}>
-                <img src="../images/icons/profile.png" alt="profile pic" className={location.pathname === "/my-profile" ? styles.headerIconClicked : styles.headerIcon}/>
+                <img src={loggedUser.profilePhoto != null ? loggedUser.profilePhoto : "../images/icons/profile.png"} alt="profile pic" className={location.pathname === "/my-profile" ? styles.headerIconClicked : styles.userHeaderIcon}/>
             </div>
             {/* border ? styles.headerIconClicked : styles.headerIcon */}
             <Menu

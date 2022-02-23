@@ -1,15 +1,11 @@
 import { useNavigate } from "react-router-dom"
-import "./DashboardPostCard.css"
 import AddComment from "../../components/AddComment"
-import { useDispatch, useSelector } from "react-redux";
-import { savePostAction } from "../../redux/actions/userActions";
+import { useSelector } from "react-redux";
+import "./DashboardPostCard.css"
 
 export default function DashboardPost(props) {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const users = useSelector(state => state.users.users);
-    const loggedUser = useSelector(state => state.userData);
-    console.log(loggedUser);
 
     const handleShowUserProfile = () => {
         navigate(`/users/${props.username}`, { replace: true });
@@ -17,7 +13,7 @@ export default function DashboardPost(props) {
 
     let postComment = [];
     props.postComments.map(comment => {
-        users.map(user => {
+        return users.map(user => {
             if (user.id === comment.ownerID) {
                 postComment.push(
                     <div className="commentContent" key={comment.commentID}>
@@ -30,10 +26,6 @@ export default function DashboardPost(props) {
             }
         })
     });
-
-    const handleSavePost = postID => {
-        dispatch(savePostAction(postID))
-    }
 
     return (
         <div className="dash-post" id={props.postID}>
@@ -48,7 +40,7 @@ export default function DashboardPost(props) {
                 <div>
                     <img className="icons" src="images/icons/heart.png" alt="heart" />
                     <img className="icons" src="images/icons/comment.png" alt="comment" />
-                    <img className="icons" src="images/icons/inbox.png" alt="send" onClick={e => handleSavePost(props.postID)}/>
+                    <img className="icons" src="images/icons/inbox.png" alt="send"/>
                 </div>
 
                 <img className="icons" src="images/icons/non-saved.png" alt="save" />

@@ -1,13 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, navigation } from 'react-router-dom';
 import styles from "./styles/Searchbar.module.css";
+import { useSelector } from 'react-redux';
 
 
 export default function Searchbar() {
+    const users = useSelector(state => state.users.users);
+
     const [searchedData, setSearchedData] = useState("");
-    const [users, setUsers] = useState([]);
     const [suggestions, setSuggestions] = useState([]);
     const navigate = useNavigate();
 
@@ -18,28 +19,14 @@ export default function Searchbar() {
                     return user.username.toLowerCase().includes(text.toLowerCase());
             })
         }
-
         setSuggestions(matches);
         setSearchedData(text);
     }
 
     const handleClick = (username) => {
         setSuggestions([]);
-        setSearchedData("");
         navigate(`/users/${username}`, { replace: true });
     }
-
-    useEffect (() => {
-        fetch("../users-data.json")
-        .then(resp => resp.json())
-        .then(data => {
-            setTimeout(() => {
-                setUsers(data.users)
-            }, 500)
-        })
-        .catch(err => {console.log(err.message)});
-    }, [])
-
 
     return (
         <div className={styles.SearchContainer}>

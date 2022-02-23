@@ -1,12 +1,17 @@
+import { collection, collectionGroup, getDoc, getDocs, getFirestore, query } from "firebase/firestore";
+
 export const LOAD_USERS = "LOAD_USERS";
 
-export const loadUsers = () => {
-
-    return function(dispatch) {
-        fetch("../users-data.json")
-        .then(resp => resp.json())
-        .then(data => {
-            dispatch({type: LOAD_USERS, payload: data.users})
-        })
-    }
+export const loadUsers = () => async (dispatch) => {
+    const db = getFirestore();
+    let users = [];
+    const querySnapshot = await getDocs(collection(db, "users"));
+    querySnapshot.forEach(doc => users.push(doc.data()));
+    dispatch({type: LOAD_USERS, payload: users});
 };
+
+
+    
+   
+
+

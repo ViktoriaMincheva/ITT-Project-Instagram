@@ -3,8 +3,7 @@ import styles from "./Home.module.css"
 import DashboardPost from "./DashboardPostCard";
 import HomeAsideSection from "./HomeAsideSection";
 import StoriesSection from "./StoriesSection";
-import { useEffect } from "react";
-import { loadPosts } from "../../redux/actions/allPostsActions";
+
 
 
 export default function Home() {

@@ -3,8 +3,17 @@ import "./StoriesSection.css"
 import Story from "./Story"
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import { useSelector } from "react-redux";
+
 
 export default function StoriesSection () {
+
+    const stories = useSelector(state => state.allStories.stories);
+    const users = useSelector(state => state.users.users);
+
+    
+    console.log(stories);
+
 
     return (
         <Carousel infinite={false} leftArrow={<ArrowCircleLeftIcon color="action" />} rightArrow={<ArrowCircleRightIcon color="action" />} show={7} slide={3} swipeOn={false} className="stories-section">

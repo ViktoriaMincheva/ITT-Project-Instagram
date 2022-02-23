@@ -7,8 +7,6 @@ import styles from "./Login-Register.module.css"
 import Line from "./HorizontalLine";
 import AccountCheckBox from "./AccountCheckBox";
 import Footer from "../../components/Footer";
-import { useDispatch } from "react-redux";
-import { userRegisteredAction } from "../../redux/actions/allUsersActions";
 
 export default function RegisterCard(props) {
     
@@ -36,7 +34,6 @@ export default function RegisterCard(props) {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const dispatch = useDispatch();
 
     async function handleSubmit(event) {
         event.preventDefault();

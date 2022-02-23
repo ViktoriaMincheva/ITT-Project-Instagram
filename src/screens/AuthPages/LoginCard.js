@@ -12,6 +12,7 @@ import { doc, getFirestore, getDoc } from "firebase/firestore";
 import { loadPosts } from "../../redux/actions/allPostsActions";
 import { loadComments } from "../../redux/actions/commentsActions";
 import { loadUsers } from "../../redux/actions/allUsersActions";
+import { loadStorieasAction } from "../../redux/actions/allStoriesActions";
 
 
 export default function LoginCard(props) {
@@ -49,6 +50,7 @@ export default function LoginCard(props) {
         dispatch(loadPosts());
         dispatch(loadComments());
         dispatch(loadUsers());
+        dispatch(loadStorieasAction());
         setLoading(false);
     }
 

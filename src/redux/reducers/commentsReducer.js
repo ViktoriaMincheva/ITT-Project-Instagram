@@ -14,7 +14,7 @@ export const commentsProvider = (state = INITIAL_STATE, action) => {
         case NEW_COMMENT_ADDED:
             return {
                 ...state,
-                comments: [action.payload, ...state.comments]
+                comments: [...state.comments, action.payload]
             };
         default:
             return state;

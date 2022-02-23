@@ -24,13 +24,14 @@ export default function Home() {
                     posts.map(post => (
                         <DashboardPost
                         key={post.postID}
+                        postID={post.postID}
                         postUrl={post.content}
                         username={post.username}
                         icon={post.profilePhoto}
                         likes={post.likes.length}
                         caption={post.desc}
                         timestamp={post.timestamp}
-                        postComments={[]}
+                        postComments={comments.filter(com => com.postID === post.postID)}
                         />
                     ))
                 }

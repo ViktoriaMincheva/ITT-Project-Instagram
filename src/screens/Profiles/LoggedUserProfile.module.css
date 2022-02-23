@@ -121,3 +121,7 @@
 .followIcon {
     cursor: pointer;
 }
+
+.LoadingComponent {
+    margin-top: 200px;
+}

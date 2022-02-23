@@ -7,6 +7,7 @@ import NavBarProfileMenu from "./NavBarProfileMenu";
 import NotificationMenu from "./NotificationMenu";
 import ImageUpload from "./ImageUpload";
 import Modal from "./Modal.js";
+import Searchbar from './Searchbar';
 
 export default function Header() {
 
@@ -24,10 +25,7 @@ export default function Header() {
           <img src="../images/ig-logo.png" alt="Instagram" className={styles.igLogo}/>
         </Link>
 
-        <div className={styles.InputContainer}>
-          <img src="../images/icons/search-gray.png" alt="search" className={styles.inputIcon}/>
-          <input type="text" placeholder="Search" className={styles.SearchInput}/>
-        </div>
+        <Searchbar/>
 
         <div className={styles.IconsContainer}>
           <Link to="/">

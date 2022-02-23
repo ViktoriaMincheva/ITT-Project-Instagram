@@ -1,12 +1,18 @@
 import React from "react";
 import { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import EmojiPicker from "emoji-picker-react";
 import styles from "./styles/AddComment.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { newCommentAddedAction } from "../redux/actions/commentsActions";
 
 export default function AddComment(props) {
 
     const [inputStr, setInputStr] = useState('');
     const [showPicker, setShowPicker] = useState(false);
+    const dispatch = useDispatch();
+    const userID = useSelector(state => state.userData.id);
+
 
     const onEmojiClick = (event, emojiObject) => {
         setInputStr(prevInput => prevInput + emojiObject.emoji);
@@ -15,7 +21,15 @@ export default function AddComment(props) {
 
     //TODO
     const handlePostComment = () => {
-
+        let obj = {
+            commentID: uuidv4(),
+            ownerID: userID,
+            postID: props.postID,
+            content: inputStr,
+            likes: 0,
+            timestamp: new Date().getHours() + "h"
+        }
+        dispatch(newCommentAddedAction(obj))
     }
 
     return (

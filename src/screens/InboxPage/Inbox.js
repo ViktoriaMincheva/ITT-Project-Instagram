@@ -3,6 +3,7 @@ import EmojiPicker from "emoji-picker-react";
 import styles from "./Inbox.module.css";
 import InboxMsg from "./InboxMsg";
 import InfoModal from "../../components/InfoModal";
+import LoadingComponent from './../../components/LoadingComponent';
 
 export default function Inbox() {
     const [clickedUser, setClickedUser] = useState(false);
@@ -52,7 +53,7 @@ export default function Inbox() {
                     <InboxMsg username={"Username1"} lastMsg={"last message looooong message is this one"} time={"3w"}></InboxMsg>
                 </div>
             </div>
-            {!data ? <div>Loading...</div> : <>
+            {!data ? <div className={styles.LoadingComponent}><LoadingComponent /></div> : <>
                 <div className={styles.chatInfo}>
                     {
                         clickedUser ?

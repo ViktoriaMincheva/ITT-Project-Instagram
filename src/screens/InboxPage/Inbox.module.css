@@ -201,3 +201,11 @@
     outline: none;
     border: none;
 }
+.LoadingComponent {
+    width: 65%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}

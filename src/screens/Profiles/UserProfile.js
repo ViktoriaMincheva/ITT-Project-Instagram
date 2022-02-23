@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import styles from "./LoggedUserProfile.module.css";
 import InfoModal from "../../components/InfoModal.js";
 import PostPreview from "../../components/PostPreview.js";
+import LoadingComponent from './../../components/LoadingComponent';
 
 export default function UserProfile() {
 
@@ -54,7 +55,9 @@ export default function UserProfile() {
     return (
         <>
             {   !(userPosts && userData) ? 
-                <>Loading</> 
+                <div className={styles.LoadingComponent}>
+                    <LoadingComponent />
+                </div>
                 : 
                 <div className={styles.ProfileContainer}>
                     <div className={styles.ProfileInfo}>
@@ -115,7 +118,7 @@ export default function UserProfile() {
                     <div className={styles.MediaContainer}>
                         {
                             userPosts.map((post) => (
-                                <PostPreview key={post.postID} src={post.content} alt="post photo" likeCount={post.likes.length} commentCount={post.comments.length} />
+                                <PostPreview key={post.postID} src={post.content} alt="post photo" likeCount={1} commentCount={1} />
                             ))
                         }
                     </div>

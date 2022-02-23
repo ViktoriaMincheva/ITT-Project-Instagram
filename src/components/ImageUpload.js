@@ -64,7 +64,7 @@ export default function ImageUpload() {
                         <input type="text" placeholder='Add description...' onChange={handleDescription} className="descContainer"/> 
                         : 
                         <>
-                            <img src="../images/create-add.png" alt="add"/>
+                            <img src="../images/create-add.png" alt="add" className="modal-insta-upload-icons"/>
                             <p>Upload photos and videos here</p>
                         </>
                     }

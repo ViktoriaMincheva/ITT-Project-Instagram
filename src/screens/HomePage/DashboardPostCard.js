@@ -1,14 +1,19 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./DashboardPostCard.css"
 import AddComment from "../../components/AddComment"
 import UserPostModal from "../../components/UserPostModal"
+import { likePostAction, savePostAction, unlikePostAction, unSavePostAction } from '../../redux/actions/userActions';
 
 export default function DashboardPost(props) {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [show, setShow] = useState(false);
+
     const users = useSelector(state => state.users.users);
+    const likedPosts = useSelector(state => state.userData.likedPosts);
+    const savedPosts = useSelector(state => state.userData.savedPosts);
 
     const handleShowUserProfile = () => {
         navigate(`/users/${props.username}`, { replace: true });
@@ -34,6 +39,24 @@ export default function DashboardPost(props) {
         })
     });
 
+    const handleLikePost = postID => {
+        console.log(postID)
+        if (likedPosts.some(id => id === postID)) {
+            dispatch(unlikePostAction(postID))
+        } else {
+            dispatch(likePostAction(postID));
+        }
+    };
+
+    const handleSavePost = postID => {
+        if(savedPosts.some(id => id === postID)) {
+            dispatch(unSavePostAction(postID))
+        } else {
+            dispatch(savePostAction(postID))
+        }
+    };
+
+
     return (
         <div className="dash-post" id={props.postID}>
             <div className="user-info">
@@ -45,12 +68,12 @@ export default function DashboardPost(props) {
 
             <section className="action-icons">
                 <div>
-                    <img className="icons" src="images/icons/heart.png" alt="heart" />
-                    <img className="icons" src="images/icons/comment.png" alt="comment" />
-                    <img className="icons" src="images/icons/inbox.png" alt="send"/>
+                    <img className="icons" src={likedPosts.some(id => id === props.postID) ? "../images/icons/heart-liked.png" : "../images/icons/heart.png"} onClick={() => handleLikePost(props.postID)} alt="heart" />
+                    <img className="icons" src="../images/icons/comment.png" alt="comment" />
+                    <img className="icons" src="../images/icons/inbox.png" alt="send"/>
                 </div>
 
-                <img className="icons" src="images/icons/non-saved.png" alt="save" />
+                <img className="icons" src={savedPosts.some(id => id === props.postID) ? "../images/icons/saved.png" : "../images/icons/non-saved.png"} alt="save" onClick={() => handleSavePost(props.postID)} alt="save" />
             </section>
 
             <div className="likes">{props.likes} likes</div>

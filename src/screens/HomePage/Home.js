@@ -1,37 +1,25 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import styles from "./Home.module.css"
 import DashboardPost from "./DashboardPostCard";
 import HomeAsideSection from "./HomeAsideSection";
 import StoriesSection from "./StoriesSection";
-import { loadUsers } from "../../redux/actions/allUsersActions";
-import { loadComments } from "../../redux/actions/commentsActions";
-import { loadPosts } from "../../redux/actions/allPostsActions";
-import { useEffect } from "react";
+
 
 
 
 export default function Home() {
-
+    
+    const loggedUser = useSelector(state => state.userData);
     const posts = useSelector(state => state.allPostsData.posts);
     const comments = useSelector(state => state.comments.comments);
-    const dispatch = useDispatch();
-    const users = useSelector(state => state.users.users);
-    console.log(users);
-    
-    console.log(comments);
+    const following = loggedUser.following;
 
-    useEffect(() => {dispatch(loadUsers())}, []);
-
-
-    return (
-        <main className={styles.main}>
-
-            <section className={styles.leftSection}>
-                <StoriesSection />
-                
-                {
-                    posts.map(post => (
-                        <DashboardPost
+    let dashboardPosts = [];
+    following.map(id => {
+        return posts.map(post => {
+            if (id === post.usernameID) {
+                dashboardPosts.push(
+                    <DashboardPost
                         key={post.postID}
                         postID={post.postID}
                         postUrl={post.content}
@@ -41,8 +29,21 @@ export default function Home() {
                         caption={post.desc}
                         timestamp={post.timestamp}
                         postComments={comments.filter(com => com.postID === post.postID)}
-                        />
-                    ))
+
+                    />
+                )
+            }
+        })
+    });
+
+    return (
+        <main className={styles.main}>
+
+            <section className={styles.leftSection}>
+                <StoriesSection />
+
+                {
+                    dashboardPosts.map(post => (post))
                 }
 
             </section>

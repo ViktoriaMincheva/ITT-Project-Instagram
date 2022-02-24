@@ -15,7 +15,7 @@ export default function StoriesSection() {
 
     return (
         <Carousel infinite={false} leftArrow={<ArrowCircleLeftIcon color="action" />} rightArrow={<ArrowCircleRightIcon color="action" />} show={7} slide={3} swipeOn={false} className="stories-section">
-
+    
             {
                 allStories.map(story => {
                     return (<Story

@@ -3,6 +3,10 @@ import styles from "./Home.module.css"
 import DashboardPost from "./DashboardPostCard";
 import HomeAsideSection from "./HomeAsideSection";
 import StoriesSection from "./StoriesSection";
+import { render } from "react-dom";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { useState, useEffect } from 'react';
+import LoadingComponent from './../../components/LoadingComponent';
 
 export default function Home() {
     
@@ -10,35 +14,79 @@ export default function Home() {
     const posts = useSelector(state => state.allPostsData.posts);
     const comments = useSelector(state => state.comments.comments);
     const following = loggedUser.following;
+    const [itemsToShow, setItemsToShow] = useState([]);
+    const [items, setItems] = useState([]);
+    const [hasMorePosts, setHasMorePosts] = useState(true);
+    const perPage = 6;
 
+    useEffect(() => {
+        let pos = [];
+        following.map(id => {
+            return posts.map( post => {
+                if(id === post.usernameID) {
+                    pos.push(post);
+                }
+            })
+        })
+        setItems(pos);
+    }, [posts])
+
+    
+    useEffect(() => {
+        if(items && itemsToShow.length < 1) {
+            setItemsToShow(items.slice(0, perPage))
+        }
+    }, [items])
+
+    const loadMoreData = () => {
+        let nextPostsPos = itemsToShow.length + perPage;
+        nextPostsPos = (nextPostsPos > items.length) ? items.length : nextPostsPos;
+
+        let nextPosts = items.slice(itemsToShow.length, nextPostsPos);
+
+        setTimeout(() => {
+            let allItemsToShow = [...itemsToShow, ...nextPosts];
+            setItemsToShow(allItemsToShow);
+            if(nextPostsPos >= items.length - 1){
+                setHasMorePosts(false);
+            }
+        }, 1500)
+    }
+    
+    
     return (
         <main className={styles.main}>
 
             <section className={styles.leftSection}>
                 <StoriesSection />
 
-                {
-                   following.map(id => {
-                    return posts.map(post => {
-                        if (id === post.usernameID ) {
-                            return <DashboardPost
-                                    key={post.postID}
-                                    postID={post.postID}
-                                    postUrl={post.content}
-                                    username={post.username}
-                                    icon={post.profilePhoto}
-                                    likes={post.likes.length}
-                                    caption={post.desc}
-                                    timestamp={post.timestamp}
-                                    isVideo={post.isVideo}
-                                    postComments={comments.filter(com => com.postID === post.postID)}
-            
-                                />
-                            
-                        }
-                    })
-                })
-                }
+                {itemsToShow && 
+                <InfiniteScroll
+                dataLength={itemsToShow.length}
+                next={loadMoreData}
+                hasMore={hasMorePosts}
+                loader={<div className={styles.loadingComp}><LoadingComponent/></div>}
+                >
+                    {
+                    
+                        itemsToShow.map((post) =>  
+                        (<DashboardPost
+                            key={post.postID}
+                            postID={post.postID}
+                            postUrl={post.content}
+                            username={post.username}
+                            icon={post.profilePhoto}
+                            likes={post.likes.length}
+                            caption={post.desc}
+                            timestamp={post.timestamp}
+                            isVideo={post.isVideo}
+                            postComments={comments.filter(com => com.postID === post.postID)}
+                        />)
+                        
+                        ) 
+                    
+                    }
+                </InfiniteScroll>}
 
             </section>
 

@@ -1,3 +1,5 @@
+import { useDispatch, useSelector } from "react-redux"
+import { followUserAction, unfollowUserAction } from "../../redux/actions/userActions";
 import styles from "./ProfileSuggestion.module.css"
 
 export default function ProfileSuggestion(props) {
@@ -9,7 +11,11 @@ export default function ProfileSuggestion(props) {
                 <div className={styles.userInfo}>
                     <a href="#" className={styles.username}>{props.username}<br /><span className={styles.info}>{props.info}</span></a>
                 </div></div>
-            <button className={styles.btn}>Follow</button>
+            <button
+                className={styles.btn}
+                onClick={props.onClick}>
+                {props.followed ? "Unfollow" : "Follow"}
+            </button>
         </div>
     )
 

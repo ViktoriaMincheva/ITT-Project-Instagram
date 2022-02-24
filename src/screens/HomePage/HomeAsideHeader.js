@@ -29,7 +29,7 @@ export default function HomeAsideHeader(props) {
     return (
         <div className={styles.container}>
             <div className={styles.left}>
-                <a href="#"><img className={styles.icon} src={user.profilePhoto ? user.profilePhoto : "images/icons/user.png"} alt="avatar" /></a>
+                <Link to="/my-profile"><img className={styles.icon} src={user.profilePhoto ? user.profilePhoto : "images/icons/user.png"} alt="avatar" /></Link>
                 <div className={styles.userInfo}>
                     <a href="#" className={styles.username}>{user.username}<br /><span className={styles.name}>{user.name}</span></a>
                 </div>

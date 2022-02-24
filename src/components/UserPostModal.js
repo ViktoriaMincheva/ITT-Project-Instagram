@@ -150,7 +150,7 @@ const handleSavePost = postID => {
                         posts.map((post) => {
                           if (post.postID == props.postID){
                             return (
-                              <div >
+                              <div key={post.postID}>
                                 <p className="modal-post-likes">{post.likes.length} likes</p>
                                 <p className="modal-post-timestamp">{post.timestamp}</p>
                               </div>

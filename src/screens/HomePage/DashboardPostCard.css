@@ -97,3 +97,23 @@
     margin-left: 8px;
     font-size: 14px;
 }
+
+.dashboard-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.followButton {
+    background-color: #0095f6;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 26px;
+    border: none;
+    padding: 0 24px;
+    box-sizing: border-box;
+    height: 50%;;
+    margin-top: 14px;
+}

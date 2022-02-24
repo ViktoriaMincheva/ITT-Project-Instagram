@@ -2,35 +2,47 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from "./LoggedUserProfile.module.css";
 import InfoModal from "../../components/InfoModal.js";
 import PostPreview from "../../components/PostPreview.js";
 import LoadingComponent from './../../components/LoadingComponent';
+import { followUserAction, unfollowUserAction } from "../../redux/actions/userActions";
 
 export default function UserProfile() {
+    
+    const dispatch = useDispatch();
+    const params = useParams();
 
+    const followedAccounts = useSelector(state => state.userData.following);
+    const user = useSelector(state => state.userData);
     const allUsers = useSelector(state => state.users.users);
     const allPosts = useSelector(state => state.allPostsData.posts);
     const comments = useSelector(state => state.comments.comments);
 
     const [show, setShow] = useState(false);
     const [showFollowing, setShowFollowing] = useState(false);
-
     const [userPosts, setUserPosts] = useState("");
     const [userData, setUserData] = useState("");
     const [following, setFollowing] = useState([]);
     const [followedBy, setFollowedBy] = useState([]);
-    // const user = useSelector(state => state.userData);
-    const params = useParams();
 
+    
     const handleShowFollowers = (e) => {
         setShow(true);
-    }
+    };
 
     const handleShowFollowing = (e) => {
         setShowFollowing(true);
-    }
+    };
+
+    const handleFollowClick = userID => {
+        if(followedAccounts.some(id => id === userID)) {
+            dispatch(unfollowUserAction(userID))
+        } else {
+            dispatch(followUserAction(userID))
+        }
+    };
 
     useEffect( () => {
         const posts = allPosts.filter((el) => {
@@ -68,7 +80,11 @@ export default function UserProfile() {
         setTimeout(() => {
             setFollowing(followingUsers);
         }, 500)
-    }, [])
+    }, []);
+
+    const isFollowed = followedAccounts.some(id => id === userData.id);
+
+    
 
     return (
         <>
@@ -85,6 +101,7 @@ export default function UserProfile() {
                         <div className={styles.MainInfoContainer}>
                             <div className={styles.ProfileNecessities}>
                                 <p>{userData.username}</p>
+                                <button className={styles.followButton} onClick={() => {handleFollowClick(userData.id)}}>{isFollowed ? "Unfollow" : "Follow"}</button>
                             </div>
                             <div className={styles.ProfileActivity}>
                                 <p><span>{userPosts.length}</span> posts</p>

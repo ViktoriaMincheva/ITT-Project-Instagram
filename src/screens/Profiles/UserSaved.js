@@ -25,7 +25,7 @@ export default function UserSaved() {
         setTimeout(() => {
             setSavedPosts(pos);
         }, 500)
-    })
+    }, [])
 
   return (
     <div className={styles.MediaContainer}>

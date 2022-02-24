@@ -18,7 +18,7 @@ export default function UserPosts() {
         setTimeout(() => {
             setUserPosts(posts);
         }, 500)
-    })
+    }, [])
 
   return (
     <div className={styles.MediaContainer}>

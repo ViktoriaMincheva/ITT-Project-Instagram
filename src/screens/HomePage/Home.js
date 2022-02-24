@@ -11,29 +11,6 @@ export default function Home() {
     const comments = useSelector(state => state.comments.comments);
     const following = loggedUser.following;
 
-    let dashboardPosts = [];
-    following.map(id => {
-        return posts.map(post => {
-            if (id === post.usernameID ) {
-                dashboardPosts.push(
-                    <DashboardPost
-                        key={post.postID}
-                        postID={post.postID}
-                        postUrl={post.content}
-                        username={post.username}
-                        icon={post.profilePhoto}
-                        likes={post.likes.length}
-                        caption={post.desc}
-                        timestamp={post.timestamp}
-                        isVideo={post.isVideo}
-                        postComments={comments.filter(com => com.postID === post.postID)}
-
-                    />
-                )
-            }
-        })
-    });
-
     return (
         <main className={styles.main}>
 
@@ -41,7 +18,26 @@ export default function Home() {
                 <StoriesSection />
 
                 {
-                    dashboardPosts.map(post => (post))
+                   following.map(id => {
+                    return posts.map(post => {
+                        if (id === post.usernameID ) {
+                            return <DashboardPost
+                                    key={post.postID}
+                                    postID={post.postID}
+                                    postUrl={post.content}
+                                    username={post.username}
+                                    icon={post.profilePhoto}
+                                    likes={post.likes.length}
+                                    caption={post.desc}
+                                    timestamp={post.timestamp}
+                                    isVideo={post.isVideo}
+                                    postComments={comments.filter(com => com.postID === post.postID)}
+            
+                                />
+                            
+                        }
+                    })
+                })
                 }
 
             </section>

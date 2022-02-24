@@ -50,7 +50,7 @@ export default function ChangePassword() {
     return (
         <section className="changePassContainer">
             <div className="userInfo">
-                <img src="images/icons/user.png" alt="avatar" className="userIcon" />
+                <img src="images/icons/profile.png" alt="avatar" className="userIcon" />
                 <h5>AVInstaPr</h5>
             </div>
 

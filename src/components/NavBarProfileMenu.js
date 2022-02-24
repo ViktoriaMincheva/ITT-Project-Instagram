@@ -46,7 +46,7 @@ export default function NavBarProfileMenu() {
     return (
         <>
             <div onClick={handleClick}>
-                <img src={loggedUser.profilePhoto != null ? loggedUser.profilePhoto : "../images/icons/profile.png"} alt="profile pic" className={location.pathname === "/my-profile" ? styles.headerIconClicked : styles.userHeaderIcon}/>
+                <img src={loggedUser.profilePhoto != null ? loggedUser.profilePhoto : "../images/icons/profile.png"} alt="profile pic" className={location.pathname === "/profile-posts" ? styles.headerIconClicked : styles.userHeaderIcon}/>
             </div>
             {/* border ? styles.headerIconClicked : styles.headerIcon */}
             <Menu
@@ -93,12 +93,12 @@ export default function NavBarProfileMenu() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <Link to="/my-profile" className={stylesMenu.headerIcons}>
+                <Link to="/profile-posts" className={stylesMenu.headerIcons}>
                     <MenuItem className={stylesMenu.MenuItem}>
                         <img src="../images/icons/profile-2.png" alt="profile icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Profile</p>
                     </MenuItem>
                 </Link>
-                <Link to="/my-profile" className={stylesMenu.headerIcons}>
+                <Link to="/profile-saved" className={stylesMenu.headerIcons}>
                     <MenuItem className={stylesMenu.MenuItem}>
                         <img src="../images/icons/non-saved.png" alt="saved icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Saved</p>
                     </MenuItem>

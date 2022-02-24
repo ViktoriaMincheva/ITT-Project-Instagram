@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./LoggedUserProfile.module.css";
 import InfoModal from "../../components/InfoModal";
 import PostPreview from "../../components/PostPreview.js";
@@ -12,16 +13,14 @@ export default function MyProfile() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const allPosts = useSelector(state => state.allPostsData.posts);
-    const comments = useSelector(state => state.comments.comments);
     const users = useSelector(state => state.users.users);
 
-    const [userPosts, setUserPosts] = useState("");
     const [show, setShow] = useState(false);
     const [showFollowing, setShowFollowing] = useState(false);
     const [following, setFollowing] = useState([]);
     const [followedBy, setFollowedBy] = useState([]);
     const user = useSelector(state => state.userData);
+    let location = useLocation();
 
     const handleShowFollowers = (e) => {
         setShow(true);
@@ -43,15 +42,7 @@ export default function MyProfile() {
         }
     }
 
-    
-
     useEffect(() => {
-        const posts = allPosts.filter((el) => {
-            return el.username === user.username
-        })
-        setTimeout(() => {
-            setUserPosts(posts);
-        }, 500)
 
         let followers = [];
         user.followedBy.map((follower) => {
@@ -146,44 +137,18 @@ export default function MyProfile() {
             </div>
 
             <div className={styles.PostsNavigation}>
-                <div className={styles.NavigationTab}>
+                <div className={location.pathname === "/profile-posts" ? `${styles.NavigationTab}` : `${styles.NavigationTab} ${styles.noBorder}`}>
                     <img src="../images/icons/posts-grid.png" alt="grid icon" />
-                    <p>POSTS</p>
+                    <Link to="/profile-posts" className={styles.postsLink}>POSTS</Link>
                 </div>
-                <div className={`${styles.NavigationTab} ${styles.noBorder}`}>
+                {/* <div className={`${styles.NavigationTab} ${styles.noBorder}`}>
                     <img src="../images/icons/videos.png" alt="grid icon" />
                     <p>VIDEOS</p>
-                </div>
-                <div className={`${styles.NavigationTab} ${styles.noBorder}`}>
+                </div> */}
+                <div className={location.pathname === "/profile-saved" ? `${styles.NavigationTab}` : `${styles.NavigationTab} ${styles.noBorder}`}>
                     <img src="../images/icons/saved-grid.png" alt="grid icon" />
-                    <p>SAVED</p>
+                    <Link to="/profile-saved" className={styles.postsLink}>SAVED</Link>
                 </div>
-            </div>
-
-            <div className={styles.MediaContainer}>
-                {
-                    userPosts &&
-                    userPosts.map((post) => {
-                        let postComments = [];
-                        {
-                            comments.map((comment) => {
-                                if (post.postID === comment.postID) {
-                                    postComments.unshift(comment);
-                                }
-                            })
-                        }
-                        return (<PostPreview
-                            key={post.postID}
-                            postID={post.postID}
-                            src={post.content}
-                            username={post.username}
-                            icon={user.profilePhoto}
-                            caption={post.desc}
-                            alt="post photo"
-                            likeCount={post.likes.length}
-                            commentCount={postComments.length} />)
-                    })
-                }
             </div>
 
         </div>

@@ -144,10 +144,10 @@ export default function UserProfile() {
                             <img src="../images/icons/posts-grid.png" alt="grid icon" />
                             <p>POSTS</p>
                         </div>
-                        <div className={`${styles.NavigationTab} ${styles.noBorder}`}>
+                        {/* <div className={`${styles.NavigationTab} ${styles.noBorder}`}>
                             <img src="../images/icons/videos.png" alt="grid icon" />
                             <p>VIDEOS</p>
-                        </div>
+                        </div> */}
                     </div> 
 
                     <div className={styles.MediaContainer}>

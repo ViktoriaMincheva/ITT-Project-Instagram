@@ -10,10 +10,14 @@ export default function DashboardPost(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
+    const isVideo = props.isVideo === "true";
+    // const [isVideo, setIsVideo] = useState(false);
+    // setIsVideo(props.isVideo);
 
     const users = useSelector(state => state.users.users);
     const likedPosts = useSelector(state => state.userData.likedPosts);
     const savedPosts = useSelector(state => state.userData.savedPosts);
+    const [verified, setVerified] = useState(false);
 
     const handleShowUserProfile = () => {
         navigate(`/users/${props.username}`, { replace: true });
@@ -23,6 +27,7 @@ export default function DashboardPost(props) {
         setShow(true);
     }
 
+    
     let postComment = [];
     props.postComments.map(comment => {
         return users.map(user => {
@@ -39,12 +44,13 @@ export default function DashboardPost(props) {
         })
     });
 
+
     const handleLikePost = postID => {
         console.log(postID)
         if (likedPosts.some(id => id === postID)) {
             dispatch(unlikePostAction(postID))
         } else {
-            dispatch(likePostAction(postID));
+            dispatch(likePostAction(postID))
         }
     };
 
@@ -62,9 +68,24 @@ export default function DashboardPost(props) {
             <div className="user-info">
                 <img className="user-icon" src={props.icon} alt="icon" onClick={handleShowUserProfile} />
                 <h4 className="post-username" onClick={handleShowUserProfile}>{props.username}</h4>
+                {
+                    users.map((user) => {
+                        if (user.username === props.username && user.businessAcc.isVerified) {
+                            return (<img src="../images/icons/verified.png" alt="verified" className="user-verified"/>)
+                        }
+                    })
+                }
             </div>
 
-            <img className="post-image" src={props.postUrl} alt="post" onClick={handleOpenPostModal}/>
+
+            {/* TODO: change class name of video */}
+            {isVideo ? 
+                (<video className="post-image" src={props.postUrl} alt="post" controls onClick={handleOpenPostModal}></video>)
+                
+            :
+                (<img className="post-image" src={props.postUrl} alt="post" onClick={handleOpenPostModal}/>)
+            }
+            
 
             <section className="action-icons">
                 <div>

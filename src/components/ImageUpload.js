@@ -9,8 +9,10 @@ import "./styles/InfoModal.css";
 
 export default function ImageUpload() {
     const [imagePicked, setImagePicked] = useState(false);
+    const [videoPicked, setVideoPicked] = useState(false);
     const [desc, setDesc] = useState("");
     const [photo, setPhoto] = useState("");
+    const [video, setVideo] = useState("");
     const [uploadSuccess, setUploadSuccess] = useState(false); 
     const current = new Date();
     const user = useSelector(state =>  state.userData);
@@ -18,11 +20,17 @@ export default function ImageUpload() {
 
     const handleFileUploaded = (e) => {
         const { files } = e.target;
-        if (files[0].type !== "image/png" || files[0].type !== "image/jpeg" || files[0].type !== "image/jpg") {
+        if (files[0].type !== "video/mp4"){
+            const localVideoUrl = URL.createObjectURL(files[0]);
+            setVideoPicked(true);
+            setVideo(localVideoUrl);
+        }
+        else if (files[0].type !== "image/png" || files[0].type !== "image/jpeg" || files[0].type !== "image/jpg") {
             const localImageUrl = URL.createObjectURL(files[0]);
             setImagePicked(true);
             setPhoto(localImageUrl);
-        } else {
+        } 
+        else {
             setUploadSuccess(false);
         }    
     };
@@ -39,7 +47,7 @@ export default function ImageUpload() {
             username : user.username,
             usernameID: user.id,
             profilePhoto : user.profilePhoto,
-            isVideo : false,
+            isVideo : videoPicked,
             likes : [],
             comments: [],
             timestamp : current.getTime(),
@@ -55,7 +63,13 @@ export default function ImageUpload() {
         <div className="modal-body">
             {
                 uploadSuccess ? <>
-                    <img src={photo} alt=" photo" className="uploadSuccessMsgImg" />
+                    {
+                        videoPicked ? 
+                        (<video className="uploadSuccessMsgImg" src={video} alt="post" controls></video>)
+                        :
+                        (<img src={photo} alt=" photo" className="uploadSuccessMsgImg" />)
+                    }
+                    
                     <p className="uploadSuccessMsg" >Succesfully added new photo. Check out your profile.</p>
                 </> 
                 : 
@@ -68,7 +82,7 @@ export default function ImageUpload() {
                             <p>Upload photos and videos here</p>
                         </>
                     }
-                    <input type="file" placeholder='Select From Computer' onChange={handleFileUploaded} className="chooseFileCont"/>
+                    <input type="file" accept="image/*,video/*" placeholder='Select From Computer' onChange={handleFileUploaded} className="chooseFileCont"/>
                     {imagePicked ? 
                         <button type="submit" className='submitUpload' onClick={handleSubmit}>Upload</button> 
                         :

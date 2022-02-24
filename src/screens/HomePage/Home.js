@@ -4,9 +4,6 @@ import DashboardPost from "./DashboardPostCard";
 import HomeAsideSection from "./HomeAsideSection";
 import StoriesSection from "./StoriesSection";
 
-
-
-
 export default function Home() {
     
     const loggedUser = useSelector(state => state.userData);
@@ -17,7 +14,7 @@ export default function Home() {
     let dashboardPosts = [];
     following.map(id => {
         return posts.map(post => {
-            if (id === post.usernameID) {
+            if (id === post.usernameID ) {
                 dashboardPosts.push(
                     <DashboardPost
                         key={post.postID}
@@ -28,6 +25,7 @@ export default function Home() {
                         likes={post.likes.length}
                         caption={post.desc}
                         timestamp={post.timestamp}
+                        isVideo={post.isVideo}
                         postComments={comments.filter(com => com.postID === post.postID)}
 
                     />

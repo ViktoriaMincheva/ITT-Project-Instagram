@@ -4,6 +4,7 @@
   align-items: center;
   width: 100%;
   max-width: 960px;
+  min-width: 900px;
   margin-top: 90px;
   font-size: 16px;
 }
@@ -23,8 +24,9 @@
     flex-shrink: 0; 
 }
 .ProfileImage {
-    max-width: 100%;
-    height: 100%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -117,11 +119,16 @@
 }
 
 .MediaContainer {
+    flex: 0 0 33.3333%;
     display: flex;
+    max-width: 960px;
     flex-wrap: wrap;
     width: 95%;
+    gap: 2%;
+    margin-left: 2.5%;
     flex-basis: 100%;
-    gap: 18px;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .followIcon {

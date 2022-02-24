@@ -71,20 +71,13 @@ export default function DashboardPost(props) {
                 {
                     users.map((user) => {
                         if (user.username === props.username && user.businessAcc.isVerified) {
-                            return (<img src="../images/icons/verified.png" alt="verified" className="user-verified"/>)
+                            return (<img src="../images/icons/verified.png" alt="verified" className="user-verified" key={Math.random()}/>)
                         }
                     })
                 }
             </div>
 
-
-            {/* TODO: change class name of video */}
-            {isVideo ? 
-                (<video className="post-image" src={props.postUrl} alt="post" controls onClick={handleOpenPostModal}></video>)
-                
-            :
-                (<img className="post-image" src={props.postUrl} alt="post" onClick={handleOpenPostModal}/>)
-            }
+            <img className="post-image" src={props.postUrl} alt="post" onClick={handleOpenPostModal}/>
             
 
             <section className="action-icons">

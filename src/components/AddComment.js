@@ -32,6 +32,11 @@ export default function AddComment(props) {
         dispatch(newCommentAddedAction(obj))
     }
 
+    const handleEnterPress = e => {
+        if(e.keyCode === 13) {
+            handlePostComment();
+        }
+    };
 
     return (
         <div className={styles.container}>
@@ -42,6 +47,7 @@ export default function AddComment(props) {
                 onClick={() => setShowPicker(val => !val)} />
 
                 <input 
+                    onKeyDown={e => handleEnterPress(e)}
                     className={styles.inputField}
                     autoFocus={inputStr ? true : false}
                     value={inputStr}

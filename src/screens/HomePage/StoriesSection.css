@@ -1,6 +1,8 @@
 .stories-section {
-    border: 1px solid lightgray;
-    width: 612px;
+    border-right: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    max-width: 85%;
     box-sizing: border-box;
     background-color: #ffff;
     height: 118px;
@@ -10,4 +12,34 @@
     align-items: baseline;
 }
 
+.story-upload-img {
+    margin-top: 18px;
+    width: 60px;
+    height: 60px;
+    margin-left:12px;
+    align-self: center;
+    margin-right: 8px;
+    box-sizing: border-box;
+}
 
+.stories-container {
+    display: flex;
+    flex-direction: row;
+    width: 612px;
+    align-items: center;
+}
+
+.story-upload {
+    border-left: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    height: 118px;
+    max-width: 15%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    background-color: #ffff;
+}

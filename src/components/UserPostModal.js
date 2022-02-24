@@ -30,7 +30,6 @@ export default function Modal (props) {
 
 
   const handleLikePost = postID => {
-    console.log(postID)
     if (likedPosts.some(id => id === postID)) {
         dispatch(unlikePostAction(postID))
     } else {

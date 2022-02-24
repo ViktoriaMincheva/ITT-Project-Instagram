@@ -2,7 +2,7 @@
     border-right: 1px solid lightgray;
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
-    max-width: 85%;
+    max-width: 88%;
     box-sizing: border-box;
     background-color: #ffff;
     height: 118px;
@@ -16,10 +16,11 @@
     margin-top: 18px;
     width: 60px;
     height: 60px;
-    margin-left:12px;
+    margin-left: 10px;
     align-self: center;
     margin-right: 8px;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .stories-container {
@@ -34,7 +35,7 @@
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
     height: 118px;
-    max-width: 15%;
+    max-width: 12%;
     display: flex;
     text-align: center;
     flex-direction: column;

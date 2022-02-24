@@ -11,3 +11,16 @@
     flex-basis: 100%;
     gap: 18px;
 }
+.InfiniteScrollContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 95%;
+    flex-basis: 100%;
+    gap: 18px;
+}
+.loadingComp {
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}

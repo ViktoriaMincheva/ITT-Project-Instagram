@@ -7,3 +7,8 @@
     margin-top: 90px;
     justify-content: space-around;
 }
+.loadingComp {
+    padding: 10px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}

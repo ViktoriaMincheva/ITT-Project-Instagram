@@ -1,32 +1,63 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./StoriesSection.css";
+import { v4 as uuidv4 } from 'uuid';
 import Story from "./Story";
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import Modal from "../../components/Modal";
-import ImageUpload from "../../components/ImageUpload";
-import { Carousel } from "@trendyol-js/react-carousel"
+import { Carousel } from "@trendyol-js/react-carousel";
+import { newStoryAdded } from "../../redux/actions/allStoriesActions";
 
 
 
 export default function StoriesSection() {
 
+    const dispatch = useDispatch();
+
     const allStories = useSelector(state => state.allStories.stories);
-    const allUsers = useSelector(state => state.users.users);
+    const loggedUser = useSelector(state => state.userData);
 
+    const [story, setStory] = useState(null);
     const [show, setShow] = useState(false);
+    const [storyError, setStoryError] = useState("");
 
-    const handleCreate = (e) => {
+    const handleStoryUpload = (e) => {
         setShow(true);
     }
 
+    const handleFileChange = (e) => {
+        const { files } = e.target;
+        if (files[0].type === "image/png" || files[0].type === "image/jpeg" || files[0].type === "image/jpg") {
+            const localImageUrl = URL.createObjectURL(files[0]);
+            setStory(localImageUrl);
+        } else {
+            setStoryError("Please choose a valid file type.")
+        }
+    };
+
+    const handleStoryAdded = e => {
+        e.preventDefault();
+        if (story !== null) {
+            let storyObj = {
+                id : uuidv4(),
+                username: loggedUser.username,
+                userID: loggedUser.id,
+                icon: loggedUser.profilePhoto, 
+                url: story
+            };
+            dispatch(newStoryAdded(storyObj));
+            setShow(false);
+        } else {
+            setStoryError("You did not make any changes");
+        }
+    }
 
 
     return (
         <div className="stories-container">
             <div className="story-upload">
-                <img className="story-upload-img" src="../images/icons/insta-story.png"/>
+                <img onClick={handleStoryUpload} className="story-upload-img" src="../images/icons/insta-story.png"/>
             </div>
 
             <Carousel infinite={false} leftArrow={<ArrowCircleLeftIcon color="action" />} rightArrow={<ArrowCircleRightIcon color="action" />} show={6} slide={3} swipeOn={false} className="stories-section">
@@ -42,12 +73,16 @@ export default function StoriesSection() {
                 }
             </Carousel>
 
-         <Modal title="Create new post" onClose={() => setShow(false)} show={show}>
-            <ImageUpload/>
+         <Modal title="Add story" onClose={() => setShow(false)} show={show}>
+            <div className="add-story-container">
+            {storyError && <div>{storyError}</div>}
+                <form onSubmit={e => handleStoryAdded(e)}> 
+                    <input type="file" accept=".png, .jpg, .jpeg" onChange={e => handleFileChange(e)} />
+                    <button type="submit">Add Story</button>
+                </form>
+            </div>
           </Modal>
         </div>
-
-
 
     )
 }

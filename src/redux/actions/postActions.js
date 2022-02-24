@@ -22,5 +22,7 @@ export const recieveComment = commentID => {
         type: RECIEVE_COMMENT,
         payload: commentID
     }
-}
+};
+
+
 

@@ -1,5 +1,6 @@
 export const LOAD_POSTS = "LOAD_POSTS";
 export const NEW_POST_ADDED = "NEW_POST_ADDED";
+export const POST_RECIEVED_LIKE = "POST_RECIEVED_LIKE";
 
 export const loadPosts = () => {
 
@@ -17,4 +18,6 @@ export const newPostAddedAction = post => {
         type: NEW_POST_ADDED,
         payload: post
     }
-}
+};
+
+

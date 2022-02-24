@@ -14,12 +14,17 @@ export default function MyProfile() {
     const dispatch = useDispatch();
 
     const users = useSelector(state => state.users.users);
-
     const [show, setShow] = useState(false);
     const [showFollowing, setShowFollowing] = useState(false);
     const [following, setFollowing] = useState([]);
     const [followedBy, setFollowedBy] = useState([]);
     const user = useSelector(state => state.userData);
+    const posts = useSelector(state => state.allPostsData.posts);
+
+    let loggedUserPosts = posts.filter(post => {
+        return post.usernameID === user.id
+    });
+    
     let location = useLocation();
 
     const handleShowFollowers = (e) => {
@@ -87,7 +92,7 @@ export default function MyProfile() {
                         <button type="button" className={styles.EditButton} onClick={handleOpenSettings}>Edit Profile</button>
                     </div>
                     <div className={styles.ProfileActivity}>
-                        <p><span>{user.posts.length}</span> posts</p>
+                        <p><span>{loggedUserPosts.length}</span> posts</p>
                         <p onClick={(e) => handleShowFollowers(e)}><span>{followedBy.length}</span> followers</p>
                         <p onClick={(e) => handleShowFollowing(e)}><span>{following.length}</span> following</p>
                     </div>

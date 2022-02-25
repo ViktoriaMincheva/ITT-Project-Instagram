@@ -53,18 +53,19 @@ export default function EditProfile() {
 
 
     const handleEditProfile = () => {
-        if (name.trim() && name !== user.name) {
+        if (name && name !== user.name) {
             dispatch(changeNameAction(name));
             setSuccess("Your profile information has been updated successfully.")
         }
-        if (username.trim() && username !== user.username) {
+        if (username && username !== user.username) {
             dispatch(changeUserNameAction(username));
+            setSuccess("Your profile information has been updated successfully.")
         }
         if (website.trim() && website !== user.website) {
             dispatch(changeWebsiteAction(website));
             setSuccess("Your profile information has been updated successfully.")
         }
-        if (bio.trim() && bio !== user.bio) {
+        if (bio && bio !== user.bio) {
             dispatch(changeBioAction(bio));
             setSuccess("Your profile information has been updated successfully.")
         }
@@ -117,7 +118,7 @@ export default function EditProfile() {
                 </label>
 
                 <div className={styles.inputField}>
-                    <textarea id="bio" onInput={e => setBio(e.target.value)} className={styles.textarea} />
+                    <textarea id="bio" onInput={e => setBio(e.target.value.trim())} className={styles.textarea} />
                 </div>
             </div>
 

@@ -2,6 +2,7 @@ import { useAuth } from '../../database/AuthContext';
 import { useState } from "react";
 import { EmailAuthProvider, getAuth } from 'firebase/auth';
 import "./ChangePassword.css";
+import { useSelector } from 'react-redux';
 
 export default function ChangePassword() {
     const auth = getAuth();
@@ -12,6 +13,7 @@ export default function ChangePassword() {
     const [error, setError] = useState("");
     const { updatePass, reauthenticateUser } = useAuth();
     const [message, setMessage] = useState("");
+    const loggedUser = useSelector(state => state.userData);
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -50,7 +52,7 @@ export default function ChangePassword() {
     return (
         <section className="changePassContainer">
             <div className="userInfo">
-                <img src="images/icons/profile.png" alt="avatar" className="userIcon" />
+                <img src={loggedUser.profilePhoto != null ? loggedUser.profilePhoto : "images/icons/profile.png"} alt="avatar" className="userIcon" />
                 <h5>AVInstaPr</h5>
             </div>
 

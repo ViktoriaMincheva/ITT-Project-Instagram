@@ -13,7 +13,7 @@ export default function UserPosts() {
 
     useEffect(() => {
         const posts = allPosts.filter((el) => {
-            return el.username === user.username
+            return el.usernameID === user.id
         })
         setTimeout(() => {
             setUserPosts(posts);

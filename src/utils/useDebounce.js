@@ -20,18 +20,3 @@ const useDebounce = (value, time) => {
 }
 
 export default useDebounce;
-
-
-// useEffect(() => {
-//     let matches = [];
-//     matches = users.filter(user => {
-//         return user.username.toLowerCase().includes(debouncedSearchValue.toLowerCase())
-//     });
-//     setSearchedData(debouncedSearchValue);
-//     setSuggestions(matches);
-// }, [debouncedSearchValue])
-
-// const handleClick = (username) => {
-//     setSuggestions([]);
-//     navigate(`/users/${username}`, { replace: true });
-// };

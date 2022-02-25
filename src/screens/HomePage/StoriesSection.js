@@ -24,7 +24,7 @@ export default function StoriesSection() {
     const [openedStory, setOpenedStory] = useState("");
     const [storyUsername, setStoryUsername] = useState("");
     const [storyIcon, setStoryIcon] = useState("");
-
+    const [storyUpload, setStoryUpload] = useState(false);
 
     const handleStoryUpload = (e) => {
         setShow(true);
@@ -64,6 +64,7 @@ export default function StoriesSection() {
                 url: story
             };
             dispatch(newStoryAdded(storyObj));
+            setStoryUpload(true);
             setShow(false);
         } else {
             setStoryError("You did not make any changes");
@@ -75,7 +76,7 @@ export default function StoriesSection() {
         <div className="stories-container">
 
             <div className="carousel">
-                <div className="story-upload">
+            <div className={storyUpload ? "story-upload add-space" : "story-upload"}>
                     <img onClick={handleStoryUpload} className="story-upload-img" src="../images/icons/insta-story.png" />
                     <p>Add</p>
                 </div>

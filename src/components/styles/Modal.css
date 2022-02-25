@@ -251,3 +251,20 @@
     font-size: 11px;
     color: #a19f9f;
 }
+
+.modal-story-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.story-modal-content {
+        margin-top: 500px;
+        width: 432px;
+        height: 768px;
+        /* border-radius: 12px; */
+        /* background-color: #fff; */
+        transition: all 0.3s ease-in-out;
+        transform: translateY(-200px);
+        box-sizing: border-box;
+}

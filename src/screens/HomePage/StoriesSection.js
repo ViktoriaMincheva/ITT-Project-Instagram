@@ -41,21 +41,17 @@ export default function StoriesSection() {
     };
 
     let storyObj;
-    let body;
     let header ={};
     const handleStoryOpen = storyID => {
         storyObj = allStories.filter(story => story.id === storyID);
         setShowOpenStory(true);
-        console.log(storyObj);
         setOpenedStory(storyObj)
-        // setStoryUsername(storyObj[0].username);
         setStoryIcon(storyObj[0].icon);
         header.heading = storyObj[0].username;
         header.profileImage = storyObj[0].icon;
         console.log(header);
     };
 
-    console.log(openedStory);
 
     const handleStoryAdded = e => {
         e.preventDefault();

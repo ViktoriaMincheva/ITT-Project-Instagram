@@ -17,6 +17,7 @@ export default function DashboardPost(props) {
     const users = useSelector(state => state.users.users);
     const likedPosts = useSelector(state => state.userData.likedPosts);
     const savedPosts = useSelector(state => state.userData.savedPosts);
+    // const [likes, setLikes] = useState(props.likes);
     const [verified, setVerified] = useState(false);
 
     const handleShowUserProfile = () => {

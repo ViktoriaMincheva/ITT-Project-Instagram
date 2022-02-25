@@ -121,14 +121,14 @@ export const unlikePostAction = postID => {
 export const changeBioAction = bio => {
     return{
         type: CHANGE_BIO,
-        bio: bio
+        payload: bio
     }
 };
 
 export const changeWebsiteAction = url => {
     return{
         type: CHANGE_WEBSITE,
-        website: url
+        payload: url
     }
 };
 

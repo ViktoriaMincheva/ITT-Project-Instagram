@@ -17,6 +17,7 @@ export default function MyProfile() {
     const [followedBy, setFollowedBy] = useState([]);
     const user = useSelector(state => state.userData);
     const posts = useSelector(state => state.allPostsData.posts);
+    console.log(user.bio);
 
     let loggedUserPosts = posts.filter(post => {
         return post.usernameID === user.id

@@ -66,6 +66,9 @@ export default function Home() {
                 next={loadMoreData}
                 hasMore={hasMorePosts}
                 loader={<div className={styles.loadingComp}><LoadingComponent/></div>}
+                endMessage={
+                    <p className={styles.endMessage}>You've seen all posts here!</p>
+                }
                 >
                     {
                     

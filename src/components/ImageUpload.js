@@ -9,10 +9,8 @@ import "./styles/InfoModal.css";
 
 export default function ImageUpload() {
     const [imagePicked, setImagePicked] = useState(false);
-    const [videoPicked, setVideoPicked] = useState(false);
     const [desc, setDesc] = useState("");
     const [photo, setPhoto] = useState("");
-    const [video, setVideo] = useState("");
     const [uploadSuccess, setUploadSuccess] = useState(false); 
     const current = new Date();
     const user = useSelector(state =>  state.userData);
@@ -20,12 +18,7 @@ export default function ImageUpload() {
 
     const handleFileUploaded = (e) => {
         const { files } = e.target;
-        if (files[0].type !== "video/mp4"){
-            const localVideoUrl = URL.createObjectURL(files[0]);
-            setVideoPicked(true);
-            setVideo(localVideoUrl);
-        }
-        else if (files[0].type !== "image/png" || files[0].type !== "image/jpeg" || files[0].type !== "image/jpg") {
+        if (files[0].type !== "image/png" || files[0].type !== "image/jpeg" || files[0].type !== "image/jpg") {
             const localImageUrl = URL.createObjectURL(files[0]);
             setImagePicked(true);
             setPhoto(localImageUrl);
@@ -47,7 +40,7 @@ export default function ImageUpload() {
             username : user.username,
             usernameID: user.id,
             profilePhoto : user.profilePhoto,
-            isVideo : videoPicked,
+            isVideo : false,
             likes : [],
             comments: [],
             timestamp : current.getTime(),
@@ -63,12 +56,7 @@ export default function ImageUpload() {
         <div className="modal-body">
             {
                 uploadSuccess ? <>
-                    {
-                        videoPicked ? 
-                        (<video className="uploadSuccessMsgImg" src={video} alt="post" controls></video>)
-                        :
-                        (<img src={photo} alt=" photo" className="uploadSuccessMsgImg" />)
-                    }
+                    <img src={photo} alt=" photo" className="uploadSuccessMsgImg" />
                     
                     <p className="uploadSuccessMsg" >Succesfully added new photo. Check out your profile.</p>
                 </> 
@@ -79,7 +67,7 @@ export default function ImageUpload() {
                         : 
                         <>
                             <img src="../images/create-add.png" alt="add" className="modal-insta-upload-icons"/>
-                            <p>Upload photos and videos here</p>
+                            <p>Upload photos here</p>
                         </>
                     }
                     <input type="file" accept="image/*,video/*" placeholder='Select From Computer' onChange={handleFileUploaded} className="chooseFileCont"/>

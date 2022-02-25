@@ -45,6 +45,9 @@ export default function ExplorePage(){
                 hasMore={hasMorePosts}
                 className={styles.InfiniteScrollContainer}
                 loader={<div className={styles.loadingComp}><LoadingComponent/></div>}
+                endMessage={
+                    <p className={styles.endMessage}>You've seen all posts here!</p>
+                }
                 >
                     {
                         itemsToShow.map((post) => {

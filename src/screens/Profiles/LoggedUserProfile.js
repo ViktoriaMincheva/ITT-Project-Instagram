@@ -6,13 +6,10 @@ import { Link, useLocation } from "react-router-dom";
 import styles from "./LoggedUserProfile.module.css";
 import InfoModal from "../../components/InfoModal";
 import PostPreview from "../../components/PostPreview.js";
-import { followUserAction, unfollowUserAction } from "../../redux/actions/userActions";
 
 export default function MyProfile() {
 
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-
     const users = useSelector(state => state.users.users);
     const [show, setShow] = useState(false);
     const [showFollowing, setShowFollowing] = useState(false);
@@ -29,23 +26,19 @@ export default function MyProfile() {
 
     const handleShowFollowers = (e) => {
         setShow(true);
-    }
+    };
 
     const handleShowFollowing = (e) => {
         setShowFollowing(true);
-    }
+    };
 
     const handleOpenSettings = (e) => {
         navigate("/edit", { replace: true });
-    }
+    };
 
-    const handleFollowClick = userID => {
-        if (user.following.some(id => id === userID)) {
-            dispatch(unfollowUserAction(userID))
-        } else {
-            dispatch(followUserAction(userID))
-        }
-    }
+    const handleVisitClick = username => {
+        navigate(`/users/${username}`, { replace: true });
+    };
 
     useEffect(() => {
 
@@ -100,16 +93,17 @@ export default function MyProfile() {
                         {
                             followedBy.map((follower) =>
                             (
-                                <div key={follower.id}>
+                                <div key={follower.id} className={styles.userContainer}>
                                    
-                                    <img src={follower.profilePhoto} alt="picture" className={styles.followIcon} />
-                                    <p>{follower.username}</p>
+                                    <div className={styles.userInfo} className={styles.userContainer}>
+                                        <img src={follower.profilePhoto} alt="picture" className={styles.followIcon} />
+                                        <p>{follower.username}</p>
+                                    </div>
                         
-                                    {/* TODO!!!!!!!!!!! */}
                                     <button
                                         className={styles.followButton}
-                                        onClick={() => handleFollowClick(follower.id)}>
-                                        {user.following.map(id => id === follower.id) ? "Unfollow" : "Follow"}
+                                        onClick={() => handleVisitClick(follower.username)}>
+                                        Visit
                                     </button>
                                 </div>
                             )
@@ -120,14 +114,16 @@ export default function MyProfile() {
                         {
                             following.map((follow) =>
                             (
-                                <div key={follow.id}>
+                                <div key={follow.id} className={styles.userContainer}>
+                                    <div className={styles.userInfo}>
                                         <img src={follow.profilePhoto} alt="picture" className={styles.followIcon} />
                                         <p>{follow.username}</p>
-                                    {/* TODO!!!!!!!!!! */}
+                                    </div>
+                                        
                                     <button
                                         className={styles.followButton}
-                                        onClick={() => { handleFollowClick(follow.id) }}>
-                                        {user.following.map(id => id === follow.id) ? "Unfollow" : "Follow"}
+                                        onClick={() => handleVisitClick(follow.username)}>
+                                        Visit
                                     </button>
                                 </div>
                             )

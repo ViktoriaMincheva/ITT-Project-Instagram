@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from "./LoggedUserProfile.module.css";
 import InfoModal from "../../components/InfoModal.js";
@@ -10,7 +11,8 @@ import LoadingComponent from './../../components/LoadingComponent';
 import { followUserAction, unfollowUserAction } from "../../redux/actions/userActions";
 
 export default function UserProfile() {
-    
+
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const params = useParams();
 
@@ -27,7 +29,7 @@ export default function UserProfile() {
     const [following, setFollowing] = useState([]);
     const [followedBy, setFollowedBy] = useState([]);
 
-    
+
     const handleShowFollowers = (e) => {
         setShow(true);
     };
@@ -37,19 +39,23 @@ export default function UserProfile() {
     };
 
     const handleFollowClick = userID => {
-        if(followedAccounts.some(id => id === userID)) {
+        if (followedAccounts.some(id => id === userID)) {
             dispatch(unfollowUserAction(userID))
         } else {
             dispatch(followUserAction(userID))
         }
     };
 
-    useEffect( () => {
+    const handleVisitClick = username => {
+        navigate(`/users/${username}`, { replace: true });
+    };
+
+    useEffect(() => {
         const posts = allPosts.filter((el) => {
             return el.username === params.pid
         })
         setUserPosts(posts);
-        
+
         const currentUser = allUsers.filter((user) => {
             return user.username === params.pid
         })
@@ -58,7 +64,7 @@ export default function UserProfile() {
         let followers = [];
         currentUser[0].followedBy.map((follower) => {
             return allUsers.filter((user) => {
-                if(user.id === follower){
+                if (user.id === follower) {
                     followers.push(user);
                 }
             })
@@ -71,7 +77,7 @@ export default function UserProfile() {
         let followingUsers = [];
         currentUser[0].following.map((follower) => {
             return allUsers.filter((user) => {
-                if(user.id === follower){
+                if (user.id === follower) {
                     followingUsers.push(user);
                 }
             })
@@ -84,15 +90,15 @@ export default function UserProfile() {
 
     const isFollowed = followedAccounts.some(id => id === userData.id);
 
-    
+
 
     return (
         <>
-            {   !(userPosts && userData) ? 
+            {!(userPosts && userData) ?
                 <div className={styles.LoadingComponent}>
                     <LoadingComponent />
                 </div>
-                : 
+                :
                 <div className={styles.ProfileContainer}>
                     <div className={styles.ProfileInfo}>
                         <div className={styles.ProfileImageContainer}>
@@ -101,7 +107,7 @@ export default function UserProfile() {
                         <div className={styles.MainInfoContainer}>
                             <div className={styles.ProfileNecessities}>
                                 <p>{userData.username}</p>
-                                <button className={styles.followButton} onClick={() => {handleFollowClick(userData.id)}}>{isFollowed ? "Unfollow" : "Follow"}</button>
+                                <button className={styles.followButton} onClick={() => { handleFollowClick(userData.id) }}>{isFollowed ? "Unfollow" : "Follow"}</button>
                             </div>
                             <div className={styles.ProfileActivity}>
                                 <p><span>{userPosts.length}</span> posts</p>
@@ -110,25 +116,41 @@ export default function UserProfile() {
                             </div>
                             <InfoModal title="Followers" onClose={() => setShow(false)} show={show}>
                                 {
-                                    followedBy.map((follower) => 
-                                        (
-                                            <div key={Math.random()}>
-                                                <img src={follower.profilePhoto} alt="picture" className={styles.followIcon}/>
+                                    followedBy.map((follower) =>
+                                    (
+                                        <div key={uuidv4()} className={styles.userContainer}>
+                                            <div className={styles.userInfo}>
+                                                <img src={follower.profilePhoto} alt="picture" className={styles.followIcon} />
                                                 <p>{follower.username}</p>
                                             </div>
-                                        )
+
+                                            <button
+                                                className={styles.followButton}
+                                                onClick={() => handleVisitClick(follower.username)}>
+                                                Visit
+                                            </button>
+                                        </div>
+                                    )
                                     )
                                 }
                             </InfoModal>
                             <InfoModal title="Following" onClose={() => setShowFollowing(false)} show={showFollowing}>
                                 {
-                                    following.map((follow) => 
-                                        (
-                                            <div key={Math.random()}>
-                                                <img src={follow.profilePhoto} alt="picture" className={styles.followIcon}/>
+                                    following.map((follow) =>
+                                    (
+                                        <div key={uuidv4()} className={styles.userContainer}>
+                                            <div className={styles.userInfo}>
+                                                <img src={follow.profilePhoto} alt="picture" className={styles.followIcon} />
                                                 <p>{follow.username}</p>
                                             </div>
-                                        )
+
+                                            <button
+                                                className={styles.followButton}
+                                                onClick={() => handleVisitClick(follow.username)}>
+                                                Visit
+                                            </button>
+                                        </div>
+                                    )
                                     )
                                 }
                             </InfoModal>
@@ -148,36 +170,37 @@ export default function UserProfile() {
                             <img src="../images/icons/videos.png" alt="grid icon" />
                             <p>VIDEOS</p>
                         </div> */}
-                    </div> 
+                    </div>
 
                     <div className={styles.MediaContainer}>
                         {
-                           userPosts && 
-                           userPosts.map((post) => {
-                               let postComments = [];
-                               {
-                               comments.map((comment) => {
-                                   if (post.postID === comment.postID){
-                                       postComments.unshift(comment);
-                                   }
-                               })}
-                               return (<PostPreview 
-                                   key={post.postID}
-                                   postID={post.postID}
-                                   src={post.content}
-                                   username={post.username} 
-                                   icon={userData.profilePhoto}
-                                   caption={post.desc} 
-                                   alt="post photo" 
-                                   likeCount={post.likes.length} 
-                                   commentCount={postComments.length} />)
-                           })
+                            userPosts &&
+                            userPosts.map((post) => {
+                                let postComments = [];
+                                {
+                                    comments.map((comment) => {
+                                        if (post.postID === comment.postID) {
+                                            postComments.unshift(comment);
+                                        }
+                                    })
+                                }
+                                return (<PostPreview
+                                    key={post.postID}
+                                    postID={post.postID}
+                                    src={post.content}
+                                    username={post.username}
+                                    icon={userData.profilePhoto}
+                                    caption={post.desc}
+                                    alt="post photo"
+                                    likeCount={post.likes.length}
+                                    commentCount={postComments.length} />)
+                            })
                         }
                     </div>
-                    
+
                 </div>
             }
         </>
-        
+
     )
 }

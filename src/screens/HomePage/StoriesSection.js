@@ -2,13 +2,11 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./StoriesSection.css";
 import { v4 as uuidv4 } from 'uuid';
-import Story from "./Story";
-import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
-import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import Modal from "../../components/Modal";
-import { Carousel } from "@trendyol-js/react-carousel";
 import { newStoryAdded } from "../../redux/actions/allStoriesActions";
-
+import StoryModal from "./StoryModal";
+import Story from "./Story";
+import Stories from "react-insta-stories";
 
 
 export default function StoriesSection() {
@@ -20,7 +18,13 @@ export default function StoriesSection() {
 
     const [story, setStory] = useState(null);
     const [show, setShow] = useState(false);
+    const [showOpenStory, setShowOpenStory] = useState(false);
     const [storyError, setStoryError] = useState("");
+    const [isStoryOpen, setIsStoryOpen] = useState(false);
+    const [openedStory, setOpenedStory] = useState("");
+    const [storyUsername, setStoryUsername] = useState("");
+    const [storyIcon, setStoryIcon] = useState("");
+
 
     const handleStoryUpload = (e) => {
         setShow(true);
@@ -36,14 +40,31 @@ export default function StoriesSection() {
         }
     };
 
+    let storyObj;
+    let body;
+    let header ={};
+    const handleStoryOpen = storyID => {
+        storyObj = allStories.filter(story => story.id === storyID);
+        setShowOpenStory(true);
+        console.log(storyObj);
+        setOpenedStory(storyObj)
+        // setStoryUsername(storyObj[0].username);
+        setStoryIcon(storyObj[0].icon);
+        header.heading = storyObj[0].username;
+        header.profileImage = storyObj[0].icon;
+        console.log(header);
+    };
+
+    console.log(openedStory);
+
     const handleStoryAdded = e => {
         e.preventDefault();
         if (story !== null) {
             let storyObj = {
-                id : uuidv4(),
+                id: uuidv4(),
                 username: loggedUser.username,
                 userID: loggedUser.id,
-                icon: loggedUser.profilePhoto, 
+                icon: loggedUser.profilePhoto,
                 url: story
             };
             dispatch(newStoryAdded(storyObj));
@@ -57,31 +78,48 @@ export default function StoriesSection() {
     return (
         <div className="stories-container">
 
-                <div className="carousel">
-                    <div className="story-upload">
-                        <img onClick={handleStoryUpload} className="story-upload-img" src="../images/icons/insta-story.png"/>
-                        <p>Add</p>
-                    </div>
-                    {
-                        allStories.map(story => {
-                            return (<Story
-                                username={story.username}
-                                icon={story.icon}
-                                key={story.id}
-                            />)
-                        })
-                    }
+            <div className="carousel">
+                <div className="story-upload">
+                    <img onClick={handleStoryUpload} className="story-upload-img" src="../images/icons/insta-story.png" />
+                    <p>Add</p>
                 </div>
-
-         <Modal title="Add story" onClose={() => setShow(false)} show={show}>
-            <div className="add-story-container">
-            {storyError && <div>{storyError}</div>}
-                <form onSubmit={e => handleStoryAdded(e)}> 
-                    <input type="file" accept=".png, .jpg, .jpeg" onChange={e => handleFileChange(e)} />
-                    <button type="submit">Add Story</button>
-                </form>
+                {
+                    allStories.map(story => {
+                        return (<Story
+                            onClick={() => handleStoryOpen(story.id)}
+                            username={story.username}
+                            icon={story.icon}
+                            key={story.id}
+                        />)
+                    })
+                }
             </div>
-          </Modal>
+
+            <Modal title="Add story" onClose={() => setShow(false)} show={show}>
+                <div className="add-story-container">
+                    {storyError && <div>{storyError}</div>}
+                    <form onSubmit={e => handleStoryAdded(e)}>
+                        <input type="file" accept=".png, .jpg, .jpeg" onChange={e => handleFileChange(e)} />
+                        <button type="submit">Add Story</button>
+                    </form>
+                </div>
+            </Modal>
+
+            <StoryModal
+                title="storyyyy" onClose={() => setShowOpenStory(false)} show={showOpenStory}>
+
+                <>
+                    <Stories
+                        stories={openedStory}
+                        defaultInterval={1500}
+                        loop={true}
+                        header
+                        onAllStoriesEnd={() => setShowOpenStory(false)}>
+                    </Stories>
+                </>
+
+
+            </StoryModal>
         </div>
 
     )

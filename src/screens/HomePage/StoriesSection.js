@@ -56,22 +56,22 @@ export default function StoriesSection() {
 
     return (
         <div className="stories-container">
-            <div className="story-upload">
-                <img onClick={handleStoryUpload} className="story-upload-img" src="../images/icons/insta-story.png"/>
-            </div>
 
-            <Carousel infinite={false} leftArrow={<ArrowCircleLeftIcon color="action" />} rightArrow={<ArrowCircleRightIcon color="action" />} show={6} slide={3} swipeOn={false} className="stories-section">
-
-                {
-                    allStories.map(story => {
-                        return (<Story
-                            username={story.username}
-                            icon={story.icon}
-                            key={story.id}
-                        />)
-                    })
-                }
-            </Carousel>
+                <div className="carousel">
+                    <div className="story-upload">
+                        <img onClick={handleStoryUpload} className="story-upload-img" src="../images/icons/insta-story.png"/>
+                        <p>Add</p>
+                    </div>
+                    {
+                        allStories.map(story => {
+                            return (<Story
+                                username={story.username}
+                                icon={story.icon}
+                                key={story.id}
+                            />)
+                        })
+                    }
+                </div>
 
          <Modal title="Add story" onClose={() => setShow(false)} show={show}>
             <div className="add-story-container">

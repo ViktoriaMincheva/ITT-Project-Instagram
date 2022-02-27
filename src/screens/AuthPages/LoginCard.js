@@ -36,6 +36,7 @@ export default function LoginCard(props) {
             setLoading(true);
             userCredential = await login(email, pass);
             uid = userCredential.user.uid;
+            setLoading(false);
             navigate("/", { replace: true });
         } catch {
             setError("Failed to log in");
@@ -51,7 +52,6 @@ export default function LoginCard(props) {
         dispatch(loadComments());
         dispatch(loadUsers());
         dispatch(loadStoriesAction());
-        setLoading(false);
     }
 
     return (
@@ -61,8 +61,8 @@ export default function LoginCard(props) {
 
                 <form onSubmit={handleSubmit}>
                     {error && <div>{error}</div>}
-                    <input className={styles.input} type="text" placeholder="Email" onInput={(e) => setEmail(e.target.value.trim())} />
-                    <input type="password" className={styles.input} placeholder="Password" onInput={(e) => setPass(e.target.value.trim())} />
+                    <input className={styles.input} type="text" placeholder="Email" onInput={(e) => {setEmail(e.target.value.trim())}} />
+                    <input type="password" className={styles.input} placeholder="Password" onInput={(e) => {setPass(e.target.value.trim())}} />
                     <button type="submit" className={styles.button} disabled={((email && pass) ? false : true) || loading}>Log In</button>
                 </form>
 

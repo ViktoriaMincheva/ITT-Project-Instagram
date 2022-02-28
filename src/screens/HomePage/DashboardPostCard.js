@@ -96,7 +96,7 @@ export default function DashboardPost(props) {
                     src={likes.some(like => like.postID === props.postID && like.userID === loggedUser.id) ? "../images/icons/heart-liked.png" : "../images/icons/heart.png"} 
                     alt="heart"
                     onClick={() => handleLikePost(props.postID)} />
-                    <img className="icons" src="../images/icons/comment.png" alt="comment" />
+                    <img className="icons" src="../images/icons/comment.png" alt="comment" onClick={handleOpenPostModal}/>
                 </div>
 
                 <img className="icons" src={savedPosts.some(id => id === props.postID) ? "../images/icons/saved.png" : "../images/icons/non-saved.png"} alt="save" onClick={() => handleSavePost(props.postID)} alt="save" />

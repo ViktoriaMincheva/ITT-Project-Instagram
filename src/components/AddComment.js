@@ -20,16 +20,18 @@ export default function AddComment(props) {
     };
 
     const handlePostComment = () => {
-        let obj = {
-            commentID: uuidv4(),
-            ownerID: userID,
-            postID: props.postID,
-            content: inputStr,
-            likes: 0,
-            timestamp: new Date().getHours() + "h"
+        if(inputStr.trim().length > 0){
+            let obj = {
+                commentID: uuidv4(),
+                ownerID: userID,
+                postID: props.postID,
+                content: inputStr,
+                likes: 0,
+                timestamp: new Date().getHours() + "h"
+            }
+            setInputStr('');
+            dispatch(newCommentAddedAction(obj))
         }
-        setInputStr('');
-        dispatch(newCommentAddedAction(obj))
     }
 
     const handleEnterPress = e => {

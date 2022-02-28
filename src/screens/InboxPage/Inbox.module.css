@@ -195,9 +195,8 @@
     justify-self: flex-end;
     align-self: flex-end;
     background-color: #EFEFEF;
-    border: 1px solid #dbdbdb;
-    border-radius: 10px;
-    padding: 5px;
+    border-radius: 16px;
+    padding: 14px;
     width: 200px;
     overflow-wrap: break-word;
     box-sizing: border-box;
@@ -206,11 +205,11 @@
     justify-self: flex-start;
     background-color: white;
     border: 1px solid #dbdbdb;
-    border-radius: 10px;
-    padding: 5px;
+    border-radius: 16px;
+    padding: 14px;
     width: 200px;
+    overflow-wrap: break-word;
     box-sizing: border-box;
-
 }
 .emojiIcon {
     position: absolute;
@@ -281,4 +280,7 @@
 .communicationMsgs::-webkit-scrollbar-track-piece:start {
     background: transparent;
     margin-top: 10px;
+}
+.chatAsidePreview {
+    cursor: pointer;
 }

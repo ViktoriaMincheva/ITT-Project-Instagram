@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { useNavigate, navigation } from 'react-router-dom';
-import styles from "./styles/Searchbar.module.css";
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import styles from "./styles/Searchbar.module.css";
 import useDebounce from '../utils/useDebounce';
 
 
@@ -41,8 +41,7 @@ export default function Searchbar() {
                     suggestions &&
                     suggestions.map((suggestion) => (
                         <div key={Math.random()} className={styles.suggestion} onClick={(e) => handleClick(suggestion.username)}>{suggestion.username}</div>
-                    )
-                    )
+                    ))
                 }
             </div>
         </div>

@@ -21,7 +21,6 @@ export default function LoginCard(props) {
     const [pass, setPass] = useState("");
     const { login } = useAuth();
     const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -33,13 +32,18 @@ export default function LoginCard(props) {
         e.preventDefault()
         try {
             setError("");
-            setLoading(true);
             userCredential = await login(email, pass);
             uid = userCredential.user.uid;
-            setLoading(false);
             navigate("/", { replace: true });
-        } catch {
-            setError("Failed to log in");
+        } catch (error) {
+            if (error.message.includes("auth/user-not-found") || error.message.includes("wrong-password")) {
+                setError("You have entered an invalid email or password.")
+            } else if (error.message.includes("invalid-email")){
+                setError("Please enter a valid email address.")
+            } else {
+                setError(error.message)
+            }
+            console.log("catch");
         }
 
         const db = getFirestore();
@@ -60,10 +64,10 @@ export default function LoginCard(props) {
                 <img className={styles.logo} src="../images/logo.png" alt="Instagram" width="160px" />
 
                 <form onSubmit={handleSubmit}>
-                    {error && <div>{error}</div>}
+                    {error && <div className={styles.errMsg}>{error}</div>}
                     <input className={styles.input} type="text" placeholder="Email" onInput={(e) => {setEmail(e.target.value.trim())}} />
                     <input type="password" className={styles.input} placeholder="Password" onInput={(e) => {setPass(e.target.value.trim())}} />
-                    <button type="submit" className={styles.button} disabled={((email && pass) ? false : true) || loading}>Log In</button>
+                    <button type="submit" className={styles.button} disabled={((email && pass) ? false : true)}>Log In</button>
                 </form>
 
                 {/* this is the or-line in the login form */}

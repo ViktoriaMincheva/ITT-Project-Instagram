@@ -192,7 +192,6 @@
     box-sizing: border-box;
 }
 .msgByLoggedUser {
-    justify-self: flex-end;
     align-self: flex-end;
     background-color: #EFEFEF;
     border-radius: 16px;
@@ -202,7 +201,7 @@
     box-sizing: border-box;
 }
 .msgByUser {
-    justify-self: flex-start;
+    align-self: flex-start;
     background-color: white;
     border: 1px solid #dbdbdb;
     border-radius: 16px;

@@ -34,7 +34,7 @@ export default function RegisterCard(props) {
     const [pass, setPass] = useState("");
     const { signup } = useAuth();
     const [error, setError] = useState("");
-    const navigate = useNavigate();
+    const [message, setMessage] = useState("");
 
     function handleCheckUsername (userName) {
         users.map(user => {
@@ -49,13 +49,21 @@ export default function RegisterCard(props) {
         event.preventDefault();
         try {
             setError("");
+            setMessage("");
 
             if (handleCheckUsername(username)) {
                 throw new Error("This username is already in use.");
             }
+            if (username.length > 20 || username.length < 5){
+                throw new Error("Username should be between 5 and 20 characters long.");
+            }
+            if (pass.length > 50 || pass.length < 6){
+                throw new Error("Password should be between 6 and 50 characters long.");
+            }
 
             await signup(email, pass, fullName, username);
-            navigate("/login", { replace: true });
+            setMessage("Registered successfully. You can now log in.");
+            event.target.reset();
 
         } catch (error) {
             if(error.message.includes("email-already-in-use")){
@@ -80,6 +88,7 @@ export default function RegisterCard(props) {
                                 <Line />
                 <form onSubmit={handleSubmit}>
                     {error && <div className={styles.errMsg}>{error}</div>}
+                    {message && <div className={styles.successMsg}>{message}</div>}
                     <input className={styles.input} id="email" type="text" placeholder="Email" onInput={(e) => setEmail(e.target.value.trim())} />
                     <input className={styles.input} id="fullName" type="text" placeholder="Full name" onInput={(e) => setName(e.target.value.trim())} />
                     <input className={styles.input} id="username" type="text" placeholder="Username" onInput={(e) => setUsername(e.target.value.trim())} />

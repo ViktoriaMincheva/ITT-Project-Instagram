@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { doc, getFirestore, getDoc, collection, setDoc, query, Timestamp,  onSnapshot, orderBy, updateDoc } from "firebase/firestore";
@@ -28,6 +28,15 @@ export default function Inbox() {
     const debouncedSearchValue = useDebounce(searchedInput, 500);
     
     const db = getFirestore();
+    const messagesEndRef = useRef(null)
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    }
+
+    useEffect(() => {
+        scrollToBottom()
+    }, [messages]);
     
     useEffect( async function loadGroups() {
         getAllChats();
@@ -201,6 +210,7 @@ export default function Inbox() {
                                             
                                         )
                                     }
+                                    <div ref={messagesEndRef} />
                                 </div>
                                 <div className={styles.sendMsgContainer}>
                                     <div className={styles.inputContainer}>

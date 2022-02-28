@@ -69,7 +69,7 @@ export default function ExplorePage(){
                                 icon={post.profilePhoto}
                                 caption={post.desc} 
                                 alt="post photo" 
-                                likeCount={post.likes.length} 
+                                likeCount={post.likes} 
                                 commentCount={postComments.length} />)
                         })
                     }

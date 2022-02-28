@@ -8,8 +8,6 @@ export const FOLLOW_USER = "FOLLOW_USER";
 export const UNFOLLOW_USER = "UNFOLLOW_USER";
 export const ADD_POST = "ADD_POST";
 export const ADD_STORY = "ADD_STORY";
-export const LIKE_POST = "LIKE_POST";
-export const UNLIKE_POST = "UNLIKE_POST";
 export const SAVE_POST = "SAVE_POST";
 export const UNSAVE_POST = "UNSAVE_POST";
 export const CHANGE_BIO = "CHANGE_BIO";
@@ -101,22 +99,7 @@ export const unSavePostAction = postID => {
         type: UNSAVE_POST,
         payload: postID
     }
-}
-
-export const likePostAction = postID => {
-    return{
-        type: LIKE_POST,
-        payload: postID
-    }
 };
-
-export const unlikePostAction = postID => {
-    return {
-        type: UNLIKE_POST,
-        payload: postID
-    }
-};
-
 
 export const changeBioAction = bio => {
     return{

@@ -7,6 +7,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import LoadingComponent from './../../components/LoadingComponent';
 
 export default function ExplorePage(){
+    const likes = useSelector(state => state.likesData.likes);
     const posts = useSelector(state => state.allPostsData.posts);
     const comments = useSelector(state => state.comments.comments);
     const [itemsToShow, setItemsToShow] = useState([]);
@@ -59,6 +60,7 @@ export default function ExplorePage(){
                                 }
                             })}                               
                             return (<PostPreview 
+                                likes={likes.filter(like => like.postID === post.postID).length}
                                 key={post.postID}
                                 postID={post.postID}
                                 src={post.content}

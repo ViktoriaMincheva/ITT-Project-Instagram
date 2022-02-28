@@ -21,7 +21,7 @@ export default function PostPreview(props) {
     const HoverContent = () => {
         return (
             <div className={styles.overContainer} onClick={handleOpenPostModal}>
-                <a><img className={styles.icon} src="../images/icons/white-heart.png" alt="heart icon" /><span>{props.likeCount} &nbsp;</span></a>
+                <a><img className={styles.icon} src="../images/icons/white-heart.png" alt="heart icon" /><span>{props.likes} &nbsp;</span></a>
                 <a><img className={styles.icon} src="../images/icons/comment-white.png" alt="comment icon" /><span>&nbsp; {props.commentCount}</span></a>
             </div>
         )
@@ -33,6 +33,7 @@ export default function PostPreview(props) {
                 <img  src={props.src} className={styles.previewImage}  alt="photo" />
                 {isHovering && <HoverContent/>}
                 <UserPostModal 
+                likes={props.likes}
                 postImage={props.src} 
                 postID={props.postID} 
                 ownerID={props.ownerID}

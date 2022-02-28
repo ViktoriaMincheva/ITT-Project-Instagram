@@ -27,7 +27,6 @@ export function AuthProvider({ children }) {
             following: [],
             bio: null,
             posts: [],
-            likedPosts:[],
             savedPosts:[],
             publicProfile: true,
             fullName: fullName,

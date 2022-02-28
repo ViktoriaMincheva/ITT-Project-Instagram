@@ -1,11 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./LoggedUserProfile.module.css";
 import InfoModal from "../../components/InfoModal";
-import PostPreview from "../../components/PostPreview.js";
 
 export default function MyProfile() {
 
@@ -17,7 +16,6 @@ export default function MyProfile() {
     const [followedBy, setFollowedBy] = useState([]);
     const user = useSelector(state => state.userData);
     const posts = useSelector(state => state.allPostsData.posts);
-    console.log(user.bio);
 
     let loggedUserPosts = posts.filter(post => {
         return post.usernameID === user.id
@@ -143,10 +141,6 @@ export default function MyProfile() {
                     <img src="../images/icons/posts-grid.png" alt="grid icon" />
                     <Link to="/profile-posts" className={styles.postsLink}>POSTS</Link>
                 </div>
-                {/* <div className={`${styles.NavigationTab} ${styles.noBorder}`}>
-                    <img src="../images/icons/videos.png" alt="grid icon" />
-                    <p>VIDEOS</p>
-                </div> */}
                 <div className={location.pathname === "/profile-saved" ? `${styles.NavigationTab}` : `${styles.NavigationTab} ${styles.noBorder}`}>
                     <img src="../images/icons/saved-grid.png" alt="grid icon" />
                     <Link to="/profile-saved" className={styles.postsLink}>SAVED</Link>

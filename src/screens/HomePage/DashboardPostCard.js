@@ -2,22 +2,22 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
 import "./DashboardPostCard.css"
+import { v4 as uuidv4 } from 'uuid';
 import AddComment from "../../components/AddComment"
 import UserPostModal from "../../components/UserPostModal"
-import { likePostAction, savePostAction, unlikePostAction, unSavePostAction } from '../../redux/actions/userActions';
+import { savePostAction, unSavePostAction } from '../../redux/actions/userActions';
+import { likeRemovedAction, newLikeAddedAction } from '../../redux/actions/allLikesActions';
 
 export default function DashboardPost(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
-    const isVideo = props.isVideo === "true";
-    // const [isVideo, setIsVideo] = useState(false);
-    // setIsVideo(props.isVideo);
 
+    const loggedUser = useSelector(state => state.userData);
     const users = useSelector(state => state.users.users);
+    const likes = useSelector(state => state.likesData.likes);
     const likedPosts = useSelector(state => state.userData.likedPosts);
     const savedPosts = useSelector(state => state.userData.savedPosts);
-    // const [likes, setLikes] = useState(props.likes);
     const [verified, setVerified] = useState(false);
 
     const handleShowUserProfile = () => {
@@ -45,14 +45,25 @@ export default function DashboardPost(props) {
         })
     });
 
-
-    const handleLikePost = postID => {
-        if (likedPosts.some(id => id === postID)) {
-            dispatch(unlikePostAction(postID))
+    function getLikeObj() {
+        return likes.filter(like => like.postID === props.postID && like.userID === loggedUser.id);
+      };
+      
+    
+      const handleLikePost = postID => {
+        let like = getLikeObj();
+        if(like.length <= 0) {
+          let likeObj ={
+            id : uuidv4(),
+            postID : postID,
+            userID : loggedUser.id
+          };
+          dispatch(newLikeAddedAction(likeObj))      
         } else {
-            dispatch(likePostAction(postID))
+          dispatch(likeRemovedAction(like[0].id))
         }
-    };
+      };
+
 
     const handleSavePost = postID => {
         if(savedPosts.some(id => id === postID)) {
@@ -78,11 +89,13 @@ export default function DashboardPost(props) {
             </div>
 
             <img className="post-image" src={props.postUrl} alt="post" onClick={handleOpenPostModal}/>
-            
 
             <section className="action-icons">
                 <div>
-                    <img className="icons" src={likedPosts.some(id => id === props.postID) ? "../images/icons/heart-liked.png" : "../images/icons/heart.png"} onClick={() => handleLikePost(props.postID)} alt="heart" />
+                    <img className="icons" 
+                    src={likes.some(like => like.postID === props.postID && like.userID === loggedUser.id) ? "../images/icons/heart-liked.png" : "../images/icons/heart.png"} 
+                    alt="heart"
+                    onClick={() => handleLikePost(props.postID)} />
                     <img className="icons" src="../images/icons/comment.png" alt="comment" />
                 </div>
 
@@ -102,6 +115,7 @@ export default function DashboardPost(props) {
             <AddComment postID={props.postID} />
 
             <UserPostModal 
+                likes={props.likes}
                 ownerID={props.ownerID}
                 postImage={props.postUrl} 
                 postID={props.postID} 

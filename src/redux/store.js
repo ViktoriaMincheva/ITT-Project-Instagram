@@ -5,13 +5,15 @@ import thunk from 'redux-thunk';
 import { commentsProvider } from "./reducers/commentsReducer";
 import { allUsersReducer } from "./reducers/allUsersReducer";
 import { allStoriesReducer } from "./reducers/allStoriesReducer";
+import { allLikesReducer } from "./reducers/allLikesReducer";
 
 const rootReducer = combineReducers({
     userData : userReducer,
     allPostsData : allPostsReducer,
     comments: commentsProvider,
     users: allUsersReducer,
-    allStories : allStoriesReducer
+    allStories : allStoriesReducer,
+    likesData: allLikesReducer
 });
 
 

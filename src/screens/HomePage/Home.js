@@ -13,6 +13,7 @@ export default function Home() {
     const loggedUser = useSelector(state => state.userData);
     const posts = useSelector(state => state.allPostsData.posts);
     const comments = useSelector(state => state.comments.comments);
+    const likes = useSelector(state => state.likesData.likes);
     const following = loggedUser.following;
     const [itemsToShow, setItemsToShow] = useState([]);
     const [items, setItems] = useState([]);
@@ -80,7 +81,7 @@ export default function Home() {
                             postUrl={post.content}
                             username={post.username}
                             icon={post.profilePhoto}
-                            likes={post.likes.length}
+                            likes={likes.filter(like => like.postID === post.postID).length}
                             caption={post.desc}
                             timestamp={post.timestamp}
                             isVideo={post.isVideo}

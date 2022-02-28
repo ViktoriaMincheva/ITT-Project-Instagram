@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import PostPreview from './../../components/PostPreview';
 
 export default function UserPosts() {
+    const likes = useSelector(state => state.likesData.likes);
     const allPosts = useSelector(state => state.allPostsData.posts);
     const comments = useSelector(state => state.comments.comments);
     const user = useSelector(state => state.userData);
@@ -34,6 +35,7 @@ export default function UserPosts() {
                 })
             }
             return (<PostPreview
+                likes={likes.filter(like => like.postID === post.postID).length}
                 ownerID={post.usernameID}
                 key={post.postID}
                 postID={post.postID}
@@ -42,7 +44,6 @@ export default function UserPosts() {
                 icon={user.profilePhoto}
                 caption={post.desc}
                 alt="post photo"
-                likeCount={post.likes.length}
                 commentCount={postComments.length} />)
         })
     }

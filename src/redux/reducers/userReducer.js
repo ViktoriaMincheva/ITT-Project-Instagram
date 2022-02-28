@@ -1,5 +1,5 @@
 import { act } from "react-dom/test-utils";
-import { LOGIN, LOGOUT, CHANGE_NAME, CHANGE_PROFILE_PHOTO, FOLLOW_USER, UNFOLLOW_USER, SAVE_POST, ADD_STORY, UNSAVE_POST, ADD_POST, UNLIKE_POST, CHANGE_BIO, CHANGE_WEBSITE, CHANGE_USERNAME, LIKE_POST } from "../actions/userActions";
+import { LOGIN, LOGOUT, CHANGE_NAME, CHANGE_PROFILE_PHOTO, FOLLOW_USER, UNFOLLOW_USER, SAVE_POST, ADD_STORY, UNSAVE_POST, ADD_POST, CHANGE_BIO, CHANGE_WEBSITE, CHANGE_USERNAME } from "../actions/userActions";
 
 
 const INITIAL_STATE = {
@@ -11,7 +11,6 @@ const INITIAL_STATE = {
     fullName: null,
     username: null,
     savedPosts: [],
-    likedPosts: [],
     followedBy: [],
     posts: [],
     stories: [],
@@ -35,7 +34,6 @@ export const userReducer = (state = INITIAL_STATE, action) => {
                 following: action.payload.following,
                 followedBy: action.payload.followedBy,
                 posts: action.payload.posts,
-                likedPosts: action.payload.likedPosts,
                 stories: action.payload.stories,
                 savedPosts: action.payload.savedPosts,
                 notifications: action.payload.notifications,
@@ -123,23 +121,6 @@ export const userReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 savedPosts: state.savedPosts.filter(id => {
-                    return id !== action.payload
-                })
-            };
-        case LIKE_POST:
-            const liked = state.likedPosts.some(id => id === action.payload)
-                ?
-                state.likedPosts
-                :
-                [...state.likedPosts, action.payload]
-            return {
-                ...state,
-                likedPosts: liked
-            };
-        case UNLIKE_POST:
-            return {
-                ...state,
-                likedPosts: state.likedPosts.filter(id => {
                     return id !== action.payload
                 })
             };

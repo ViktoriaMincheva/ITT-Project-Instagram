@@ -1,12 +1,14 @@
 import ReactDOM from "react-dom";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import "./styles/Modal.css";
+import { v4 as uuidv4 } from 'uuid';
 import AddComment from './AddComment';
 import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
 import { useDispatch, useSelector } from 'react-redux';
-import { likePostAction, savePostAction, unlikePostAction, unSavePostAction } from "../redux/actions/userActions";
+import { savePostAction,  unSavePostAction } from "../redux/actions/userActions";
 import { postDeletedAction } from "../redux/actions/allPostsActions";
+import { likeRemovedAction, newLikeAddedAction } from "../redux/actions/allLikesActions";
 
 export default function Modal(props) {
 
@@ -14,10 +16,12 @@ export default function Modal(props) {
 
   const users = useSelector(state => state.users.users);
   const comments = useSelector(state => state.comments.comments);
-  const logegdUser = useSelector(state => state.userData);
+  const loggedUser = useSelector(state => state.userData);
   const posts = useSelector(state => state.allPostsData.posts);
   const likedPosts = useSelector(state => state.userData.likedPosts);
   const savedPosts = useSelector(state => state.userData.savedPosts);
+  const likes = useSelector(state => state.likesData.likes);
+
 
   const closeOnEscapeKeyDown = (e) => {
     if ((e.charCode || e.keyCode) === 27) {
@@ -33,13 +37,25 @@ export default function Modal(props) {
   }, []);
 
 
+  function getLikeObj() {
+    return likes.filter(like => like.postID === props.postID && like.userID === loggedUser.id);
+  };
+  
+
   const handleLikePost = postID => {
-    if (likedPosts.some(id => id === postID)) {
-      dispatch(unlikePostAction(postID))
+    let like = getLikeObj();
+    if(like.length <= 0) {
+      let likeObj ={
+        id : uuidv4(),
+        postID : postID,
+        userID : loggedUser.id
+      };
+      dispatch(newLikeAddedAction(likeObj))      
     } else {
-      dispatch(likePostAction(postID));
+      dispatch(likeRemovedAction(like[0].id))
     }
   };
+
 
   const handleSavePost = postID => {
     if (savedPosts.some(id => id === postID)) {
@@ -118,7 +134,7 @@ export default function Modal(props) {
               <div className="delete-container">
 
                {
-                props.ownerID === logegdUser.id ? (<DeleteOutlineRoundedIcon className="delete-img" onClick={() => handleDeletePost(props.postID)} />) : null
+                props.ownerID === loggedUser.id ? (<DeleteOutlineRoundedIcon className="delete-img" onClick={() => handleDeletePost(props.postID)} />) : null
                }
 
               </div>
@@ -155,7 +171,10 @@ export default function Modal(props) {
               <div className="post-actions">
 
                 <div>
-                  <img className="icons" src={likedPosts.some(id => id === props.postID) ? "../images/icons/heart-liked.png" : "../images/icons/heart.png"} alt="heart" onClick={() => handleLikePost(props.postID)} alt="heart" />
+                  <img className="icons" 
+                  src={likes.some(like => like.postID === props.postID && like.userID === loggedUser.id) ? "../images/icons/heart-liked.png" : "../images/icons/heart.png"} 
+                  alt="heart"  alt="heart" 
+                  onClick={() => handleLikePost(props.postID)} />
                   <img className="icons" src="../images/icons/comment.png" alt="comment" />
                 </div>
 
@@ -168,7 +187,7 @@ export default function Modal(props) {
                     if (post.postID == props.postID) {
                       return (
                         <div key={post.postID}>
-                          <p className="modal-post-likes">{post.likes.length} likes</p>
+                          <p className="modal-post-likes">{props.likes} likes</p>
                           <p className="modal-post-timestamp">{post.timestamp}</p>
                         </div>
                       )

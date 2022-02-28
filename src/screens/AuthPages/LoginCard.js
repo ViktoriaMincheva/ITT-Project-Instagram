@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { loginAction } from "../../redux/actions/userActions";
 import { doc, getFirestore, getDoc } from "firebase/firestore";
 import { loadPosts } from "../../redux/actions/allPostsActions";
+import { loadLikes } from "../../redux/actions/allLikesActions";
 import { loadComments } from "../../redux/actions/commentsActions";
 import { loadUsers } from "../../redux/actions/allUsersActions";
 import { loadStoriesAction } from "../../redux/actions/allStoriesActions";
@@ -50,6 +51,7 @@ export default function LoginCard(props) {
         dispatch(loginAction(user))
         dispatch(loadPosts());
         dispatch(loadComments());
+        dispatch(loadLikes());
         dispatch(loadUsers());
         dispatch(loadStoriesAction());
     }

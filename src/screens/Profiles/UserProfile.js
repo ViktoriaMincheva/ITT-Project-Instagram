@@ -22,6 +22,7 @@ export default function UserProfile() {
     const allPosts = useSelector(state => state.allPostsData.posts);
     const comments = useSelector(state => state.comments.comments);
 
+    const likes = useSelector(state => state.likesData.likes);
     const [show, setShow] = useState(false);
     const [showFollowing, setShowFollowing] = useState(false);
     const [userPosts, setUserPosts] = useState("");
@@ -166,10 +167,6 @@ export default function UserProfile() {
                             <img src="../images/icons/posts-grid.png" alt="grid icon" />
                             <p>POSTS</p>
                         </div>
-                        {/* <div className={`${styles.NavigationTab} ${styles.noBorder}`}>
-                            <img src="../images/icons/videos.png" alt="grid icon" />
-                            <p>VIDEOS</p>
-                        </div> */}
                     </div>
 
                     <div className={styles.MediaContainer}>
@@ -185,6 +182,7 @@ export default function UserProfile() {
                                     })
                                 }
                                 return (<PostPreview
+                                    likes={likes.filter(like => like.postID === post.postID).length}
                                     key={post.postID}
                                     postID={post.postID}
                                     src={post.content}

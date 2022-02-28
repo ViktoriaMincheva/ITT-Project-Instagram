@@ -35,6 +35,7 @@ export default function PostPreview(props) {
                 <UserPostModal 
                 postImage={props.src} 
                 postID={props.postID} 
+                ownerID={props.ownerID}
                 postOwner={props.username} 
                 ownerImg={props.icon} 
                 postDesc={props.caption}

@@ -50,6 +50,7 @@
     border: 1px solid lightgray;
     border-radius: 2px;
     box-sizing: border-box;
+    background-color: #ffff;
 }
 .carousel::-webkit-scrollbar {
     display: none;

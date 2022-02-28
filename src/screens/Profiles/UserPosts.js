@@ -18,7 +18,7 @@ export default function UserPosts() {
         setTimeout(() => {
             setUserPosts(posts);
         }, 500)
-    }, [])
+    }, [allPosts])
 
   return (
     <div className={styles.MediaContainer}>
@@ -34,6 +34,7 @@ export default function UserPosts() {
                 })
             }
             return (<PostPreview
+                ownerID={post.usernameID}
                 key={post.postID}
                 postID={post.postID}
                 src={post.content}

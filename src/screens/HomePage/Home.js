@@ -74,6 +74,7 @@ export default function Home() {
                     
                         itemsToShow.map((post) =>  
                         (<DashboardPost
+                            ownerID={post.usernameID}
                             key={post.postID}
                             postID={post.postID}
                             postUrl={post.content}

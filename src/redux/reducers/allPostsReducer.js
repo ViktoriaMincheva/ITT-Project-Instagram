@@ -1,4 +1,4 @@
-import { LOAD_POSTS, NEW_POST_ADDED } from "../actions/allPostsActions";
+import { LOAD_POSTS, NEW_POST_ADDED, POST_DELETED } from "../actions/allPostsActions";
 
 const INITIAL_STATE = {
     posts: [],
@@ -15,6 +15,11 @@ export const allPostsReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 posts: [action.payload, ...state.posts]
+            };
+            case POST_DELETED: 
+            return{
+                ...state,
+                posts: state.posts.filter(post => post.postID !== action.payload)
             };
         default:
             return state;

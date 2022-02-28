@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import PostPreview from './../../components/PostPreview';
+import { PostAddRounded } from '@mui/icons-material';
 
 export default function UserSaved() {
     const savedPostsIDs = useSelector(state => state.userData.savedPosts);
@@ -43,9 +44,10 @@ export default function UserSaved() {
             return (<PostPreview
                 key={post.postID}
                 postID={post.postID}
+                ownerID={post.usernameID}
                 src={post.content}
                 username={post.username}
-                icon={user.profilePhoto}
+                icon={post.profilePhoto}
                 caption={post.desc}
                 alt="post photo"
                 likeCount={post.likes.length}

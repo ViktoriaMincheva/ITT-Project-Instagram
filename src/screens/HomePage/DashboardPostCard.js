@@ -84,7 +84,6 @@ export default function DashboardPost(props) {
                 <div>
                     <img className="icons" src={likedPosts.some(id => id === props.postID) ? "../images/icons/heart-liked.png" : "../images/icons/heart.png"} onClick={() => handleLikePost(props.postID)} alt="heart" />
                     <img className="icons" src="../images/icons/comment.png" alt="comment" />
-                    <img className="icons" src="../images/icons/inbox.png" alt="send"/>
                 </div>
 
                 <img className="icons" src={savedPosts.some(id => id === props.postID) ? "../images/icons/saved.png" : "../images/icons/non-saved.png"} alt="save" onClick={() => handleSavePost(props.postID)} alt="save" />
@@ -103,6 +102,7 @@ export default function DashboardPost(props) {
             <AddComment postID={props.postID} />
 
             <UserPostModal 
+                ownerID={props.ownerID}
                 postImage={props.postUrl} 
                 postID={props.postID} 
                 postOwner={props.username} 

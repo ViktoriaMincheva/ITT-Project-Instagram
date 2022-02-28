@@ -131,10 +131,21 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    border-bottom: 1px solid #dbdbdb;
-    padding: 10px 16px;
     box-sizing: border-box;
 }
+
+.modal-header {
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-img{
+    cursor: pointer;
+}
+
 .modal-side-image-container {
     display: flex;
     align-items: center;

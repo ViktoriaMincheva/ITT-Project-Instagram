@@ -62,6 +62,7 @@ export default function ExplorePage(){
                                 key={post.postID}
                                 postID={post.postID}
                                 src={post.content}
+                                ownerID={post.usernameID}
                                 username={post.username} 
                                 icon={post.profilePhoto}
                                 caption={post.desc} 

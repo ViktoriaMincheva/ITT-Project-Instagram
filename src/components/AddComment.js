@@ -14,7 +14,7 @@ export default function AddComment(props) {
     const userID = useSelector(state => state.userData.id);
 
 
-    const onEmojiClick = ( emojiObject) => {
+    const onEmojiClick = (event, emojiObject) => {
         setInputStr(prevInput => prevInput + emojiObject.emoji);
         setShowPicker(false);
     };

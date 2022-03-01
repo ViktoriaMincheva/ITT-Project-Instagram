@@ -1,4 +1,3 @@
-import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
 import styles from "./ProfileSuggestion.module.css"
 
@@ -7,7 +6,7 @@ export default function ProfileSuggestion(props) {
     const navigate = useNavigate();
     const handleClick = (username) => {
         navigate(`/users/${username}`, { replace: true });
-    }
+    };
 
     return (
         <div className={styles.container}>

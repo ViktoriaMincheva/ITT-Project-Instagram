@@ -16,4 +16,4 @@ export const newStoryAdded = story => {
         type: NEW_STORY_ADDED,
         payload: story
     }
-}
+};

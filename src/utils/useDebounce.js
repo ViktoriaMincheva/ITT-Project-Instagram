@@ -1,6 +1,4 @@
-//custom use debounce hook
-
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
 
 const useDebounce = (value, time) => {
     const [debouncedValue, setDebouncedValue] = useState(value)

@@ -1,7 +1,7 @@
+import thunk from 'redux-thunk';
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import { allPostsReducer } from "./reducers/allPostsReducer";
 import { userReducer } from "./reducers/userReducer";
-import thunk from 'redux-thunk';
 import { commentsProvider } from "./reducers/commentsReducer";
 import { allUsersReducer } from "./reducers/allUsersReducer";
 import { allStoriesReducer } from "./reducers/allStoriesReducer";

@@ -58,7 +58,7 @@ export default function StoriesSection() {
                 id: uuidv4(),
                 username: loggedUser.username,
                 userID: loggedUser.id,
-                icon: loggedUser.profilePhoto,
+                icon: loggedUser.profilePhoto !== null ? loggedUser.profilePhoto : "../images/icons/profile.png",
                 url: story
             };
             dispatch(newStoryAdded(storyObj));
@@ -67,7 +67,7 @@ export default function StoriesSection() {
         } else {
             setStoryError("You did not make any changes");
         }
-    }
+    };
 
 
     return (

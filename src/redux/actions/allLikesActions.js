@@ -1,6 +1,6 @@
 export const LOAD_LIKES = "LOAD_LIKES";
 export const NEW_LIKE_ADDED = "NEW_LIKE_ADDED";
-export const LIKE_REMOVED = "LIKE_REMOVED"
+export const LIKE_REMOVED = "LIKE_REMOVED";
 
 export const loadLikes = () => {
     return function(dispatch) {

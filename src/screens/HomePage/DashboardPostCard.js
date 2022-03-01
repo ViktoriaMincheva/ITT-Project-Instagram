@@ -20,11 +20,11 @@ export default function DashboardPost(props) {
 
     const handleShowUserProfile = () => {
         navigate(`/users/${props.username}`, { replace: true });
-    }
+    };
 
     const handleOpenPostModal = () => {
         setShow(true);
-    }
+    };
 
     
     let postComment = [];
@@ -35,7 +35,7 @@ export default function DashboardPost(props) {
                     <div className="commentContent" key={comment.commentID}>
                         <img src={user.profilePhoto} alt="icon" />
                         <p className="commentUsername">{user.username}</p>
-                        <small>{comment.content}</small>
+                        <small className="comment">{comment.content}</small>
                         <p className="post-timestamp">{comment.timestamp}</p>
                     </div>
                 )

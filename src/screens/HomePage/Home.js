@@ -3,7 +3,6 @@ import styles from "./Home.module.css"
 import DashboardPost from "./DashboardPostCard";
 import HomeAsideSection from "./HomeAsideSection";
 import StoriesSection from "./StoriesSection";
-import { render } from "react-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useState, useEffect } from 'react';
 import LoadingComponent from './../../components/LoadingComponent';
@@ -52,7 +51,7 @@ export default function Home() {
                 setHasMorePosts(false);
             }
         }, 1500)
-    }
+    };
     
     return (
         <main className={styles.main}>

@@ -24,7 +24,7 @@ export default function HomeAsideHeader(props) {
         } catch (e) {
             setError("Failed to log out")
         }
-    }
+    };
 
     return (
         <div className={styles.container}>

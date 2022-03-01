@@ -33,7 +33,7 @@ export default function ExplorePage(){
                 setHasMorePosts(false);
             }
         }, 1500)
-    }
+    };
 
 
     return (

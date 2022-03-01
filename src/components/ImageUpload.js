@@ -61,7 +61,7 @@ export default function ImageUpload() {
                 uploadSuccess ? <>
                     <img src={photo} alt=" photo" className="uploadSuccessMsgImg" />
                     
-                    <p className="uploadSuccessMsg" >Succesfully added new photo. Check out your profile.</p>
+                    <p className="uploadSuccessMsg">Succesfully added new photo. Check out your profile.</p>
                 </> 
                 : 
                 <>

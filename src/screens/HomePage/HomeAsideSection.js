@@ -19,7 +19,7 @@ export default function HomeAsideSection() {
         } else {
             dispatch(followUserAction(userID))
         }
-    }
+    };
     const Heading = styled.p`
     color: #8e8e8e;
     font-size: 14px;

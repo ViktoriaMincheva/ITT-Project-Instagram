@@ -16,4 +16,4 @@ export const newCommentAddedAction = comment => {
         type: NEW_COMMENT_ADDED,
         payload: comment
     }
-}
+};

@@ -74,7 +74,7 @@ export default function Inbox() {
 
     const handleCurrentChat = (receiverID) => {
         setCurrentMsgUserID(receiverID);
-    }
+    };
     
     async function handleSendMessage () {
         if (inputStr.trim().length > 0){
@@ -93,7 +93,7 @@ export default function Inbox() {
             const messagesRef = collection(db, "message", groupID, "messages");
             liveUpdate(messagesRef);
         }
-    }
+    };
 
     const handleEnterPress = e => {
         if(e.keyCode === 13) {
@@ -110,11 +110,11 @@ export default function Inbox() {
             });
             setMessages(msgArr);
         });
-    } 
+    };
 
     const handleChooseUser = (e) => {
         setShow(true);
-    }
+    };
     
     async function handleChosenUser (username, userPic, receiverID){
 
@@ -154,7 +154,7 @@ export default function Inbox() {
         const messagesRef = collection(db, "message", grID, "messages");
         getAllChats();
         liveUpdate(messagesRef);
-    }
+    };
 
 
     return (

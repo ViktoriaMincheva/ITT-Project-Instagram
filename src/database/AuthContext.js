@@ -3,7 +3,8 @@ import { auth } from './firebase';
 import { doc, getFirestore, setDoc } from "firebase/firestore"
 import { createUserWithEmailAndPassword, sendPasswordResetEmail, 
     signInWithEmailAndPassword, signOut, updatePassword, 
-    reauthenticateWithCredential } from "firebase/auth";
+    reauthenticateWithCredential, 
+    updateEmail} from "firebase/auth";
 
 const AuthContext = React.createContext();
 
@@ -45,17 +46,15 @@ export function AuthProvider({ children }) {
     }
 
     function logout() {
-        signOut(auth)
-        .then(() => {
-
-        })
-        .catch((error) => {
-
-        })
+        return signOut(auth)
     }
 
     function resetPassword(email) {
         return sendPasswordResetEmail(auth, email);
+    }
+
+    async function changeUserEmail(email) {
+        return updateEmail(auth.currentUser, email);
     }
 
     async function updatePass(user, newPassword) {
@@ -82,7 +81,8 @@ export function AuthProvider({ children }) {
         signup,
         resetPassword,
         updatePass,
-        reauthenticateUser
+        reauthenticateUser,
+        changeUserEmail
     }
 
     return (

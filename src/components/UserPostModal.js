@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom";
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
+import { useNavigate } from 'react-router-dom';
 import { CSSTransition } from "react-transition-group";
 import "./styles/Modal.css";
 import { v4 as uuidv4 } from 'uuid';
@@ -13,14 +14,13 @@ import { likeRemovedAction, newLikeAddedAction } from "../redux/actions/allLikes
 export default function Modal(props) {
 
   const dispatch = useDispatch();
-
   const users = useSelector(state => state.users.users);
   const comments = useSelector(state => state.comments.comments);
   const loggedUser = useSelector(state => state.userData);
   const posts = useSelector(state => state.allPostsData.posts);
-  const likedPosts = useSelector(state => state.userData.likedPosts);
   const savedPosts = useSelector(state => state.userData.savedPosts);
   const likes = useSelector(state => state.likesData.likes);
+  const navigate = useNavigate();
 
 
   const closeOnEscapeKeyDown = (e) => {
@@ -36,6 +36,9 @@ export default function Modal(props) {
     };
   }, []);
 
+  const handleVisitUser = (username) => {
+    navigate(`/users/${username}`, { replace: true });
+  };
 
   function getLikeObj() {
     return likes.filter(like => like.postID === props.postID && like.userID === loggedUser.id);
@@ -78,10 +81,10 @@ export default function Modal(props) {
           return postComment.push(
             <div className="modal-comment-content" key={comment.commentID}>
               <div className="modal-comment-img">
-                <img src={user.profilePhoto} alt="icon" className="modal-comment-icon" />
+                <img src={user.profilePhoto} alt="icon" className="modal-comment-icon" onClick={() => handleVisitUser(user.username)}/>
               </div>
               <div className="modal-comment-wraper">
-                <p className="modal-comment-user">{user.username}</p>
+                <p className="modal-comment-user" onClick={() => handleVisitUser(user.username)}>{user.username}</p>
                 <p className="modal-comment-comment">{comment.content}</p>
                 <p className="post-timestamp">{comment.timestamp}</p>
               </div>
@@ -116,10 +119,10 @@ export default function Modal(props) {
 
               <div className="modal-side-header">
                 <div className="modal-side-image-container">
-                  <img src={props.ownerImg} alt="profile picture" />
+                  <img src={props.ownerImg} alt="profile picture" onClick={() => handleVisitUser(props.postOwner)}/>
                 </div>
 
-                <p>{props.postOwner}</p>
+                <p onClick={() => handleVisitUser(props.postOwner)}>{props.postOwner}</p>
 
                 {
                   users.map((user) => {
@@ -145,7 +148,7 @@ export default function Modal(props) {
 
               <div className="modal-post-desc">
                 <div className="modal-side-image-container">
-                  <img src={props.ownerImg} alt="profile picture" />
+                  <img src={props.ownerImg} alt="profile picture"/>
                 </div>
                 <div className="post-desc">
                   <p>

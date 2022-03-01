@@ -44,7 +44,7 @@ export default function HomeAsideSection() {
                      (<ProfileSuggestion 
                         key={suggestion.id}
                         onClick={() => handleFollowClick(suggestion.id)} 
-                        icon={suggestion.profilePhoto} 
+                        icon={suggestion.profilePhoto ? suggestion.profilePhoto : "../images/icons/profile.png"} 
                         username={suggestion.username} 
                         info="Suggested" 
                         followed={loggedUser.following.some(id => id === suggestion.id)} 

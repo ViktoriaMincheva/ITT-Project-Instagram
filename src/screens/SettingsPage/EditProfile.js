@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeBioAction, changeNameAction, changeProfilePhotoAction, changeUserNameAction, changeWebsiteAction } from "../../redux/actions/userActions";
-import styles from "./EditProfile.module.css"
+import { changeBioAction, changeNameAction, changeProfilePhotoAction, changeUserNameAction, changeEmailAction} from "../../redux/actions/userActions";
+import { useAuth } from '../../database/AuthContext';
+import styles from "./EditProfile.module.css";
 import Modal from "../../components/Modal";
 
 
@@ -11,25 +12,16 @@ export default function EditProfile() {
     const user = useSelector(state => state.userData);
     const [username, setUsername] = useState("");
     const [name, setName] = useState("");
-    const [website, setWebsite] = useState("");
     const [bio, setBio] = useState("");
-    const [success, setSuccess] = useState("")
+    const [email, setEmail] = useState("");
+    const [success, setSuccess] = useState("");
+    const [error, setError] = useState("");
     const [photoError, setPhotoError] = useState("");
     const [photo, setPhoto] = useState(null);
-    const [uploadError, setUploadError] = useState(false)
+    const { changeUserEmail } = useAuth();
+    const [uploadError, setUploadError] = useState(false);
 
     const dispatch = useDispatch();
-
-    // const handleChangePhoto = e => {
-    //     setShow(true);
-    // }
-
-    const handleWebsiteInput = e => {
-        let res = e.target.value.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
-        if (res) {
-            setWebsite(res);
-        }
-    };
 
     const handleFileChange = (e) => {
         const { files } = e.target;
@@ -48,29 +40,38 @@ export default function EditProfile() {
         if (photo !== null) {
             dispatch(changeProfilePhotoAction(photo));
             setShow(false);
-            setSuccess("Your profile picture has been updated successfully.")
+            setSuccess("Your profile picture has been updated successfully.");
         } else {
             setPhotoError("You did not make any changes");
         }
     };
 
+    const handleEditEmail = async (email) => {
+        try {
+            setError("");
+            await changeUserEmail(email);
+            dispatch(changeEmailAction(email));
+            setSuccess("Your email has been updated successfully.");
+        } catch (e) {
+            setError(e.message);
+        }
+    };
 
-    const handleEditProfile = () => {
+    const handleEditProfile = (e) => {
         if (name && name !== user.name) {
             dispatch(changeNameAction(name));
-            setSuccess("Your profile information has been updated successfully.")
+            setSuccess("Your profile information has been updated successfully.");
         }
         if (username && username !== user.username) {
             dispatch(changeUserNameAction(username));
-            setSuccess("Your profile information has been updated successfully.")
-        }
-        if (website.trim() && website !== user.website) {
-            dispatch(changeWebsiteAction(website));
-            setSuccess("Your profile information has been updated successfully.")
-        }
+            setSuccess("Your profile information has been updated successfully.");
+        } 
         if (bio && bio !== user.bio) {
             dispatch(changeBioAction(bio));
-            setSuccess("Your profile information has been updated successfully.")
+            setSuccess("Your profile information has been updated successfully.");
+        }
+        if (email) {
+            handleEditEmail(email);
         }
     };
 
@@ -78,6 +79,7 @@ export default function EditProfile() {
     return (
         <section className={styles.editProfileContainer}>
             {success && <div className={styles.success}>{success}</div>}
+            {error && <div className={styles.error}>{error}</div>}
             <div className={styles.user}>
                 <div className={styles.userIconContainer}>
                      <img src={user.profilePhoto ? user.profilePhoto : "../images/icons/profile.png"} alt="avatar" className={styles.userIcon} onClick={(e) =>  setShow(true)} />
@@ -90,7 +92,7 @@ export default function EditProfile() {
                     Name
                 </label>
                 <div className={styles.inputField}>
-                    <input id="name" className={styles.input} placeholder={user.name} onInput={e => setName(e.target.value.trim())} />
+                    <input id="name" className={styles.input} placeholder={user.name} onChange={e => setName(e.target.value.trim())} />
                     <p className={styles.text}>Help people discover your account by using the name you're known by: either your full name, nickname, or business name.</p>
                 </div>
             </div>
@@ -101,17 +103,7 @@ export default function EditProfile() {
                 </label>
 
                 <div className={styles.inputField}>
-                    <input onInput={e => setUsername(e.target.value.trim())} id="username" className={styles.input} placeholder={user.username} />
-                </div>
-            </div>
-
-            <div className={styles.row}>
-                <label className={styles.label}>
-                    Website
-                </label>
-
-                <div className={styles.inputField}>
-                    <input type="url" onInput={e => handleWebsiteInput(e)} id="website" className={styles.input} placeholder={user.website} />
+                    <input onChange={e => setUsername(e.target.value.trim())} id="username" className={styles.input} placeholder={user.username} />
                 </div>
             </div>
 
@@ -121,7 +113,7 @@ export default function EditProfile() {
                 </label>
 
                 <div className={styles.inputField}>
-                    <textarea id="bio" onInput={e => setBio(e.target.value.trim())} className={styles.textarea} />
+                    <textarea id="bio" onChange={e => setBio(e.target.value.trim())} className={styles.textarea} placeholder={user.bio} />
                 </div>
             </div>
 
@@ -141,7 +133,7 @@ export default function EditProfile() {
                 </label>
 
                 <div className={styles.inputField}>
-                    <input type="email" className={styles.input} placeholder={user.email} />
+                    <input type="email" className={styles.input} placeholder={user.email} onChange={e => setEmail(e.target.value.trim())}/>
                 </div>
             </div>
 

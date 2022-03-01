@@ -48,6 +48,7 @@ export default function UserProfile() {
     };
 
     const handleVisitClick = username => {
+        setShow(false);
         navigate(`/users/${username}`, { replace: true });
     };
 
@@ -87,7 +88,7 @@ export default function UserProfile() {
         setTimeout(() => {
             setFollowing(followingUsers);
         }, 500)
-    }, []);
+    }, [params.pid]);
 
     const isFollowed = followedAccounts.some(id => id === userData.id);
 

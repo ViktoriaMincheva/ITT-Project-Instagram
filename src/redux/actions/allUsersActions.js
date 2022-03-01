@@ -1,4 +1,4 @@
-import { collection, collectionGroup, getDoc, getDocs, getFirestore, query } from "firebase/firestore";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 export const LOAD_USERS = "LOAD_USERS";
 
@@ -9,9 +9,3 @@ export const loadUsers = () => async (dispatch) => {
     querySnapshot.forEach(doc => users.push(doc.data()));
     dispatch({type: LOAD_USERS, payload: users});
 };
-
-
-    
-   
-
-

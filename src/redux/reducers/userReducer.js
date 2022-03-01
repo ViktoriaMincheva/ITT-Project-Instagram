@@ -1,5 +1,4 @@
-import { act } from "react-dom/test-utils";
-import { LOGIN, LOGOUT, CHANGE_NAME, CHANGE_PROFILE_PHOTO, FOLLOW_USER, UNFOLLOW_USER, SAVE_POST, ADD_STORY, UNSAVE_POST, ADD_POST, CHANGE_BIO, CHANGE_WEBSITE, CHANGE_USERNAME } from "../actions/userActions";
+import { LOGIN, LOGOUT, CHANGE_NAME, CHANGE_PROFILE_PHOTO, FOLLOW_USER, UNFOLLOW_USER, SAVE_POST, ADD_STORY, UNSAVE_POST, ADD_POST, CHANGE_BIO, CHANGE_EMAIL, CHANGE_USERNAME } from "../actions/userActions";
 
 
 const INITIAL_STATE = {
@@ -10,14 +9,12 @@ const INITIAL_STATE = {
     profilePhoto: null,
     fullName: null,
     username: null,
+    bio: null,
     savedPosts: [],
     followedBy: [],
-    posts: [],
-    stories: [],
     following: [],
-    bio: null,
-    website: null
-
+    posts: [],
+    stories: []
 }
 
 export const userReducer = (state = INITIAL_STATE, action) => {
@@ -36,7 +33,6 @@ export const userReducer = (state = INITIAL_STATE, action) => {
                 posts: action.payload.posts,
                 stories: action.payload.stories,
                 savedPosts: action.payload.savedPosts,
-                notifications: action.payload.notifications,
                 bio: action.payload.bio
             };
         case LOGOUT:
@@ -44,14 +40,17 @@ export const userReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 logged: false,
                 id: null,
+                email: null,
                 name: null,
                 profilePhoto: null,
                 username: null,
+                bio: null,
                 following: [],
                 followedBy: [],
                 posts: [],
+                stories: [],
                 savedPosts: [],
-                notifications: []
+
             };
 
         case CHANGE_NAME:
@@ -70,10 +69,10 @@ export const userReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 bio: action.payload
             };
-        case CHANGE_WEBSITE:
+        case CHANGE_EMAIL:
             return {
                 ...state,
-                website: action.payload
+                email: action.payload
             };
         case FOLLOW_USER:
             const usersFollowing = state.following.some(uid => uid === action.payload)

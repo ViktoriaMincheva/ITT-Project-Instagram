@@ -27,6 +27,7 @@ export default function Searchbar() {
 
     const handleClick = (username) => {
         setSuggestions([]);
+        setSearchedData("");
         navigate(`/users/${username}`, { replace: true });
     };
 

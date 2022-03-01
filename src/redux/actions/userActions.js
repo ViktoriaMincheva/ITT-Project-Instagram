@@ -11,7 +11,6 @@ export const ADD_STORY = "ADD_STORY";
 export const SAVE_POST = "SAVE_POST";
 export const UNSAVE_POST = "UNSAVE_POST";
 export const CHANGE_BIO = "CHANGE_BIO";
-export const CHANGE_WEBSITE = "CHANGE_WEBSITE";
 
 
 export const loginAction = user => {
@@ -28,7 +27,6 @@ export const loginAction = user => {
             posts: user.posts,
             savedPosts: user.savedPosts,
             likedPosts: user.likedPosts,
-            notifications: user.notifications,
             bio: user.bio
         }
     }
@@ -108,12 +106,9 @@ export const changeBioAction = bio => {
     }
 };
 
-export const changeWebsiteAction = url => {
+export const changeEmailAction = email => {
     return{
-        type: CHANGE_WEBSITE,
-        payload: url
+        type: CHANGE_EMAIL,
+        payload: email
     }
 };
-
-
-

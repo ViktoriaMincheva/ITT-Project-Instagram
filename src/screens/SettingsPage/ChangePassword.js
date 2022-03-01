@@ -26,8 +26,17 @@ export default function ChangePassword() {
             return setError("Password should be at least 6 symbols")
         }
 
-        newPassword = newPass;
+        const oldCredentials = EmailAuthProvider.credential(
+            auth.currentUser.email,
+            oldPass
+        );
+        try {
+            await reauthenticateUser(user, oldCredentials);
+        } catch (e) {
+            return setError("The old password you've entered is incorrect")
+        }
 
+        newPassword = newPass;
         try {
             setError("");
             await updatePass(user, newPassword);
@@ -43,6 +52,7 @@ export default function ChangePassword() {
             setError("");
             setMessage("");
             await reauthenticateUser(user, credential);
+            e.target.reset();
             setMessage("Password has been successfully changed");
         } catch {
             setError("Failed to change password");
@@ -53,7 +63,7 @@ export default function ChangePassword() {
         <section className="changePassContainer">
             <div className="userInfo">
                 <img src={loggedUser.profilePhoto != null ? loggedUser.profilePhoto : "images/icons/profile.png"} alt="avatar" className="userIcon" />
-                <h5>AVInstaPr</h5>
+                <h5>{loggedUser.username}</h5>
             </div>
 
             <form onSubmit={handleSubmit}>
@@ -64,7 +74,7 @@ export default function ChangePassword() {
                         Old Password
                     </label>
                     <div className="inputField">
-                        <input type="password" id="oldPass" className="input" onInput={e => setOldPass(e.target.value.trim())} />
+                        <input type="password" id="oldPass" className="input" placeholder="Enter your old password" onInput={e => setOldPass(e.target.value.trim())} />
                     </div>
                 </div>
                 <div className="row">
@@ -72,7 +82,7 @@ export default function ChangePassword() {
                         New Password
                     </label>
                     <div className="inputField">
-                        <input type="password" id="newPass" className="input" onInput={e => setNewPass(e.target.value.trim())} />
+                        <input type="password" id="newPass" className="input" placeholder="Enter your new password" onInput={e => setNewPass(e.target.value.trim())} />
                     </div>
                 </div>
                 <div className="row">
@@ -81,7 +91,7 @@ export default function ChangePassword() {
                     </label>
 
                     <div className="inputField">
-                        <input type="password" id="repeatPass" className="input" onInput={e => setRepeatPass(e.target.value.trim())} />
+                        <input type="password" id="repeatPass" className="input" placeholder="Repeat your new password"onInput={e => setRepeatPass(e.target.value.trim())} />
                     </div>
                 </div>
                 <button className="changeBtn" type="submit" disabled={(oldPass && newPass && repeatPass ? false : true)}>Change Password</button>

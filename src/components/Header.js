@@ -4,7 +4,6 @@ import { useState } from "react";
 import React from "react";
 import styles from "./styles/Header.module.css";
 import NavBarProfileMenu from "./NavBarProfileMenu";
-import NotificationMenu from "./NotificationMenu";
 import ImageUpload from "./ImageUpload";
 import Modal from "./Modal.js";
 import Searchbar from './Searchbar';
@@ -43,7 +42,6 @@ export default function Header() {
           <Link to="/explore">
             <img src={location.pathname === "/explore" ? "../images/icons/explore-clicked.png" : "../images/icons/explore.png"} alt="explore" className={styles.headerIcon} />
           </Link>
-          <NotificationMenu/>
           <NavBarProfileMenu/>
         </div>
       </div>

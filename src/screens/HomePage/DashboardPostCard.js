@@ -34,7 +34,7 @@ export default function DashboardPost(props) {
                 postComment.push(
                     <div className="commentContent" key={comment.commentID}>
                         <img src={user.profilePhoto} alt="icon" />
-                        <p>{user.username}</p>
+                        <p className="commentUsername">{user.username}</p>
                         <small>{comment.content}</small>
                         <p className="post-timestamp">{comment.timestamp}</p>
                     </div>

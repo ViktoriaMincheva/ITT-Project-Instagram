@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeBioAction, changeNameAction, changeProfilePhotoAction, changeUserNameAction, changeEmailAction} from "../../redux/actions/userActions";
 import { useAuth } from '../../database/AuthContext';
-import styles from "./EditProfile.module.css"
+import styles from "./EditProfile.module.css";
 import Modal from "../../components/Modal";
 
 
@@ -19,29 +19,32 @@ export default function EditProfile() {
     const [photoError, setPhotoError] = useState("");
     const [photo, setPhoto] = useState(null);
     const { changeUserEmail } = useAuth();
+    const [uploadError, setUploadError] = useState(false);
 
     const dispatch = useDispatch();
 
     const handleFileChange = (e) => {
         const { files } = e.target;
-        if (files[0].type !== "image/png" || files[0].type !== "image/jpeg" || files[0].type !== "image/jpg") {
+        if (files[0].type === "image/png" || files[0].type === "image/jpeg" || files[0].type === "image/jpg") {
             const localImageUrl = URL.createObjectURL(files[0]);
             setPhoto(localImageUrl);
         } else {
-            setPhotoError("Please choose a valid file type.")
+            setUploadError(true);
+            setPhoto(null);
+            setPhotoError("Please choose a valid file type.");
         }
-    }
+    };
 
     const handleProfilePhotoChange = e => {
         e.preventDefault();
         if (photo !== null) {
             dispatch(changeProfilePhotoAction(photo));
             setShow(false);
-            setSuccess("Your profile picture has been updated successfully.")
+            setSuccess("Your profile picture has been updated successfully.");
         } else {
             setPhotoError("You did not make any changes");
         }
-    }
+    };
 
     const handleEditEmail = async (email) => {
         try {
@@ -52,25 +55,25 @@ export default function EditProfile() {
         } catch (e) {
             setError(e.message);
         }
-    }
+    };
 
     const handleEditProfile = (e) => {
         if (name && name !== user.name) {
             dispatch(changeNameAction(name));
-            setSuccess("Your profile information has been updated successfully.")
+            setSuccess("Your profile information has been updated successfully.");
         }
         if (username && username !== user.username) {
             dispatch(changeUserNameAction(username));
-            setSuccess("Your profile information has been updated successfully.")
+            setSuccess("Your profile information has been updated successfully.");
         } 
         if (bio && bio !== user.bio) {
             dispatch(changeBioAction(bio));
-            setSuccess("Your profile information has been updated successfully.")
+            setSuccess("Your profile information has been updated successfully.");
         }
         if (email) {
             handleEditEmail(email);
         }
-    }
+    };
 
 
     return (
@@ -141,7 +144,7 @@ export default function EditProfile() {
 
                     <form className={styles.changePhotoForm} onSubmit={e => handleProfilePhotoChange(e)}>
                         <input type="file" accept=".png, .jpg, .jpeg" onChange={e => handleFileChange(e)} />
-                        <button type="submit">submit</button>
+                        <button className={styles.submitPhotoBtn} type="submit" disabled={uploadError ? true : false}>submit</button>
                     </form>
                 </div>
             </Modal>

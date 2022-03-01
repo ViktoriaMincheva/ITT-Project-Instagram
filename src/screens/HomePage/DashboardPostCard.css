@@ -73,9 +73,9 @@
 }
 
 .post-timestamp {
-    margin-left: 16px;
+    margin-left: 10px;
     color: #8e8e8e;
-    font-size: 12px;
+    font-size: 10px;
     cursor: pointer;
 }
 .commentsContainer {
@@ -94,7 +94,7 @@
     width: 28px;
     border-radius: 50%;
 }
-.commentContent p {
+.commentUsername {
     margin: 0;
     font-weight: 500;
     font-size: 16px;

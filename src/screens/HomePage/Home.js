@@ -54,14 +54,13 @@ export default function Home() {
         }, 1500)
     }
     
-    
     return (
         <main className={styles.main}>
 
             <section className={styles.leftSection}>
                 <StoriesSection />
 
-                {itemsToShow ? (
+                {itemsToShow.length > 0 ? (
                     <InfiniteScroll
                     dataLength={itemsToShow.length}
                     next={loadMoreData}
@@ -95,7 +94,7 @@ export default function Home() {
                 )
                 :
                 (
-                    <div className={styles.endMessage}>Please follow someone so you can see their posts on the dashboard</div>
+                    <div className={styles.endMessage}>Please follow someone so you can see their posts on the dashboard.</div>
                 )
                 }
 

@@ -108,3 +108,8 @@
     gap: 14px;
     flex-direction: column;
 }
+
+.submitPhotoBtn:disabled {
+    background-color: rgba(0,149,246,.3);
+    opacity: 1;
+}

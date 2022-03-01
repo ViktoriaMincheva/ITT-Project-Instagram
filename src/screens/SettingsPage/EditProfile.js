@@ -16,6 +16,7 @@ export default function EditProfile() {
     const [success, setSuccess] = useState("")
     const [photoError, setPhotoError] = useState("");
     const [photo, setPhoto] = useState(null);
+    const [uploadError, setUploadError] = useState(false)
 
     const dispatch = useDispatch();
 
@@ -32,13 +33,15 @@ export default function EditProfile() {
 
     const handleFileChange = (e) => {
         const { files } = e.target;
-        if (files[0].type !== "image/png" || files[0].type !== "image/jpeg" || files[0].type !== "image/jpg") {
+        if (files[0].type === "image/png" || files[0].type === "image/jpeg" || files[0].type === "image/jpg") {
             const localImageUrl = URL.createObjectURL(files[0]);
             setPhoto(localImageUrl);
         } else {
-            setPhotoError("Please choose a valid file type.")
+            setUploadError(true);
+            setPhoto(null);
+            setPhotoError("Please choose a valid file type.");
         }
-    }
+    };
 
     const handleProfilePhotoChange = e => {
         e.preventDefault();
@@ -49,7 +52,7 @@ export default function EditProfile() {
         } else {
             setPhotoError("You did not make any changes");
         }
-    }
+    };
 
 
     const handleEditProfile = () => {
@@ -69,7 +72,7 @@ export default function EditProfile() {
             dispatch(changeBioAction(bio));
             setSuccess("Your profile information has been updated successfully.")
         }
-    }
+    };
 
 
     return (
@@ -151,7 +154,7 @@ export default function EditProfile() {
                     {photoError && <div>{photoError}</div>}
                     <form className={styles.changePhotoForm} onSubmit={e => handleProfilePhotoChange(e)}>
                         <input type="file" accept=".png, .jpg, .jpeg" onChange={e => handleFileChange(e)} />
-                        <button type="submit">submit</button>
+                        <button className={styles.submitPhotoBtn} type="submit" disabled={uploadError ? true : false}>submit</button>
                     </form>
                 </div>
             </Modal>

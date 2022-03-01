@@ -27,7 +27,7 @@ export default function AddComment(props) {
                 postID: props.postID,
                 content: inputStr,
                 likes: 0,
-                timestamp: new Date().getHours() + "h"
+                timestamp: new Date().toLocaleDateString()
             }
             setInputStr('');
             dispatch(newCommentAddedAction(obj))

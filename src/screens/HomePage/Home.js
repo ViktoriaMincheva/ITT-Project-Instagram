@@ -61,37 +61,43 @@ export default function Home() {
             <section className={styles.leftSection}>
                 <StoriesSection />
 
-                {itemsToShow && 
-                <InfiniteScroll
-                dataLength={itemsToShow.length}
-                next={loadMoreData}
-                hasMore={hasMorePosts}
-                loader={<div className={styles.loadingComp}><LoadingComponent/></div>}
-                endMessage={
-                    <p className={styles.endMessage}>You've seen all posts here!</p>
-                }
-                >
-                    {
-                    
-                        itemsToShow.map((post) =>  
-                        (<DashboardPost
-                            ownerID={post.usernameID}
-                            key={post.postID}
-                            postID={post.postID}
-                            postUrl={post.content}
-                            username={post.username}
-                            icon={post.profilePhoto}
-                            likes={likes.filter(like => like.postID === post.postID).length}
-                            caption={post.desc}
-                            timestamp={post.timestamp}
-                            isVideo={post.isVideo}
-                            postComments={comments.filter(com => com.postID === post.postID)}
-                        />)
-                        
-                        ) 
-                    
+                {itemsToShow ? (
+                    <InfiniteScroll
+                    dataLength={itemsToShow.length}
+                    next={loadMoreData}
+                    hasMore={hasMorePosts}
+                    loader={<div className={styles.loadingComp}><LoadingComponent/></div>}
+                    endMessage={
+                        <p className={styles.endMessage}>You've seen all posts here!</p>
                     }
-                </InfiniteScroll>}
+                    >
+                        {
+                        
+                            itemsToShow.map((post) =>  
+                            (<DashboardPost
+                                ownerID={post.usernameID}
+                                key={post.postID}
+                                postID={post.postID}
+                                postUrl={post.content}
+                                username={post.username}
+                                icon={post.profilePhoto}
+                                likes={likes.filter(like => like.postID === post.postID).length}
+                                caption={post.desc}
+                                timestamp={post.timestamp}
+                                isVideo={post.isVideo}
+                                postComments={comments.filter(com => com.postID === post.postID)}
+                            />)
+                            
+                            ) 
+                        
+                        }
+                    </InfiniteScroll>
+                )
+                :
+                (
+                    <div className={styles.endMessage}>Please follow someone so you can see their posts on the dashboard</div>
+                )
+                }
 
             </section>
             

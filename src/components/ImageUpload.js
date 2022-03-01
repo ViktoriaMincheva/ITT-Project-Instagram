@@ -19,12 +19,13 @@ export default function ImageUpload() {
     const handleFileUploaded = (e) => {
         const { files } = e.target;
         
-        if (files[0].type !== "image/png" || files[0].type !== "image/jpeg" || files[0].type !== "image/jpg") {
+        if (files[0].type === "image/png" || files[0].type === "image/jpeg" || files[0].type === "image/jpg") {
             const localImageUrl = URL.createObjectURL(files[0]);
             setImagePicked(true);
             setPhoto(localImageUrl);
         } 
         else {
+            setPhoto(null);
             setUploadSuccess(false);
         }    
     };

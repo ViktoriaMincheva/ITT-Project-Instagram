@@ -55,3 +55,8 @@
 .carousel::-webkit-scrollbar {
     display: none;
 }
+
+.storyUploadBtn:disabled {
+    background-color: rgba(0,149,246,.3);
+    opacity: 1;
+}

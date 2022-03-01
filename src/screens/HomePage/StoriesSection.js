@@ -22,6 +22,7 @@ export default function StoriesSection() {
     const [storyError, setStoryError] = useState("");
     const [openedStory, setOpenedStory] = useState("");
     const [storyUpload, setStoryUpload] = useState(false);
+    const [uploadError, setUploadError] = useState(false);
 
     const handleStoryUpload = (e) => {
         setShow(true);
@@ -32,7 +33,10 @@ export default function StoriesSection() {
         if (files[0].type === "image/png" || files[0].type === "image/jpeg" || files[0].type === "image/jpg") {
             const localImageUrl = URL.createObjectURL(files[0]);
             setStory(localImageUrl);
+            setUploadError(false);
         } else {
+            setUploadError(true);
+            setStory(null);
             setStoryError("Please choose a valid file type.")
         }
     };
@@ -91,7 +95,7 @@ export default function StoriesSection() {
                     {storyError && <div>{storyError}</div>}
                     <form onSubmit={e => handleStoryAdded(e)}>
                         <input type="file" accept=".png, .jpg, .jpeg" onChange={e => handleFileChange(e)} />
-                        <button type="submit">Add Story</button>
+                        <button className="storyUploadBtn" type="submit" disabled={uploadError ? true : false}>Add Story</button>
                     </form>
                 </div>
             </Modal>

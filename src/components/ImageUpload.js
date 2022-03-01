@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
@@ -18,6 +18,7 @@ export default function ImageUpload() {
 
     const handleFileUploaded = (e) => {
         const { files } = e.target;
+        
         if (files[0].type !== "image/png" || files[0].type !== "image/jpeg" || files[0].type !== "image/jpg") {
             const localImageUrl = URL.createObjectURL(files[0]);
             setImagePicked(true);
@@ -47,6 +48,7 @@ export default function ImageUpload() {
             content : photo,
             desc : desc
         }
+
         dispatch(addPostAction(obj));
         dispatch(newPostAddedAction(obj));
         setUploadSuccess(true);

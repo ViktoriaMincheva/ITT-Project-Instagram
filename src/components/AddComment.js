@@ -14,13 +14,14 @@ export default function AddComment(props) {
     const userID = useSelector(state => state.userData.id);
 
 
-    const onEmojiClick = (event, emojiObject) => {
+    const onEmojiClick = ( emojiObject) => {
         setInputStr(prevInput => prevInput + emojiObject.emoji);
         setShowPicker(false);
     };
 
     const handlePostComment = () => {
         if(inputStr.trim().length > 0){
+
             let obj = {
                 commentID: uuidv4(),
                 ownerID: userID,
@@ -29,6 +30,7 @@ export default function AddComment(props) {
                 likes: 0,
                 timestamp: new Date().getHours() + "h"
             }
+            
             setInputStr('');
             dispatch(newCommentAddedAction(obj))
         }
@@ -42,7 +44,9 @@ export default function AddComment(props) {
 
     return (
         <div className={styles.container}>
+
             <div className={styles.inputContainer}>
+                
                 <img
                 className="emoji-icon"
                 src="https://icons.getbootstrap.com/assets/icons/emoji-smile.svg"

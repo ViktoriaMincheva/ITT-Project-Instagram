@@ -19,7 +19,9 @@ export default function Header() {
 
   return (
     <header className={styles.Header}>
+
       <div className={styles.HeaderContainer}>
+
         <Link to="/">
           <img src="../images/ig-logo.png" alt="Instagram" className={styles.igLogo}/>
         </Link>
@@ -27,9 +29,11 @@ export default function Header() {
         <Searchbar/>
 
         <div className={styles.IconsContainer}>
+
           <Link to="/">
             <img src={location.pathname === "/" ? "../images/icons/home-clicked.png" : "../images/icons/home.png"} alt="home" className={styles.headerIcon} />
           </Link>
+
           <Link to="/inbox">
             <img src={location.pathname === "/inbox" ? "../images/icons/clicked-inbox.png" : "../images/icons/inbox.png"} alt="inbox" className={styles.headerIcon} />
           </Link>
@@ -42,6 +46,7 @@ export default function Header() {
           <Link to="/explore">
             <img src={location.pathname === "/explore" ? "../images/icons/explore-clicked.png" : "../images/icons/explore.png"} alt="explore" className={styles.headerIcon} />
           </Link>
+          
           <NavBarProfileMenu/>
         </div>
       </div>

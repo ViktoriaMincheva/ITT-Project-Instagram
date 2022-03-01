@@ -4,6 +4,7 @@ import { CSSTransition } from "react-transition-group";
 import "./styles/InfoModal.css";
 
 export default function InfoModal (props) {
+
   const closeOnEscapeKeyDown = (e) => {
     if ((e.charCode || e.keyCode) === 27) {
       props.onClose();
@@ -12,9 +13,11 @@ export default function InfoModal (props) {
 
   useEffect(() => {
     document.body.addEventListener("keydown", closeOnEscapeKeyDown);
+
     return function cleanup() {
       document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
     };
+
   }, []);
 
   return ReactDOM.createPortal(
@@ -25,13 +28,17 @@ export default function InfoModal (props) {
       appear={true}
     >
       <div className="modal" onClick={props.onClose}>
+
         <div className={`closeX button`} onClick={props.onClose}>
           <img src="../images/icons/close-modal.png" alt="Close" className="closeIcon"/>
         </div>
+
         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+
           <div className="modal-header">
             <h4 className="modal-title">{props.title}</h4>
           </div>
+          
           <div className="modalBody">{props.children}</div>
         </div>
       </div>

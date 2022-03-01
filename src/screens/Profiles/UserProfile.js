@@ -17,7 +17,6 @@ export default function UserProfile() {
     const params = useParams();
 
     const followedAccounts = useSelector(state => state.userData.following);
-    const user = useSelector(state => state.userData);
     const allUsers = useSelector(state => state.users.users);
     const allPosts = useSelector(state => state.allPostsData.posts);
     const comments = useSelector(state => state.comments.comments);
@@ -102,20 +101,24 @@ export default function UserProfile() {
                 </div>
                 :
                 <div className={styles.ProfileContainer}>
+
                     <div className={styles.ProfileInfo}>
                         <div className={styles.ProfileImageContainer}>
                             <img src={userData.profilePhoto} alt="profile picture" className={styles.ProfileImage} />
                         </div>
+
                         <div className={styles.MainInfoContainer}>
                             <div className={styles.ProfileNecessities}>
                                 <p>{userData.username}</p>
                                 <button className={styles.followButton} onClick={() => { handleFollowClick(userData.id) }}>{isFollowed ? "Unfollow" : "Follow"}</button>
                             </div>
+
                             <div className={styles.ProfileActivity}>
                                 <p><span>{userPosts.length}</span> posts</p>
                                 <p onClick={(e) => handleShowFollowers(e)}><span>{followedBy.length}</span> followers</p>
                                 <p onClick={(e) => handleShowFollowing(e)}><span>{following.length}</span> following</p>
                             </div>
+
                             <InfoModal title="Followers" onClose={() => setShow(false)} show={show}>
                                 {
                                     followedBy.map((follower) =>
@@ -156,7 +159,9 @@ export default function UserProfile() {
                                     )
                                 }
                             </InfoModal>
+
                             <p>{userData.fullName}</p>
+
                             <div>
                                 {userData.bio}
                             </div>
@@ -164,10 +169,12 @@ export default function UserProfile() {
                     </div>
 
                     <div className={styles.PostsNavigation}>
+
                         <div className={styles.NavigationTab}>
                             <img src="../images/icons/posts-grid.png" alt="grid icon" />
                             <p>POSTS</p>
                         </div>
+                        
                     </div>
 
                     <div className={styles.MediaContainer}>

@@ -1,6 +1,6 @@
-import styles from "./styles/postPreview.module.css"
-import { useRef, useState } from "react"
-import UserPostModal from "./UserPostModal"
+import styles from "./styles/postPreview.module.css";
+import { useRef, useState } from "react";
+import UserPostModal from "./UserPostModal";
 
 export default function PostPreview(props) {
 

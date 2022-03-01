@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import styles from "./SettingsMenu.module.css"
+import styles from "./SettingsMenu.module.css";
 
 export default function SettingsMenu() {
 

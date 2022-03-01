@@ -13,12 +13,15 @@ export default function UserPosts() {
     const [userPosts, setUserPosts] = useState("");
 
     useEffect(() => {
+
         const posts = allPosts.filter((el) => {
             return el.usernameID === user.id
         })
+
         setTimeout(() => {
             setUserPosts(posts);
         }, 500)
+        
     }, [allPosts])
 
   return (

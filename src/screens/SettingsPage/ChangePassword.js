@@ -20,20 +20,21 @@ export default function ChangePassword() {
         let newPassword = "";
 
         if (newPass !== repeatPass) {
-            return setError("New passwords do not match")
+            setError("New passwords do not match")
         }
         if (newPass.length < 6) {
-            return setError("Password should be at least 6 symbols")
+            setError("Password should be at least 6 symbols")
         }
 
         const oldCredentials = EmailAuthProvider.credential(
             auth.currentUser.email,
             oldPass
         );
+
         try {
             await reauthenticateUser(user, oldCredentials);
         } catch (e) {
-            return setError("The old password you've entered is incorrect")
+            setError("The old password you've entered is incorrect")
         }
 
         newPassword = newPass;

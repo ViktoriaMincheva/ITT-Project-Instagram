@@ -48,7 +48,7 @@ export default function NavBarProfileMenu() {
             <div onClick={handleClick}>
                 <img src={loggedUser.profilePhoto != null ? loggedUser.profilePhoto : "../images/icons/profile.png"} alt="profile pic" className={location.pathname === "/profile-posts" ? styles.headerIconClicked : styles.userHeaderIcon}/>
             </div>
-            {/* border ? styles.headerIconClicked : styles.headerIcon */}
+
             <Menu
                 anchorEl={anchorEl}
                 id="account-menu"
@@ -98,23 +98,27 @@ export default function NavBarProfileMenu() {
                         <img src="../images/icons/profile-2.png" alt="profile icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Profile</p>
                     </MenuItem>
                 </Link>
+
                 <Link to="/profile-saved" className={stylesMenu.headerIcons}>
                     <MenuItem className={stylesMenu.MenuItem}>
                         <img src="../images/icons/non-saved.png" alt="saved icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Saved</p>
                     </MenuItem>
                 </Link>
+
                 <Link to="/edit" className={stylesMenu.headerIcons}>
                     <MenuItem className={stylesMenu.MenuItem}>
                         <img src="../images/icons/settings.png" alt=" icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Settings</p>
                     </MenuItem>
                 </Link>
-                {/* TODO: change link*/}
+                
                 <Link to="/login" className={stylesMenu.headerIcons}>
                     <MenuItem className={stylesMenu.MenuItem}>
                         <img src="../images/icons/switch.png" alt=" icon" className={stylesMenu.menuIcons}/> <p className={stylesMenu.MenuTitle}>Switch accounts</p>
                     </MenuItem>
                 </Link>
+
                 <Divider sx={{ borderBottomWidth: 1.5}} />
+                
                 <Link to="/login" className={stylesMenu.headerIcons} onClick={handleLogout}>
                     <MenuItem className={stylesMenu.MenuItem}>
                         <p className={stylesMenu.MenuTitle}>Log out</p>

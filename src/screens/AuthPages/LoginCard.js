@@ -29,20 +29,26 @@ export default function LoginCard(props) {
     let userCredential;
     let user;
     let uid;
+
     async function handleSubmit(e) {
-        e.preventDefault()
+
+        e.preventDefault();
+
         try {
             setError("");
+            
             userCredential = await login(email, pass);
+
             uid = userCredential.user.uid;
             navigate("/", { replace: true });
         } catch (error) {
+
             if (error.message.includes("auth/user-not-found") || error.message.includes("wrong-password")) {
-                setError("You have entered an invalid email or password.")
+                setError("You have entered an invalid email or password.");
             } else if (error.message.includes("invalid-email")){
-                setError("Please enter a valid email address.")
+                setError("Please enter a valid email address.");
             } else {
-                setError(error.message)
+                setError(error.message);
             }
             console.log("catch");
         }
@@ -72,7 +78,6 @@ export default function LoginCard(props) {
                     <button type="submit" className={styles.button} disabled={((email && pass) ? false : true)}>Log In</button>
                 </form>
 
-                {/* this is the or-line in the login form */}
                 <Line />
 
                 <Link to="/forgot-password" className={styles.forgotPass}>Forgot password?</Link>

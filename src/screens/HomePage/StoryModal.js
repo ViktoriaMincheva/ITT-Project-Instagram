@@ -4,7 +4,9 @@ import { CSSTransition } from "react-transition-group";
 import "../../components/styles/Modal.css";
 
 export default function StoryModal (props) {
+
   const closeOnEscapeKeyDown = (e) => {
+
     if ((e.charCode || e.keyCode) === 27) {
       props.onClose();
     }
@@ -12,9 +14,11 @@ export default function StoryModal (props) {
 
   useEffect(() => {
     document.body.addEventListener("keydown", closeOnEscapeKeyDown);
+
     return function cleanup() {
       document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
     };
+
   }, []);
 
   return ReactDOM.createPortal(
@@ -28,10 +32,12 @@ export default function StoryModal (props) {
         <div className={`closeX button`} onClick={props.onClose}>
           <img src="images/icons/close-modal.png" alt="Close" className="closeIcon"/>
         </div>
+
         <div className="story-modal-content" onClick={(e) => e.stopPropagation()}>
           <div className="modal-story-body">{props.children}</div>
         </div>
       </div>
+      
     </CSSTransition>,
     document.getElementById("root")
   );

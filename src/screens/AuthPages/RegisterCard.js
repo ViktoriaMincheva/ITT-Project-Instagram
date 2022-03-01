@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { GetTheApp } from "./GetTheApp";
-import { useAuth } from '../../database/AuthContext'
-import { useNavigate } from "react-router-dom";
+import { useAuth } from '../../database/AuthContext';
 import { useSelector } from 'react-redux';
 import styled from "@emotion/styled";
 import styles from "./Login-Register.module.css"
@@ -62,10 +61,12 @@ export default function RegisterCard(props) {
             }
 
             await signup(email, pass, fullName, username);
+
             setMessage("Registered successfully. You can now log in.");
             event.target.reset();
 
         } catch (error) {
+
             if(error.message.includes("email-already-in-use")){
                 setError("This email is already in use.")
             } else if (error.message.includes("invalid-email")){
@@ -82,11 +83,13 @@ export default function RegisterCard(props) {
     return (
         <>
             <section className={styles.formContainer}>
+                
                 <img className={styles.logo} src="../images/logo.png" alt="Instagram" />
 
                 <StyledHeading>Sign up to see photos and videos from your friends.</StyledHeading>
                                 <Line />
                 <form onSubmit={handleSubmit}>
+
                     {error && <div className={styles.errMsg}>{error}</div>}
                     {message && <div className={styles.successMsg}>{message}</div>}
                     <input className={styles.input} id="email" type="text" placeholder="Email" onInput={(e) => setEmail(e.target.value.trim())} />

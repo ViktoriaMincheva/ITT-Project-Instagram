@@ -1,5 +1,5 @@
-import React from 'react'
-import styles from "./LoggedUserProfile.module.css"
+import React from 'react';
+import styles from "./LoggedUserProfile.module.css";
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -10,7 +10,6 @@ export default function UserSaved() {
     const savedPostsIDs = useSelector(state => state.userData.savedPosts);
     const allPosts = useSelector(state => state.allPostsData.posts);
     const comments = useSelector(state => state.comments.comments);
-    const user = useSelector(state => state.userData);
     const [savedPosts, setSavedPosts] = useState([]);
 
     useEffect(() => {

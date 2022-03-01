@@ -16,9 +16,7 @@ export default function DashboardPost(props) {
     const loggedUser = useSelector(state => state.userData);
     const users = useSelector(state => state.users.users);
     const likes = useSelector(state => state.likesData.likes);
-    const likedPosts = useSelector(state => state.userData.likedPosts);
     const savedPosts = useSelector(state => state.userData.savedPosts);
-    const [verified, setVerified] = useState(false);
 
     const handleShowUserProfile = () => {
         navigate(`/users/${props.username}`, { replace: true });
@@ -48,7 +46,6 @@ export default function DashboardPost(props) {
     function getLikeObj() {
         return likes.filter(like => like.postID === props.postID && like.userID === loggedUser.id);
       };
-      
     
       const handleLikePost = postID => {
         let like = getLikeObj();

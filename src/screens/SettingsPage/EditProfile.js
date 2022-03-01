@@ -75,19 +75,23 @@ export default function EditProfile() {
 
     return (
         <section className={styles.editProfileContainer}>
+            
             {success && <div className={styles.success}>{success}</div>}
             {error && <div className={styles.error}>{error}</div>}
+
             <div className={styles.user}>
+
                 <div className={styles.userIconContainer}>
                      <img src={user.profilePhoto ? user.profilePhoto : "../images/icons/profile.png"} alt="avatar" className={styles.userIcon} onClick={(e) =>  setShow(true)} />
                 </div>
+
                 <h5>{user.username} <br /> <span className={styles.changePhoto} onClick={(e) =>  setShow(true)}>Change Profile Photo</span></h5>
             </div>
 
             <div className={styles.row}>
-                <label className={styles.label}>
-                    Name
-                </label>
+
+                <label className={styles.label}>Name</label>
+
                 <div className={styles.inputField}>
                     <input id="name" className={styles.input} placeholder={user.name} onChange={e => setName(e.target.value.trim())} />
                     <p className={styles.text}>Help people discover your account by using the name you're known by: either your full name, nickname, or business name.</p>
@@ -95,9 +99,7 @@ export default function EditProfile() {
             </div>
 
             <div className={styles.row}>
-                <label className={styles.label}>
-                    Username
-                </label>
+                <label className={styles.label}>Username</label>
 
                 <div className={styles.inputField}>
                     <input onChange={e => setUsername(e.target.value.trim())} id="username" className={styles.input} placeholder={user.username} />
@@ -105,9 +107,7 @@ export default function EditProfile() {
             </div>
 
             <div className={styles.row}>
-                <label className={styles.label}>
-                    Bio
-                </label>
+                <label className={styles.label}>Bio</label>
 
                 <div className={styles.inputField}>
                     <textarea id="bio" onChange={e => setBio(e.target.value.trim())} className={styles.textarea} placeholder={user.bio} />
@@ -115,8 +115,7 @@ export default function EditProfile() {
             </div>
 
             <div className={styles.row}>
-                <label className={styles.label}>
-                </label>
+                <label className={styles.label}></label>
 
                 <div className={styles.inputField}>
                     <p className={styles.text}><strong>Personal Information</strong> <br /><br />
@@ -125,9 +124,7 @@ export default function EditProfile() {
             </div>
 
             <div className={styles.row}>
-                <label className={styles.label}>
-                    Email
-                </label>
+                <label className={styles.label}>Email</label>
 
                 <div className={styles.inputField}>
                     <input type="email" className={styles.input} placeholder={user.email} onChange={e => setEmail(e.target.value.trim())}/>
@@ -141,6 +138,7 @@ export default function EditProfile() {
             <Modal title="Change profile photo" onClose={() => setShow(false)} show={show}>
                 <div>
                     {photoError && <div>{photoError}</div>}
+
                     <form className={styles.changePhotoForm} onSubmit={e => handleProfilePhotoChange(e)}>
                         <input type="file" accept=".png, .jpg, .jpeg" onChange={e => handleFileChange(e)} />
                         <button type="submit">submit</button>

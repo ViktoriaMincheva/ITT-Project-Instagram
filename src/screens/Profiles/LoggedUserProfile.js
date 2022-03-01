@@ -75,19 +75,23 @@ export default function MyProfile() {
         <div className={styles.ProfileContainer}>
 
             <div className={styles.ProfileInfo}>
+
                 <div className={styles.ProfileImageContainer}>
                     <img src={user.profilePhoto != null ? user.profilePhoto : "../images/icons/profile.png"} alt="profile picture" className={styles.ProfileImage} />
                 </div>
+
                 <div className={styles.MainInfoContainer}>
                     <div className={styles.ProfileNecessities}>
                         <p>{user.username}</p>
                         <button type="button" className={styles.EditButton} onClick={handleOpenSettings}>Edit Profile</button>
                     </div>
+
                     <div className={styles.ProfileActivity}>
                         <p><span>{loggedUserPosts.length}</span> posts</p>
                         <p onClick={(e) => handleShowFollowers(e)}><span>{followedBy.length}</span> followers</p>
                         <p onClick={(e) => handleShowFollowing(e)}><span>{following.length}</span> following</p>
                     </div>
+
                     <InfoModal title="Followers" onClose={() => setShow(false)} show={show}>
                         {
                             followedBy.map((follower) =>
@@ -129,7 +133,9 @@ export default function MyProfile() {
                             )
                         }
                     </InfoModal>
+
                     <p>{user.name}</p>
+
                     <div>
                         {user.bio}
                     </div>
@@ -137,14 +143,17 @@ export default function MyProfile() {
             </div>
 
             <div className={styles.PostsNavigation}>
+
                 <div className={location.pathname === "/profile-posts" ? `${styles.NavigationTab}` : `${styles.NavigationTab} ${styles.noBorder}`}>
                     <img src="../images/icons/posts-grid.png" alt="grid icon" />
                     <Link to="/profile-posts" className={styles.postsLink}>POSTS</Link>
                 </div>
+
                 <div className={location.pathname === "/profile-saved" ? `${styles.NavigationTab}` : `${styles.NavigationTab} ${styles.noBorder}`}>
                     <img src="../images/icons/saved-grid.png" alt="grid icon" />
                     <Link to="/profile-saved" className={styles.postsLink}>SAVED</Link>
                 </div>
+                
             </div>
 
         </div>

@@ -16,7 +16,7 @@ export default function ExplorePage(){
     
     useEffect(() => {
         if(posts && itemsToShow.length < 1) {
-            setItemsToShow(posts.slice(0, perPage))
+            setItemsToShow(posts.slice(0, perPage));
         }
     }, [posts])
 

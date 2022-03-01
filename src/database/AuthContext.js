@@ -41,15 +41,15 @@ export function AuthProvider({ children }) {
        })
     }
     
-    function login(email, password) {
+    async function login(email, password) {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-    function logout() {
+    async function logout() {
         return signOut(auth)
     }
 
-    function resetPassword(email) {
+    async function resetPassword(email) {
         return sendPasswordResetEmail(auth, email);
     }
 

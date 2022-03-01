@@ -28,6 +28,7 @@ export default function Inbox() {
     const debouncedSearchValue = useDebounce(searchedInput, 500);
     
     const db = getFirestore();
+
     const messagesEndRef = useRef(null)
 
     const scrollToBottom = () => {

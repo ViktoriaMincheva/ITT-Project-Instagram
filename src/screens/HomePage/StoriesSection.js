@@ -20,10 +20,7 @@ export default function StoriesSection() {
     const [show, setShow] = useState(false);
     const [showOpenStory, setShowOpenStory] = useState(false);
     const [storyError, setStoryError] = useState("");
-    const [isStoryOpen, setIsStoryOpen] = useState(false);
     const [openedStory, setOpenedStory] = useState("");
-    const [storyUsername, setStoryUsername] = useState("");
-    const [storyIcon, setStoryIcon] = useState("");
     const [storyUpload, setStoryUpload] = useState(false);
 
     const handleStoryUpload = (e) => {
@@ -46,7 +43,6 @@ export default function StoriesSection() {
         storyObj = allStories.filter(story => story.id === storyID);
         setShowOpenStory(true);
         setOpenedStory(storyObj)
-        setStoryIcon(storyObj[0].icon);
         header.heading = storyObj[0].username;
         header.profileImage = storyObj[0].icon;
     };

@@ -31,7 +31,7 @@ export function AuthProvider({ children }) {
             savedPosts:[],
             publicProfile: true,
             fullName: fullName,
-            profilePhoto: null,
+            profilePhoto: "https://i.ibb.co/nnZgp9Z/44884218-345707102882519-2446069589734326272-n.jpg",
             businessAcc: {
                 isBusinessAcc: false,
                 isVerified:false,
